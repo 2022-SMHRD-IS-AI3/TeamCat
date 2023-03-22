@@ -11,7 +11,7 @@
 	<%
 		// 주연 - 로그인시 쿠키 저장하고 가져오는 코드 작성해야함 
 		Cookie[] cookies = request.getCookies();
-		
+		// ㅎㅎ
 	%>
 	<form action="LoginCon.do" method="post">
         <input type="hidden" name="kakao_id" value="swertyu3@naver.com">
