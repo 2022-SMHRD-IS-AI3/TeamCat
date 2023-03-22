@@ -20,7 +20,7 @@ public class DeleteCon implements Command {
 			System.out.println("삭제실패"); // 지울예정
 		}
 		
-		return "Main.jsp";
+		return "Main.jsp"; // 주연 - 이동페이지 삭제가 완료되었습니다. alert로 알려주고 확인 클릭 시 메인? 아니면 페이지 따로 파고 확인 버튼 누르면 메인?
 	}
 
 }

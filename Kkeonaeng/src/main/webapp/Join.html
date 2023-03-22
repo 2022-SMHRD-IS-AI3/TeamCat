@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="JoinCon.do" method="post">
+		<table>
+			<tr>
+				<td>닉네임 :</td>
+				<td><input type="text" name="nick" id=""></td>
+			</tr>
+			<tr>
+				<td>성별 :</td>
+				<td>
+					<label for="male">남</label><input type="radio"	name="gender" id="male" value="1">
+					<label for="female">여</label><input	type="radio" name="gender" id="female" value="2">
+				</td>
+			</tr>
+			<tr>
+				<td>카카오계정:</td>
+				<td><input type="text" name="kakao_id" id=""></td>
+			</tr>
+			<tr>
+                <td colspan="2" align="center"><a href="Login.jsp"><button>취소</button></a><input type="submit" value="가입"></td>
+            </tr>
+
+		</table>
+	</form>
+</body>
+</html>
