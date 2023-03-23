@@ -1,5 +1,6 @@
 package com.smhrd.controller;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -12,16 +13,15 @@ public class LoginCon implements Command {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 
-		String email = request.getParameter("email");
+		String kakao_id = request.getParameter("kakao_id");
 
-		System.out.println(email); // 지울예정
+		System.out.println(kakao_id); // 지울예정
 
-		UserDTO dto = new UserDTO(email);
-
-		UserDTO info = new UserDAO().login(dto);
+		UserDTO info = new UserDAO().login(kakao_id);
 
 		if (info != null) {
 			System.out.println("로그인 성공");
+			
 			HttpSession session = request.getSession();
 			session.setAttribute("info", info);
 		} else {

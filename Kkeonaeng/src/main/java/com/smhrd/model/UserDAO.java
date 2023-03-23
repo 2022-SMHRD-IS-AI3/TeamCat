@@ -24,10 +24,10 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	}
 	
 	// 로그인
-	public UserDTO login(UserDTO dto) {
+	public UserDTO login(String kakao_id) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession();
-		UserDTO info = sqlsession.selectOne("login", dto);
+		UserDTO info = sqlsession.selectOne("login", kakao_id);
 		sqlsession.close();
 		
 		return info;
