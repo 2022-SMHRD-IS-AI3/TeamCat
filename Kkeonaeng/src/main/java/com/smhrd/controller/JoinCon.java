@@ -20,7 +20,6 @@ public class JoinCon implements Command {
 		System.out.println(nick + " - " + gender + " - " + kakao_id); // 지울예정
 
 		UserDTO dto = new UserDTO(0, nick, gender, kakao_id, 0, null, "");
-		System.out.println(nick + " - " + gender + " - " + kakao_id); // 지울예정
 
 		UserDAO dao = new UserDAO();
 		int cnt = dao.join(dto);
