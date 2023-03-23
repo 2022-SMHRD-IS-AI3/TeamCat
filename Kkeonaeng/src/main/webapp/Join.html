@@ -7,26 +7,87 @@
 <body>
 	<form action="JoinCon.do" method="post">
 		<table>
-			<tr>
+			<!-- <tr>
 				<td>닉네임 :</td>
 				<td><input type="text" name="nick" id=""></td>
 			</tr>
 			<tr>
 				<td>성별 :</td>
 				<td>
+					<input type="text" id="gender" name="gender">
 					<label for="male">남</label><input type="radio"	name="gender" id="male" value="1">
 					<label for="female">여</label><input	type="radio" name="gender" id="female" value="2">
 				</td>
 			</tr>
 			<tr>
 				<td>카카오계정:</td>
-				<td><input type="text" name="kakao_id" id=""></td>
+				<td> -->
+				<a onclick="kakaoLogin()" id="kakao_login_btn">
+				<img height="50px" src="join.png"/></a>
+				<!-- <a  onclick="kakaoLogout()" href="javascript:void(0)">
+            <span>카카오 로그아웃</span>
+        </a>
+				<input type="text" name="kakao_id" id="kakao_id">
+				</td>
 			</tr>
 			<tr>
                 <td colspan="2" align="center"><a href="Login.jsp"><button>취소</button></a><input type="submit" value="가입"></td>
-            </tr>
+            </tr> -->
 
 		</table>
 	</form>
+	
+	<!-- 카카오 스크립트 -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+  <script>
+  Kakao.init('bf715548461cb6d295d31774eda4c2bc'); //발급받은 키 중 javascript키를 사용해준다.
+  console.log(Kakao.isInitialized()); // sdk초기화여부판단
+  //카카오로그인
+  function kakaoLogin() {
+      Kakao.Auth.login({
+        success: function (response) {
+          Kakao.API.request({
+            url: '/v2/user/me',
+            success: function (response) {
+              console.log(response)
+              /* document.getElementById('kakao_id').value = response.kakao_account.email; */
+              let account = response.kakao_account;
+              let gender = "";
+              if(account.gender == "male"){
+            	  gender = "1";
+              }else{
+            	  gender = "2";
+            	  
+              }
+              location.href = "InputNick.jsp?k="+account.email+"&g="+gender;
+              
+              
+            },
+            fail: function (error) {
+              console.log(error)
+            },
+          })
+        },
+        fail: function (error) {
+          console.log(error)
+        },
+      })
+    }
+  //카카오로그아웃  
+  function kakaoLogout() {
+      if (Kakao.Auth.getAccessToken()) {
+        Kakao.API.request({
+          url: '/v1/user/unlink',
+          success: function (response) {
+            console.log(response)
+          },
+          fail: function (error) {
+            console.log(error)
+          },
+        })
+        Kakao.Auth.setAccessToken(undefined)
+      }
+    }  
+  </script>
 </body>
 </html>

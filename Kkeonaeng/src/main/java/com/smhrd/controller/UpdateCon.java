@@ -30,7 +30,7 @@ public class UpdateCon implements Command {
 			System.out.println("회원정보수정실패");
 		}
 
-		return "../../Main.jsp";
+		return "./";
 	}
 
 }

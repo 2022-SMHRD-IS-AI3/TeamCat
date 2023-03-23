@@ -15,8 +15,11 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
     // 회원가입
 	public int join(UserDTO dto) {
 		
+		System.out.println(121321);
+		System.out.println(121321);
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		int cnt = sqlsession.insert("join", dto);
+		System.out.println(cnt);
 		sqlsession.close();
 		
 		return cnt;
