@@ -29,7 +29,11 @@ public class Frontcontroller extends HttpServlet {
 		System.out.println("Context Path : " + contextPath);
 		
 		String result = reqURI.substring(contextPath.length() + 1);
+		
+		String[] array = result.split("/");
+		result = array[array.length-1];
 		System.out.println("최종 요청값 : " + result);
+
 		
 		Command con = null;
 

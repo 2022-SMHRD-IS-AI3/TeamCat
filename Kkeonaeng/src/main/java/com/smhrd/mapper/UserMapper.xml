@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="UserDTO" parameterType="String">
-		select * from user_info where kakao_id = #{kakao_id}
+		select * from user_info where kakao_id = #{kakao_id} and user_flag = 'Y'
 	</select>
 	
 	<!-- 정보수정 -->
@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 회원이용중지 -->
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="int">
 		update user_info set user_flag = 'N' where user_idx = #{user_idx}
 	</delete>
 	

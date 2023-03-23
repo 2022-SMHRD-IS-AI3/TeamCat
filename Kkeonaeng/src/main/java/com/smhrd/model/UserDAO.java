@@ -44,7 +44,7 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	}
 	
 	// 회원삭제
-	public int delete(String user_idx) {
+	public int delete(int user_idx) {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
 		int cnt = sqlsession.delete("delete",user_idx);
 		sqlsession.close();

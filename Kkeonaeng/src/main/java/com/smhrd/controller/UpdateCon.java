@@ -16,9 +16,10 @@ public class UpdateCon implements Command {
 		HttpSession session = request.getSession();
 
 		int user_idx = Integer.parseInt(request.getParameter("user_idx"));
-		int kimg_idx = Integer.parseInt(request.getParameter("kimg_idx"));
+//		int kimg_idx = Integer.parseInt(request.getParameter("kimg_idx"));
+		int kimg_idx = 0;
 		String nick  = request.getParameter("nick");
-
+		System.out.println(nick);
 		UserDTO dto = new UserDTO(user_idx, nick, kimg_idx);
 		int cnt = new UserDAO().update(dto);
 
@@ -29,7 +30,7 @@ public class UpdateCon implements Command {
 			System.out.println("회원정보수정실패");
 		}
 
-		return "My_page.jsp";
+		return "../../Main.jsp";
 	}
 
 }
