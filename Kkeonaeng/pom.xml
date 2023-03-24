@@ -71,6 +71,13 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+		<!-- 코스 https://mvnrepository.com/artifact/com.jfinal/cos -->
+		<dependency>
+		    <groupId>com.jfinal</groupId>
+		    <artifactId>cos</artifactId>
+		    <version>26Dec2008</version>
+		</dependency>
+		
 		</dependencies>
 
   <build>

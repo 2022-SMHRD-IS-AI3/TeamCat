@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.FileDAO">
+
+	<!-- 시퀀스 next_val 가져오기
+	<select id="f_idx" resultType="int">
+		select file_info_seq.nextval from dual
+	</selectKey> -->
+	
+	<!-- <select id="fileUpload" resultType="int">
+		insert into file_info  values( file_info_seq.nextval, #{nick}, #{gender}, #{kakao_id}, #{kimg_idx}, sysdate, 'Y' )
+	</insert> -->
+	
+	<!-- 로그인 -->
+	<select id="login" resultType="FileDTO" parameterType="String">
+		select * from file_info where kakao_id = #{kakao_id} and File_flag = 'Y'
+	</select>
+	
+	<!-- 정보수정 -->
+	<update id="update" parameterType="FileDTO">
+		update file_info set nick = #{nick}, kimg_idx = #{kimg_idx} where file_idx = #{file_idx}
+	</update>
+	
+	<!-- 회원이용중지 -->
+	<delete id="delete" parameterType="int">
+		update file_info set file_flag = 'N' where file_idx = #{file_idx}
+	</delete>
+	
+</mapper>

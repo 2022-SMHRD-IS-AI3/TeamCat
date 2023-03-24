@@ -22,7 +22,7 @@
 	        <input type="submit" value="완료">
 	    </div>
 	    <div>
-	        <input type="file" name="kimg_idx" id="kimg_idx" value="">
+	        <input type="file" name="profile_img" id="profile_img" value="">
 	    </div>
 	    
 	    <div>
@@ -38,7 +38,7 @@
     </form>
  
     <div>
-        <span onclick="DeleteUser('1')">회원탈d퇴</span>
+        <span onclick="DeleteUser('1')">회원탈퇴</span>
     </div>
 
 	   <script type="text/javascript">
