@@ -17,7 +17,7 @@
 				<table id="list">
 					<tr>
 						<td>작성자</td>
-						<input type="hidden" name="user_idx" value="27"> 
+						<input type="hidden" name="user_idx" id="user_idx" value="27"> 
 						<td><%-- <%=info.getNick()%> --%></td>
 					</tr>
 					<tr>
@@ -41,20 +41,20 @@
 					</tr>
 					<tr>
 						<td>물품명</td>
-						<td><input type="text" name="p_name"></td>
+						<td><input type="text" name="p_name" id="p_name"></td>
 					</tr>
 					
 					<tr>
 						<td>가격</td>
-						<td><input type="text" name="price"></td>
+						<td><input type="text" name="price" id="price"></td>
 					</tr>
 					<tr>
 						<td>거래위치주소</td>
-						<td><input type="text" name="contact_addr"></td>
+						<td><input type="text" name="contact_addr" id="contact_addr"></td>
 					</tr>
 					<tr>
 						<td>거래위치좌표</td>
-						<td><input type="text" name="contact_gps"></td>
+						<td><input type="text" name="contact_gps" id="contact_gps"></td>
 					</tr>
 					<tr>
 						<td colspan="2">내용</td>
@@ -62,7 +62,7 @@
 					<tr>
 						<td colspan="2">
 							<input name="filename" type="file" style="float: right;">
-							<textarea name="p_contents" rows="10" style="resize: none;"></textarea>			
+							<textarea id="p_contents" name="p_contents" rows="10" style="resize: none;"></textarea>			
 						</td>
 					</tr>
 					<tr>

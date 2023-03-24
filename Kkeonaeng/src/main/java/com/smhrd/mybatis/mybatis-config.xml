@@ -8,6 +8,7 @@
 	<typeAliases>
 		<typeAlias type="com.smhrd.model.UserDTO" alias="UserDTO" />
 		<typeAlias type="com.smhrd.model.UserDTO" alias="FileDTO" />
+		<typeAlias type="com.smhrd.model.ProductDTO" alias="ProductDTO" />
 		
 	</typeAliases>
 	
@@ -25,5 +26,6 @@
 	<mappers>
 		<mapper resource="com/smhrd/mapper/UserMapper.xml" />
 		<mapper resource="com/smhrd/mapper/FileMapper.xml" />
+		<mapper resource="com/smhrd/mapper/ProductMapper.xml" />
 	</mappers>
 </configuration>

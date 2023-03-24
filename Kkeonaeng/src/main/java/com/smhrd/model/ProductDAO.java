@@ -12,11 +12,11 @@ public class ProductDAO {
 	SqlSessionFactory sqlSessionfactory = SqlSessionManager.getSqlSession();
 	
 	// 파일 업로드
-	public int upload(ProductDTO dto) {
+	public int ProductUpload(ProductDTO dto) {
 		System.out.println("dao");
 		System.out.println(dto.toString());
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.insert("upload", dto);
+		int cnt = sqlsession.insert("ProductUpload", dto);
 		sqlsession.close();
 		
 		return cnt;
@@ -24,7 +24,7 @@ public class ProductDAO {
 	
 	// 게시글 목록 조회
 	// select * from web_Product
-	public List<ProductDTO> bordAll() {
+	public List<ProductDTO> ProductAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ProductDTO> Product_list = sqlsession.selectList("ProductAll");
 		sqlsession.close();

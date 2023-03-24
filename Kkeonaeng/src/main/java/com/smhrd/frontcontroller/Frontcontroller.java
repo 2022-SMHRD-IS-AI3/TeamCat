@@ -11,8 +11,8 @@ import com.smhrd.Command.Command;
 import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
+import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.UpdateCon;
-import com.smhrd.controller.BoardWriteCon;
 import com.smhrd.controller.DeleteCon;
 
 public class Frontcontroller extends HttpServlet {

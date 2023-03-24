@@ -35,21 +35,35 @@ public class ProductWriteCon implements Command {
 		MultipartRequest multi;
 	      try {
 	    	// 사용자가 입력한 정보 가져오기
+	    	  System.out.println(1);
 	    	multi = new MultipartRequest(request, path, maxSize, encoding, rename);
-	    	int c_idx = Integer.parseInt(multi.getParameter("c_idx"));
-	  		int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
-	  		String p_name = multi.getParameter("p_name");
+	    	System.out.println(2);
+	    	String user_idx = multi.getParameter("user_idx");
+	    	System.out.println(user_idx);
+	    	String p_name = multi.getParameter("p_name");
+	    	System.out.println(4);
+	    	
+	    	System.out.println(p_name);
+	    	String c_idx = multi.getParameter("c_idx");
+	    	int c = Integer.parseInt(c_idx);
+	    	System.out.println(c_idx);
 	  		String contact_addr = multi.getParameter("contact_addr");
+	  		System.out.println(contact_addr);
 	  		String contact_gps = multi.getParameter("contact_gps");
+	  		System.out.println(contact_gps);
+	  		
 	  		int price = Integer.parseInt(multi.getParameter("price"));
-	  		String p_content = multi.getParameter("p_content");
-	  		String p_status = multi.getFilesystemName("p_status");
-	         
-
+	  		System.out.println(price);
+	  		String p_contents = multi.getParameter("p_contents");
+	  		System.out.println(p_contents);
+	        int inde = Integer.parseInt(user_idx);
+	        System.out.println(p_name);
+	        
+	        System.out.println(6);
 	         
 	         // DTO로 묶기
-	  		ProductDTO dto = new ProductDTO(0, user_idx, p_name, c_idx, contact_addr, contact_gps, price, p_content, p_content, p_status);
-	         int cnt = new ProductDAO().upload(dto);
+	  		ProductDTO dto = new ProductDTO(0, inde, p_name, c, contact_addr, contact_gps, price, p_contents, null, null);
+	         int cnt = new ProductDAO().ProductUpload(dto);
 
 	         if (cnt > 0) {
 	            System.out.println("업로드 성공");
