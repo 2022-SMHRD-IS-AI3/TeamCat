@@ -18,7 +18,12 @@
 	<h2>마이페이지</h2>
 	
     <div style="border:1px solid black;">
-        <img id="profile_img" src="/images/포켓몬37.jpg" alt="" width="50px" height="50px">
+        <%
+	    		if(info.getFile_name() == null) {%>
+	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="50px" height="50px">
+	    	<%	}else{ %>
+	    			<img id="profile_img" src="../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
+	    	<%  }%>
         <span id="nick"><%=info.getNick()%></span>
         <a href="./info/index.jsp"><button>정보 수정</button></a>
     </div>

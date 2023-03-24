@@ -24,6 +24,14 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 	}
 	
+	// 회원정보수정
+	public int fileUpdate(FileDTO dto) {
+		
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt = sqlsession.update("fileUpdate", dto);
+		
+		return cnt;
+	}
 	// 로그인
 //	public UserDTO login(String kakao_id) {
 //		
@@ -35,14 +43,6 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 //		
 //	}
 //
-//	// 회원정보수정
-//	public int update(UserDTO dto) {
-//		
-//		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-//		int cnt = sqlsession.update("update", dto);
-//		
-//		return cnt;
-//	}
 //	
 //	// 회원삭제
 //	public int delete(int user_idx) {

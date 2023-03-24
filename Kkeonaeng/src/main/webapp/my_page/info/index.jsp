@@ -26,11 +26,18 @@
 	        <input type="text" name="fileExt" id="fileExt" value="">
 	        <input type="text" name="filesize" id="filesize" value="">
 	        <input type="file" name="filename" id="filename" onchange="fileSize(this)" value="">
-	        <input type="hidden" name="post_idx" value="">
 	    </div>
 	    
 	    <div>
-	        <img id="profile_img" src="../../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
+	    	<%
+	    		if(info.getFile_name() == null) {%>
+	    	        <img id="profile_img" src="../../file/unknown.png" alt="" width="50px" height="50px">
+	        		<input type="hidden" name="post_idx" value="">
+	    	<%	}else{ %>
+	    			<img id="profile_img" src="../../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
+	        		<input type="hidden" name="post_idx" value="1">
+	    	<%  }%>
+	        
 	    </div>
 	
 	    <div>
@@ -64,6 +71,14 @@
     	    
     	    document.getElementById('fileExt').value = (file.name).split('.')[1];
     	    document.getElementById('filesize').value = file.size;
+    	    var reader = new FileReader();
+    	    	console.log(reader);
+    	    reader.onload = function(e) {
+    	      	document.getElementById('profile_img').src = e.target.result;
+    	    };
+    	    reader.readAsDataURL(file);
+    	    
+    	    
        }
        
     </script>

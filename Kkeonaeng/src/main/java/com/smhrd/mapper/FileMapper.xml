@@ -7,10 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.smhrd.model.FileDAO">
 
 	
+	<!-- 파일 업로드 -->
 	<insert id="fileUpload" parameterType="FileDTO">
 		insert into file_info  values( file_info_seq.nextval, #{route_type}, #{post_idx}, #{file_name}, #{file_extension}, #{file_location}, #{file_size} )
 	</insert>
 	
+	<!-- 파일 수정 -->
+	<update id="fileUpdate" parameterType="FileDTO">
+		update file_info set file_name = #{file_name}, file_extension = #{file_extension}, file_location = #{file_location}, file_size = #{file_size} where route_type = #{route_type} and post_idx = #{post_idx}
+	</update>
 	
 	
 </mapper>

@@ -39,7 +39,7 @@ public class UpdateCon implements Command {
 			String nick = multi.getParameter("nick");
 			String filename = multi.getFilesystemName("filename");
 			UserDTO dto = null;
-			
+			String file_img = "";
 			if(filename == null) {
 				// 이미지 데이터가 없을때 닉네임만 변경
 				dto = new UserDTO(user_idx, nick);
@@ -48,8 +48,8 @@ public class UpdateCon implements Command {
 				
 			}else {
 				// 이미지데이터가 있을 때 이미지도 변경
-				
 				String filename_en = URLEncoder.encode(filename, "UTF-8");
+				file_img = filename_en;
 				String filesize = multi.getParameter("filesize");
 				System.out.println(filesize);
 				String post_idx = multi.getParameter("post_idx");
@@ -68,13 +68,21 @@ public class UpdateCon implements Command {
 				}else {
 					// 이미지 수정
 					System.out.println(2+post_idx);
+					
+					FileDTO fdto = new FileDTO(0,"profile",user_idx,filename_en,fileExt,path,filesize);
+					cnt = new FileDAO().fileUpdate(fdto);
+					System.out.println(cnt);
 				}
 			}
 			
 			if (cnt > 0) {
 				System.out.println("회원정보수정성공");
 				UserDTO d = (UserDTO)session.getAttribute("info");
-				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), d.getFile_name());
+				String profile_img = d.getFile_name();
+				if(file_img != null) {
+					profile_img = file_img;
+				}
+				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img);
 				session.setAttribute("info", updatedto); 
 			} else {
 				System.out.println("회원정보수정실패");
