@@ -71,6 +71,13 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
+		
+		<!-- cos -->
+		<dependency>
+			<groupId>com.jfinal</groupId>
+			<artifactId>cos</artifactId>
+			<version>2020.4</version>
+		</dependency>
 		</dependencies>
 
   <build>
