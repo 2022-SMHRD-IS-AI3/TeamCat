@@ -79,7 +79,7 @@ public class UpdateCon implements Command {
 				System.out.println("회원정보수정성공");
 				UserDTO d = (UserDTO)session.getAttribute("info");
 				String profile_img = d.getFile_name();
-				if(file_img != null) {
+				if(filename != null) {
 					profile_img = file_img;
 				}
 				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img);
