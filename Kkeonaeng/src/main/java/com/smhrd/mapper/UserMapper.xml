@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 로그인 -->
 	<select id="login" resultType="UserDTO" parameterType="String">
-		select * from user_info where kakao_id = #{kakao_id} and user_flag = 'Y'
+		select a.*, b.file_name from user_info a left outer join file_info b on a.user_idx = b.post_idx and b.route_type = 'profile' where a.kakao_id = #{kakao_id}
 	</select>
 	
 	<!-- 정보수정 -->

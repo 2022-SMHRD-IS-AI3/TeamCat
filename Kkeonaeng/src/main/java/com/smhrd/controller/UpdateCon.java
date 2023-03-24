@@ -25,47 +25,68 @@ public class UpdateCon implements Command {
 
 		// 파일, user_idx, 닉네임 
 		
-		// 사진저장 먼저
+		// 무조건 사진저장 먼저
 		String path = request.getServletContext().getRealPath("file");
 		int maxSize = 10 * 1024 * 1024; // 20 MB
 		String encoding = "UTF-8";
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		MultipartRequest multi;
-		
-		int user_idx = Integer.parseInt(request.getParameter("user_idx"));
-		
+		int cnt = 0;
 		try {
+			
 			multi = new MultipartRequest(request, path, maxSize, encoding, rename);
-			String title = multi.getParameter("title");
-			String writer = multi.getParameter("writer");
+			int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
+			String nick = multi.getParameter("nick");
 			String filename = multi.getFilesystemName("filename");
-			String filename_en = URLEncoder.encode(filename, "UTF-8");
-			String content = multi.getParameter("content");
-			File file = multi.getFile(filename);
-			String filesize = "" +(int) file.length();
-	        
-			String[] extension = filename_en.split(".");
-			FileDTO fdto = new FileDTO(0,"profile",user_idx,filename_en,extension[1],path,filesize);
-			FileDTO fdao = new FileDAO().fileUpload(fdto);
+			UserDTO dto = null;
+			
+			if(filename == null) {
+				// 이미지 데이터가 없을때 닉네임만 변경
+				dto = new UserDTO(user_idx, nick);
+				cnt = new UserDAO().update(dto);
+				
+				
+			}else {
+				// 이미지데이터가 있을 때 이미지도 변경
+				
+				String filename_en = URLEncoder.encode(filename, "UTF-8");
+				String filesize = multi.getParameter("filesize");
+				System.out.println(filesize);
+				String post_idx = multi.getParameter("post_idx");
+				String fileExt = multi.getParameter("fileExt");
+				System.out.println(fileExt);
+				
+				if(post_idx.equals("")) {
+					// 이미지 최초 저장
+					
+					System.out.println(1+post_idx);
+					
+					FileDTO fdto = new FileDTO(0,"profile",user_idx,filename_en,fileExt,path,filesize);
+					cnt = new FileDAO().fileUpload(fdto);
+					System.out.println(cnt);
+					
+				}else {
+					// 이미지 수정
+					System.out.println(2+post_idx);
+				}
+			}
+			
+			if (cnt > 0) {
+				System.out.println("회원정보수정성공");
+				UserDTO d = (UserDTO)session.getAttribute("info");
+				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), d.getFile_name());
+				session.setAttribute("info", updatedto); 
+			} else {
+				System.out.println("회원정보수정실패");
+			}
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		String nick  = request.getParameter("nick");
-		
-		System.out.println(nick);
-		
 		// 파일먼저 등록하고 index 가져오기
-		UserDTO dto = new UserDTO(user_idx, nick);
-		int cnt = new UserDAO().update(dto);
 
-		if (cnt > 0) {
-			System.out.println("회원정보수정성공");
-			session.setAttribute("info", dto); 
-		} else {
-			System.out.println("회원정보수정실패");
-		}
 
 		return "./";
 	}

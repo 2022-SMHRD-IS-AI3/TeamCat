@@ -13,16 +13,14 @@ public class FileDAO {
 private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	
     // 파일 등록
-	public FileDTO fileUpload(FileDTO dto) {
+	public int fileUpload(FileDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		int idx = sqlsession.selectOne("fileUpload"); // 입력될 index 값 가져오기
 		int cnt = sqlsession.insert("fileUpload", dto);
 		System.out.println(cnt);
-		System.out.println("생성인덱스"+idx);
 		sqlsession.close();
-		FileDTO result = new FileDTO(idx,cnt);
-		return result;
+		
+		return cnt;
 		
 	}
 	
