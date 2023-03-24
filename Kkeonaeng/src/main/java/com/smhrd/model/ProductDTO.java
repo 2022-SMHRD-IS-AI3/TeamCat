@@ -7,7 +7,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class BoardDTO {
+public class ProductDTO {
 	
 	private int p_idx;
 	private int user_idx;

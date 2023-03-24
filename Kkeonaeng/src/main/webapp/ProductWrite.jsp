@@ -11,8 +11,8 @@
 <% 
 		UserDTO info = (UserDTO)session.getAttribute("info");
 	%>
-<div id = "board">
-				<form action="BoardWriteCon.do" method="post"
+<div id = "Product">
+				<form action="ProductWriteCon.do" method="post"
 					enctype="multipart/form-data">
 				<table id="list">
 					<tr>

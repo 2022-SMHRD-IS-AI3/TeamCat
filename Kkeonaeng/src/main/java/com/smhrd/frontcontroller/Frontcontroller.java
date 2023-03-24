@@ -58,9 +58,9 @@ public class Frontcontroller extends HttpServlet {
 
 			con = new UpdateCon();
 
-		} else if (result.equals("BoardWriteCon.do")) {
+		} else if (result.equals("ProductWriteCon.do")) {
 
-			con = new BoardWriteCon();
+			con = new ProductWriteCon();
 
 		} 
 		
