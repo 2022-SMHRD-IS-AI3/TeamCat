@@ -24,7 +24,7 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 	}
 	
-	// 회원정보수정
+	// 회원정보수정ㅇ
 	public int fileUpdate(FileDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
