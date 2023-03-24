@@ -41,7 +41,7 @@
 	    </div>
 	
 	    <div>
-	        <input type="text" name="kakao_id" value="swertyu@naver.com" readonly style="background-color: rgb(216, 216, 216);">
+	        <input type="text" name="kakao_id" value="<%=info.getKakao_id() %>" readonly style="background-color: rgb(216, 216, 216);">
 	    </div>
 	    <div>
 	        <input type="text" name="nick" value="<%=info.getNick()%>">
