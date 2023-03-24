@@ -28,15 +28,14 @@ public class JoinCon implements Command {
 		String moveURL = null;
 
 		if (cnt > 0) {
-			System.out.println("회원가입성공");  // 지울예정
+			System.out.println("회원가입성공"); // 지울예정
 			moveURL = "Login.jsp";
 		} else {
-			System.out.println("회원가입실패");  // 지울예정 
-			moveURL = "Main.jsp"; // 실패시 어떻게 할 것인지 
+			System.out.println("회원가입실패"); // 지울예정
+			moveURL = "Main.jsp"; // 실패시 어떻게 할 것인지
 		}
-		
+
 		return moveURL;
 	}
 
 }
-
