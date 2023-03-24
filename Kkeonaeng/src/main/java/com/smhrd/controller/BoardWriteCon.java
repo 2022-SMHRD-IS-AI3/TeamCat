@@ -1,12 +1,15 @@
 package com.smhrd.controller;
 
 import java.io.IOException;
-import java.net.URLEncoder;
+import java.rmi.activation.ActivationGroupDesc.CommandEnvironment;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.ibatis.binding.MapperMethod.SqlCommand;
+import org.apache.ibatis.reflection.SystemMetaObject;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -14,10 +17,11 @@ import com.smhrd.model.BoardDAO;
 import com.smhrd.model.BoardDTO;
 
 
-public class WriteBoardCon<BoardDTO> extends HttpServlet {
+public class BoardWriteCon extends SqlCommand {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		System.out.println("넘어옴");
 		// post방식 인코딩
 		request.setCharacterEncoding("UTF-8");
 		
@@ -40,19 +44,22 @@ public class WriteBoardCon<BoardDTO> extends HttpServlet {
 		MultipartRequest multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 		
 		// 사용자가 입력한 정보 가져오기
+		int c_idx = Integer.parseInt(multi.getParameter("c_idx"));
 		int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
-		String b_title = multi.getParameter("b_title");
-		String b_content = multi.getParameter("b_content");
-		String filename = multi.getFilesystemName("filename");	
-		String filename_en = URLEncoder.encode(filename, "UTF-8");
+		String p_name = multi.getParameter("p_name");
+		String contact_addr = multi.getParameter("contact_addr");
+		String contact_gps = multi.getParameter("contact_gps");
+		int price = Integer.parseInt(multi.getParameter("price"));
+		String p_content = multi.getParameter("p_content");
+		String p_status = multi.getFilesystemName("p_status");	
 		
 		System.out.println("writer : " + user_idx);
-		System.out.println("title : " + b_title);
-		System.out.println("filename : " + filename);
-		System.out.println("content : " + b_content);
+		System.out.println("title : " + p_name);
+		System.out.println("addr : " + contact_addr);
+		System.out.println("content : " + p_content);
 		
 		// DTO로 묶기
-		BoardDTO dto = new BoardDTO(0, b_idx, user_idx, b_title, b_content, null);
+		BoardDTO dto = new BoardDTO(0, user_idx, p_name, c_idx, contact_addr, contact_gps, price, p_content, p_content, p_status);
 		int cnt = new BoardDAO().upload(dto);
 		
 		if(cnt>0) {
