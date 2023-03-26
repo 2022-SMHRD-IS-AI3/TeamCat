@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="map" style="width:100%;height:350px;"></div>
+    
+    <form name="formData" action="../" method="get">
+        <input type="text" id="c_idx" name="c_idx">
+        <input type="text" id="p_name" name="p_name">
+        <input type="text" id="price" name="price">
+        <input type="text" id="p_contents" name="p_contents">
+        <div id="addr">
+            <input type="text" id="contact_gps" name="contact_gps" placeholder="좌표표시" readonly>
+            <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요">
+        </div>
+    </form>
+    <div>
+        <button onclick="sendPlace()">거래장소선택완료</button>
+    </div>
+
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
+    <script>
+    
+        let urlSearch = new URLSearchParams(location.search);
+        console.log(urlSearch);
+        document.getElementById('c_idx').value = urlSearch.get('c_idx');
+        document.getElementById('p_name').value = urlSearch.get('p_name');
+        document.getElementById('price').value = urlSearch.get('price');
+        document.getElementById('p_contents').value = urlSearch.get('p_contents');
+        
+        const sendPlace = () => {
+            console.log(contact_gps);
+            let form = document.formData;
+            form.submit();  
+        }
+
+        var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨 
+            };
+
+        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+        // HTML5의 geolocation으로 사용할 수 있는지 확인합니다 
+        if (navigator.geolocation) {
+
+            // GeoLocation을 이용해서 접속 위치를 얻어옵니다
+            navigator.geolocation.getCurrentPosition(function (position) {
+
+                var lat = position.coords.latitude, // 위도
+                    lon = position.coords.longitude; // 경도
+
+                console.log(lat, lon)
+
+                var locPosition = new kakao.maps.LatLng(lat, lon);
+
+                // 마커와 인포윈도우를 표시합니다
+                displayMarker(locPosition);
+
+            });
+
+        } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
+
+            var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
+
+            displayMarker(locPosition);
+        }
+
+        // 지도에 마커와 인포윈도우를 표시하는 함수입니다
+        function displayMarker(locPosition) {
+
+            // 마커를 생성합니다
+            var marker = new kakao.maps.Marker({
+                map: map,
+                position: locPosition
+            });
+
+            // 지도 중심좌표를 접속위치로 변경합니다
+            map.setCenter(locPosition);
+
+            kakao.maps.event.addListener(map, 'drag', function() {
+                var latlng = map.getCenter();
+				marker.setPosition(latlng);
+                //marker.setPosition(latlng);
+
+                document.getElementById('contact_gps').value = latlng.getLat() + "," + latlng.getLng();
+            });
+            
+            kakao.maps.event.addListener(map, 'zoom_changed', function() {
+            	var latlng = map.getCenter();
+				marker.setPosition(latlng);
+                //marker.setPosition(latlng);
+
+                document.getElementById('contact_gps').value = latlng.getLat() + "," + latlng.getLng();
+            });
+            //kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
+
+                // 클릭한 위도, 경도 정보를 가져옵니다 
+                // var latlng = mouseEvent.latLng;
+                // 마커 위치를 클릭한 위치로 옮깁니다
+             //   var latlng = map.getCenter();
+			//	marker.setPosition(latlng);
+                //marker.setPosition(latlng);
+
+           //     document.getElementById('contact_gps').value = latlng.getLat() + "," + latlng.getLng();
+
+          //  });
+        }
+    </script>
+</body>
+</html>

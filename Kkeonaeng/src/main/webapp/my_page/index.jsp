@@ -12,8 +12,8 @@
 	<%
 		UserDTO info = (UserDTO)session.getAttribute("info");
 		if(info == null) {
-			response.sendRedirect("../Login.jsp");
-		}
+			response.sendRedirect("/Kkeonaeng/Login/");
+		}else{
 	%>
 	<h2>마이페이지</h2>
 	
@@ -25,19 +25,19 @@
 	    			<img id="profile_img" src="../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
 	    	<%  }%>
         <span id="nick"><%=info.getNick()%></span>
-        <a href="./info/index.jsp"><button>정보 수정</button></a>
+        <a href="./info/"><button>정보 수정</button></a>
     </div>
     <h4>나의거래</h4>
     <div style="border:1px solid black;">
         <ul>
             <li>
-                <a href="./wish/index.jsp">관심목록</a>
+                <a href="./wish/">관심목록</a>
             </li>
             <li>
-                <a href="./rent/index.jsp">대여목록</a>
+                <a href="./rent/">대여목록</a>
             </li>
             <li>
-                <a href="./reservation/index.jsp">예약내역</a>
+                <a href="./reservation/">예약내역</a>
             </li>
         </ul>
     </div>
@@ -45,11 +45,11 @@
     <div style="border:1px solid black;">
         <ul>
             <li>
-                <a href="./review/index.jsp">내가받은리뷰보기</a>
+                <a href="./review/">내가받은리뷰보기</a>
             </li>
         </ul>
     </div>
-    
+    <%} %>
     
 </body>
 </html>

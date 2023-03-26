@@ -10,14 +10,12 @@ import com.smhrd.model.UserDTO;
 public class JoinCon implements Command {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-
+		
 		System.out.println("[JoinCon]");
 
 		String nick = request.getParameter("nick");
 		String gender = request.getParameter("gender");
 		String kakao_id = request.getParameter("kakao_id");
-
-		System.out.println(nick + " - " + gender + " - " + kakao_id); // 지울예정
 
 		UserDTO dto = new UserDTO(0, nick, gender, kakao_id, null, null, null);
 		System.out.println(nick + " - " + gender + " - " + kakao_id); // 지울예정
@@ -29,10 +27,11 @@ public class JoinCon implements Command {
 
 		if (cnt > 0) {
 			System.out.println("회원가입성공"); // 지울예정
-			moveURL = "Login.jsp";
+			moveURL = "../LoginCon.do?kakao_id="+kakao_id;
+		
 		} else {
 			System.out.println("회원가입실패"); // 지울예정
-			moveURL = "Main.jsp"; // 실패시 어떻게 할 것인지
+			moveURL = "./index.jsp?result=300&g="+gender+"&k="+kakao_id; // 실패시 어떻게 할 것인지
 		}
 
 		return moveURL;

@@ -12,12 +12,18 @@ public class UserDAO {
 
 private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	
+
     // 회원가입
 	public int join(UserDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		int cnt = sqlsession.insert("join", dto);
-		System.out.println(cnt);
+		
+		int chk = sqlsession.selectOne("joinUserCheck", dto);
+		int cnt = 0;
+		if(chk == 0) {
+			cnt = sqlsession.insert("join", dto);
+		}
+		
 		sqlsession.close();
 		
 		return cnt;
@@ -39,7 +45,13 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	public int update(UserDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		int cnt = sqlsession.update("update", dto);
+		int chk = sqlsession.selectOne("nickCheck", dto);
+		
+		int cnt = 0;
+		if(chk == 0) {
+			cnt = sqlsession.update("update", dto);
+		}
+		sqlsession.close();
 		
 		return cnt;
 	}

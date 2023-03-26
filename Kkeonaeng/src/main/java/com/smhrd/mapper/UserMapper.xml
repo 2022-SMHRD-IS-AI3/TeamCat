@@ -6,6 +6,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.model.UserDAO">
 
+	<!-- 회원가입 시 닉네임 중복 체크용도 -->
+	<select id="joinUserCheck" resultType="int" parameterType="UserDTO">
+		select count(*) from user_info where nick = #{nick} or kakao_id = #{kakao_id}
+	</select>	
+
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserDTO">
 		insert into user_info  values( user_info_seq.nextval, #{nick}, #{gender}, #{kakao_id}, sysdate, 'Y' )
@@ -15,6 +20,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="login" resultType="UserDTO" parameterType="String">
 		select a.*, b.file_name from user_info a left outer join file_info b on a.user_idx = b.post_idx and b.route_type = 'profile' where a.kakao_id = #{kakao_id}
 	</select>
+	
+	<!-- 닉네임 중복 체크용도 -->
+	<select id="nickCheck" resultType="int" parameterType="UserDTO">
+		select count(*) from user_info where user_idx != #{user_idx} and nick = #{nick}
+	</select>	
 	
 	<!-- 정보수정 -->
 	<update id="update" parameterType="UserDTO">

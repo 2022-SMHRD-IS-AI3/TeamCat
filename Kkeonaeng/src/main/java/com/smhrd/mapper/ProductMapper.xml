@@ -6,24 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.model.ProductDAO">
 
-	<!-- 게시물 작성 -->
-	<insert id="ProductUpload" parameterType="ProductDTO">
-		insert into product_info values(product_info_seq.nextval, #{user_idx},#{p_name},#{c_idx},#{contact_addr},#{contact_gps},#{price},#{p_contents},sysdate,'1')
+	<!-- 게시물 작성   -->
+	<insert  id="ProductUpload" parameterType="ProductDTO">
+		insert into product_info values(product_info_seq.nextval,#{user_idx},#{p_name},#{c_idx},#{contact_addr},#{contact_gps},#{price},#{p_contents},sysdate,'1')
 	</insert>
 	
-	<!-- 로그인 -->
-	<select id="login" resultType="ProductDTO" parameterType="String">
-		select a.*, b.file_name from user_info a left outer join file_info b on a.user_idx = b.post_idx and b.route_type = 'profile' where a.kakao_id = #{kakao_id}
+	<select id="ProductUploadIndex" resultType="int">
+		select product_info_seq.currval from dual
 	</select>
 	
-	<!-- 정보수정 -->
-	<update id="update" parameterType="ProductDTO">
-		update user_info set nick = #{nick} where user_idx = #{user_idx}
-	</update>
-	
-	<!-- 회원이용중지 -->
-	<delete id="delete" parameterType="int">
-		update user_info set user_flag = 'N' where user_idx = #{user_idx}
-	</delete>
 	
 </mapper>

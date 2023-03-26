@@ -10,50 +10,67 @@
 <body>
 	<%
 		UserDTO info = (UserDTO)session.getAttribute("info");
-		System.out.println(info.getFile_name());
+		
 		if(info == null) {
-			response.sendRedirect("../../Login.jsp");
-		}
+			response.sendRedirect("/Kkeonaeng/Login/");
+		}else{
 	%>
-	<form action="UpdateCon.do" method="post" enctype="multipart/form-data">
-		<div>
-	        <a href="../"><</a>
-	        <span>정보수정</span>
-	        <input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
-	        <input type="submit" value="완료">
-	    </div>
-	    <div>
-	        <input type="text" name="fileExt" id="fileExt" value="">
-	        <input type="text" name="filesize" id="filesize" value="">
-	        <input type="file" name="filename" id="filename" onchange="fileSize(this)" value="">
-	    </div>
-	    
-	    <div>
-	    	<%
-	    		if(info.getFile_name() == null) {%>
-	    	        <img id="profile_img" src="../../file/unknown.png" alt="" width="50px" height="50px">
-	        		<input type="hidden" name="post_idx" value="">
-	    	<%	}else{ %>
-	    			<img id="profile_img" src="../../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
-	        		<input type="hidden" name="post_idx" value="1">
-	    	<%  }%>
-	        
-	    </div>
+	<div  style="height:250px;">
 	
-	    <div>
-	        <input type="text" name="kakao_id" value="<%=info.getKakao_id() %>" readonly style="background-color: rgb(216, 216, 216);">
-	    </div>
-	    <div>
-	        <input type="text" name="nick" value="<%=info.getNick()%>">
-	    </div>
-    </form>
+		<form action="UpdateCon.do" method="post" enctype="multipart/form-data">
+			<div>
+		        <a href="../"><</a>
+		        <span>정보수정</span>
+		        <input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
+		        <input type="submit" value="완료">
+		    </div>
+		    <div>
+		        <input type="hidden" name="fileExt" id="fileExt" value="">
+		        <input type="hidden" name="filesize" id="filesize" value="">
+		        <input type="file" name="filename" id="filename" onchange="fileSize(this)" value="">
+		    </div>
+		    
+		    <div>
+		    	<%
+		    		if(info.getFile_name() == null) {%>
+		    	        <img id="profile_img" src="../../file/unknown.png" alt="" width="50px" height="50px">
+		        		<input type="hidden" name="post_idx" value="">
+		    	<%	}else{ %>
+		    			<img id="profile_img" src="../../file/<%=info.getFile_name() %>" alt="" width="50px" height="50px">
+		        		<input type="hidden" name="post_idx" value="1">
+		    	<%  }%>
+		        
+		    </div>
+		
+		    <div>
+		        <input type="text" name="kakao_id" value="<%=info.getKakao_id() %>" readonly style="background-color: rgb(216, 216, 216);">
+		    </div>
+		    <div>
+		        <input type="text" name="nick" id="nick" value="<%=info.getNick()%>"><br>
+		        <p id="nickChk"></p>
+		        
+		    </div>
+	    </form>
+	</div>
  
     <div>
         <span onclick="DeleteUser('1')">회원탈퇴</span>
     </div>
-
 	   <script type="text/javascript">
-    
+	   
+	   let urlSearch = new URLSearchParams(location.search);
+       let result = urlSearch.get('result');
+	   if(result.length >= 0){
+		   if(result == "200") {
+			   alert("정보 수정이 완료되었습니다");
+		   }else{
+			   document.getElementById("nickChk").innerText = "닉네임이 이미 존재합니다";
+			   document.getElementById("nick").value = urlSearch.get('nick');
+			   
+		   }
+		   
+	   }
+    	
     	<%-- function DeleteUser(idx){
     		 if(confirm('삭제시 복구 불가 진짜삭제?')){
                  location.href = "DeleteCon.do?idx="<%=info.getUser_idx()%>
@@ -82,5 +99,6 @@
        }
        
     </script>
+<%} %>
 </body>
 </html>

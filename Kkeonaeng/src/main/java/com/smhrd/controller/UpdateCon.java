@@ -32,11 +32,16 @@ public class UpdateCon implements Command {
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
 		MultipartRequest multi;
 		int cnt = 0;
+		
+		String qString = "";
+		String cnick="";
 		try {
 			
 			multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 			int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
 			String nick = multi.getParameter("nick");
+			cnick = nick;
+			System.out.println(nick);
 			String filename = multi.getFilesystemName("filename");
 			UserDTO dto = null;
 			String file_img = "";
@@ -84,8 +89,10 @@ public class UpdateCon implements Command {
 				}
 				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img);
 				session.setAttribute("info", updatedto); 
+				qString = "200";
 			} else {
 				System.out.println("회원정보수정실패");
+				qString = "300&nick=" + URLEncoder.encode(cnick, "UTF-8");;
 			}
 			
 		} catch (IOException e) {
@@ -96,7 +103,7 @@ public class UpdateCon implements Command {
 		// 파일먼저 등록하고 index 가져오기
 
 
-		return "./";
+		return "./?result="+qString;
 	}
 
 }
