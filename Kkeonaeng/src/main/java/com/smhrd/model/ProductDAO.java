@@ -20,7 +20,7 @@ public class ProductDAO {
 		int chk = 0;
 		if(cnt > 0) {  
 			chk = sqlsession.selectOne("ProductUploadIndex");
-		}
+		} 
 		sqlsession.close();
 		
 		return chk;
