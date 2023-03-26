@@ -18,7 +18,7 @@ public class ProductDAO {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		int cnt = sqlsession.insert("ProductUpload", dto);
 		int chk = 0;
-		if(cnt > 0) {
+		if(cnt > 0) { 
 			chk = sqlsession.selectOne("ProductUploadIndex");
 		}
 		sqlsession.close();
