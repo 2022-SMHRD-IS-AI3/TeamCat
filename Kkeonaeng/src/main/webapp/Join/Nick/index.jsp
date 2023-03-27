@@ -158,7 +158,7 @@ input:focus {
 	<!-- Responsive navbar-->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<a href="#" style="text-decoration-line: none;"> <i
+			<a href="../../Login/" style="text-decoration-line: none;"> <i
 				class="fa-solid fa-chevron-left"
 				style="padding: 0px 10px 10px; color: black;"></i>
 			</a> <span style="font-size: 15px; color: black;">
@@ -209,7 +209,7 @@ input:focus {
 		let result = urlSearch.get('result');
 		if (result.length >= 0) {
 			if (result == "300") {
-				document.getElementById("nickChk").innerText = "닉네임이 이미 존재합니다";
+				document.getElementById("nickChk").innerHTML = "계정이나 닉네임이<br> 이미 존재합니다";
 				document.getElementById("nick").value = urlSearch.get('nick');
 
 			}

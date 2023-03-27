@@ -37,19 +37,27 @@ public class ProductDAO {
 	}
 	
 	// 게시글 세부내용 조회
-	public ProductDTO ProductDetail(int user_idx) {
+	public ProductDTO ProductDetail(int p_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		ProductDTO ProductDetail = sqlsession.selectOne("ProductDetail", user_idx);
+		ProductDTO productDetail = sqlsession.selectOne("ProductDetail", p_idx);
+		return productDetail;
+	}
+	
+	// 게시글 수정
+	public int ProductUpdate(ProductDTO dto) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.update("ProductUpdate", dto);
+		sqlsession.close();
 		
-		return ProductDetail;
+		return cnt;
 	}
 	
 	// 게시글 삭제
-	public int delete(String b_idx) {
+	public int ProductDelete(int p_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.delete("delete", b_idx);
+		int cnt = sqlsession.update("ProductDelete", p_idx);
 		sqlsession.close();
 		
-		return 0;
+		return cnt;
 	}
 }
