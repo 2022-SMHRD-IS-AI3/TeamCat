@@ -11,9 +11,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into product_info values(product_info_seq.nextval,#{user_idx},#{p_name},#{c_idx},#{contact_addr},#{contact_gps},#{price},#{p_contents},sysdate,'1')
 	</insert>
 	
+	<!-- 게시물 작성 후 idx가져오기 -->
 	<select id="ProductUploadIndex" resultType="int">
 		select product_info_seq.currval from dual
 	</select>
+	
+	<select id="ProductAll" resultType= "ProductDTO">
+		select * from product_info where p_flag != 9
+	</select>	
 	
 	
 </mapper>
