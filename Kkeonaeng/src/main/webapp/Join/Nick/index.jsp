@@ -127,7 +127,7 @@ input:focus {
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../css/joinStyles.css" rel="stylesheet" />
+<link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
 
 <!-- Pheasant Buttons -->
 <!-- Pheasant Demure Buttons Reset: Optional -->
@@ -172,7 +172,7 @@ input:focus {
 		<div class="text-center mt-5">
 			<div class="myform">
 				<div class="logo">
-					<img src="../img/user.png" alt="프로필 사진">
+					<img src="/Kkeonaeng/img/user.png" alt="프로필 사진">
 				</div>
 				<form action="JoinCon.do" method="post">
 					<p style="text-align: left;">닉네임</p>

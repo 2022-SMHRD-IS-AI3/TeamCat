@@ -17,5 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update file_info set file_name = #{file_name}, file_extension = #{file_extension}, file_location = #{file_location}, file_size = #{file_size} where route_type = #{route_type} and post_idx = #{post_idx}
 	</update>
 	
+	<!-- 맨 처음 입력한 첫 파일 가져오기 -->
+	<select id="fileSelect" resultType="String" parameterType="FileDTO">
+		select file_name from (select * from file_info order by f_idx asc)  where route_type = #{route_type} and post_idx = #{post_idx} and rownum = 1 
+	</select>
 	
 </mapper>

@@ -24,7 +24,7 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 	}
 	
-	// 회원정보수정ㅇ
+	// 회원정보수정
 	public int fileUpdate(FileDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -33,15 +33,15 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		return cnt;
 	}
 	// 로그인
-//	public UserDTO login(String kakao_id) {
-//		
-//		SqlSession sqlsession = sqlSessionFactory.openSession();
-//		UserDTO info = sqlsession.selectOne("login", kakao_id);
-//		sqlsession.close();
-//		
-//		return info;
-//		
-//	}
+	public String fileSelect(FileDTO dto) {
+		
+		SqlSession sqlsession = sqlSessionFactory.openSession();
+		String file = sqlsession.selectOne("fileSelect", dto);
+		sqlsession.close();
+		
+		return file;
+		
+	}
 //
 //	
 //	// 회원삭제
