@@ -19,7 +19,7 @@
 	
 		<form action="UpdateCon.do" method="post" enctype="multipart/form-data">
 			<div>
-		        <a href="../"><</a>
+		        <a href="../"></a>
 		        <span>정보수정</span>
 		        <input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
 		        <input type="submit" value="완료">

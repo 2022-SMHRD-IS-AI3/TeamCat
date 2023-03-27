@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 public class FileDTO {
 	
 	@NonNull private int f_idx;
-	private String route_type;
+	@NonNull private String route_type;
 	@NonNull private int post_idx;
 	private String file_name;
 	private String file_extension;
