@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -10,13 +11,21 @@
 <body>
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-
+	String p_idx = request.getParameter("p_idx");
+	
+	String actionUrl = "ProductWriteCon.do";
+	System.out.println("test : "+p_idx);
+	System.out.println("test : "+p_idx);
+	if(p_idx != null){
+		actionUrl = "ProductUdateCon.do";
+	}
+	System.out.println("test : "+p_idx);
 	if (info == null) {
 		response.sendRedirect("/Kkeonaeng/Login/");
 	} else {
 	%>
 	<div id="Product">
-		<form action="ProductWriteCon.do" method="post" name="formData" enctype="multipart/form-data">
+		<form action="<%= actionUrl %>" method="post" name="formData" enctype="multipart/form-data">
 			<table id="list" border=1>
 				<tr>
 					<td>작성자</td>
@@ -83,8 +92,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"> <input
-						type="submit" value="작성하기"></td>
+					<td colspan="2"> <input type="submit" value="작성하기"></td>
 				</tr>
 			</table>
 		</form>

@@ -29,6 +29,9 @@
 		<a href="Product/Write/">
 			<button>대여물품 등록</button>
 		</a>
+		<a href="Product">
+			<button>대여물품 게시판</button>
+		</a>
 	</div>
 </body>
 </html>
