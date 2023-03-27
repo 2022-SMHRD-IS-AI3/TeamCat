@@ -10,7 +10,7 @@
 <%
          String userId= null;
          if (session.getAttribute("userID") !=null) {
-        	 userID = (String) session.getAttribute("userID");
+        	 user_Id = (String) session.getAttribute("userID");
          }
 %>
 
@@ -37,7 +37,7 @@ if(user_ID == null) {
 <li class="dropdown">
 <a href = "#" class="dropdown-toggle"
 data-toggle="dropdwon" role="button" aria-haspopup="true"
-aria-expanded="false">회원관리<span class="caret"</span></a>
+aria-expanded="false">회원관리<span class="caret"></span></a>
 <ul class = "dropdown-menu">
 <li><a href="logout.jsp">로그아웃</a></li>
 </ul>

@@ -83,7 +83,7 @@ public class ProductWriteCon implements Command {
 			e.printStackTrace();
 		}
 
-		return "/Kkeonaeng/Main.jsp";
+		return "../";
 	}
 
 }
