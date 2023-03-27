@@ -151,7 +151,7 @@ h1.title {
 	<!-- Page content-->
     <div class="container">
         <div class="more1">
-            <span class="pop">찜 인기 목록</span>
+            <span class="pop" onclick="moveUrl('/Product/?order=wish')">찜 인기 목록</span>
             <span class="more">더보기 <a style="color : black" href="icon.html"><i href="icon.html"
                         class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
         </div>
@@ -194,7 +194,7 @@ h1.title {
 
     <div class="container">
         <div class="more1">
-            <span class="pop">최신 대여 목록</span>
+            <span class="pop" onclick="moveUrl('/Product/?order=wish')">최신 대여 목록</span>
             <span class="more">더보기 <a style="color : black" href="icon.html"><i href="icon.html"
                         class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
         </div>

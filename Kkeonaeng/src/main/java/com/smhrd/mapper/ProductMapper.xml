@@ -17,15 +17,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 게시물 상세정보보기 -->
-	<select id="ProductDetail" resultType="ProductDTO">
-		select * from Product_info where user_idx = #{user_idx}
+	<select id="ProductDetail" parameterType="int" resultType="ProductDTO">
+		select * from Product_info where p_idx = #{p_idx}
 	</select>
+	
+	<!-- 게시물 수정 -->
+	<update id="ProductUpdate" parameterType="ProductDTO">
+		update product_info
+		set p_name = #{p_name}, contact_addr=#{contact_addr}, contact_gps=#{contact_gps},
+    	price = #{price}, p_contents = #{p_contents}
+    	where user_idx = #{user_idx}
+	</update>
 	
 	<!-- 게시물 전체보기 -->
 	<select id="ProductAll" resultType= "ProductDTO">
 		select * from product_info where p_flag != 9
 	</select>	
-
+	
+	<!-- 게시물 삭제 -->
+	<update id="ProductDelete" parameterType="int">
+		update product_info
+		set p_flag = 9 where p_idx = #{p_idx}
+	</update>
 	
 	
 </mapper>
