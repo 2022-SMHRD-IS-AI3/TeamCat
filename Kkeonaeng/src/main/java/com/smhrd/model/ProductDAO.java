@@ -37,11 +37,11 @@ public class ProductDAO {
 	}
 	
 	// 게시글 세부내용 조회
-	public ProductDTO ProductDetail(int b_idx) {
+	public ProductDTO ProductDetail(int user_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		ProductDTO Product = sqlsession.selectOne("ProductDetail", b_idx);
+		ProductDTO ProductDetail = sqlsession.selectOne("ProductDetail", user_idx);
 		
-		return Product;
+		return ProductDetail;
 	}
 	
 	// 게시글 삭제

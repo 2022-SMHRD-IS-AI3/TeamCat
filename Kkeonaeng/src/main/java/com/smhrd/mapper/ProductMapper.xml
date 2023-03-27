@@ -15,5 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select product_info_seq.currval from dual
 	</select>
 	
+	<!-- 게시물 정보보기 -->
+	<select id="ProductDetail" resultType="ProductDTO">
+		select * from Product_info where user_idx = #{user_idx}
+	</select>
+	
 	
 </mapper>
