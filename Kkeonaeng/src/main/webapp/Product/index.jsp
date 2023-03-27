@@ -17,6 +17,10 @@
 	ProductDAO dao = new ProductDAO();
 	List<ProductDTO> product_list = dao.ProductAll();
 	%>
+	
+	<div>
+		<a href="./Write/">게시물 등록</a>
+	</div>
 	<div id="Product">
 		<table id="list" border=1>
 			<%

@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -17,6 +19,7 @@
 	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 	ProductDAO dao = new ProductDAO();
 	ProductDTO productDetail = dao.ProductDetail(p_idx);
+	String file = new FileDAO().fileSelect(new FileDTO(0,"product",p_idx));
 			
 	UserDTO info = (UserDTO)session.getAttribute("info");
 	%>
@@ -41,7 +44,7 @@
 					<tr>
 						<td colspan="2">
 							<%=productDetail.getP_contents() %>
-							<img alt="이미지" src="/Kkeonaeng/file">
+							<img alt="이미지" src="/Kkeonaeng/file/<%=file%>">
 						</td>
 					</tr>
 					<tr>

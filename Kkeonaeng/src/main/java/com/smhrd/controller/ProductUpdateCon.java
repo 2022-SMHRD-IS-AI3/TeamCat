@@ -45,7 +45,7 @@ public class ProductUpdateCon implements Command {
 
 			// DTO로 묶기
 			ProductDTO dto = new ProductDTO(p_idx, user_idx, p_name, c_idx, contact_addr, contact_gps, price, p_contents,
-					null, null);
+					null, null, null);
 			int cnt = new ProductDAO().ProductUpdate(dto);
 			
 			if(cnt > 0) {

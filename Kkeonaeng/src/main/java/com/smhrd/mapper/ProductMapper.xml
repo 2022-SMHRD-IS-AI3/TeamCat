@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 게시물 상세정보보기 -->
 	<select id="ProductDetail" parameterType="int" resultType="ProductDTO">
-		select * from Product_info where p_idx = #{p_idx}
+		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx and p_idx = #{p_idx}
 	</select>
 	
 	<!-- 게시물 수정 -->
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 게시물 전체보기 -->
 	<select id="ProductAll" resultType= "ProductDTO">
-		select * from product_info where p_flag != 9
+		select * from product_info where p_flag != 9 order by p_idx desc
 	</select>	
 	
 	<!-- 게시물 삭제 -->
