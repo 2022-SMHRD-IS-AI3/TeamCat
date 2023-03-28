@@ -27,7 +27,6 @@ public class ProductDAO {
 	}
 	
 	// 게시글 목록 조회
-	// select * from web_Product
 	public List<ProductDTO> ProductAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ProductDTO> Product_list = sqlsession.selectList("ProductAll");

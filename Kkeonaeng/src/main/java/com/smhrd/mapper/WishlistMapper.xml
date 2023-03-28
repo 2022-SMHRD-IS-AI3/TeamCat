@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.WishlistDAO">
+
+	<!-- 위시리스트 생성 -->
+	<insert id="WishlistUpdate" parameterType="WishlistDTO">
+		insert into wishlist_info values(wishlist_info_seq.nextval,	#{user_idx},#{p_idx})
+	</insert>
+	
+	<!-- 위시리스트 삭제 -->
+	<delete id="WishlistDelete" parameterType="WishlistDTO">
+		delete from wishlist_info where user_idx=#{user_idx} and p_idx=#{p_idx}
+	</delete>
+	
+	<!-- 위시리스트 목록 -->
+	<select id="WishlistAll" resultType= "WishlistDTO">
+		select user_idx, p_idx from wishlist_info
+	</select>
+	
+</mapper>

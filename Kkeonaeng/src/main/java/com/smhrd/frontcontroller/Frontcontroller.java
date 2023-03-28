@@ -16,6 +16,8 @@ import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.ReservationCon;
 import com.smhrd.controller.UpdateCon;
+import com.smhrd.controller.WishlistDeleteCon;
+import com.smhrd.controller.WishlistUpdateCon;
 import com.smhrd.controller.DeleteCon;
 
 public class Frontcontroller extends HttpServlet {
@@ -76,6 +78,14 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("ReservationCon.do")) {
 			
 			con = new ReservationCon();
+		
+		}else if (result.equals("WishlistUpdateCon.do")) {
+			
+			con = new WishlistUpdateCon();
+		
+		}else if (result.equals("WishlistDeleteCon.do")) {
+			
+			con = new WishlistDeleteCon();
 		
 		}
 		
