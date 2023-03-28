@@ -170,10 +170,12 @@ document.getElementById('searchButton').addEventListener('click', () => {
   tds.forEach(e => e.addEventListener('click', () => {
     if (e.innerText !== "") {
       // 첫 날짜 선택일 경우
-      if(selDate1 === undefined) {
+      if(selDate1 === undefined ) {
         let date = document.getElementById('dateTitle').dataset.date.split('-');
+		
+		document.getElementById('rv_start_date').value = date[0]+date[1]+document.getElementById('dateTitle').dataset.datedate;
+		document.getElementById('rv_start_date').value = document.getElementById('dateTitle').dataset.date.replaceAll(/\-/g, '');
         document.getElementById('yearspan').innerText = date[0];
-		document.
         document.getElementById('monthspan').innerText = date[1];
         document.getElementById('datespan').innerText = document.getElementById('dateTitle').dataset.datedate;
         document.getElementById('dayspan').innerText = getDayInKorFromEng(e.className);
@@ -183,7 +185,13 @@ document.getElementById('searchButton').addEventListener('click', () => {
       }else {
         //첫번째 날짜가 더 이전 날짜인 경우 (정상 순서);
         selDate2 = e.dataset.date;
-        if(new Date(selDate2) > new Date(selDate1)) {
+        if(new Date(selDate2) >= new Date(selDate1)) {
+		  let monthResult = new Date(selDate2).getMonth()+1;
+		  let dateResult = new Date(selDate2).getDate();
+		  if(monthResult < 10) monthResult = `0${new Date(selDate2).getMonth()+1}`;
+		  if(dateResult < 10) dateResult = `0${new Date(selDate2).getDate()}`;
+
+		  document.getElementById('rv_end_date').value = `${new Date(selDate2).getFullYear()}${monthResult}${dateResult}`;
           document.getElementById('yearspan2').innerText = new Date(selDate2).getFullYear();
           document.getElementById('monthspan2').innerText = new Date(selDate2).getMonth()+1;
           document.getElementById('datespan2').innerText = new Date(selDate2).getDate();

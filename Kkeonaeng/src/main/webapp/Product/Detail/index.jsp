@@ -22,6 +22,10 @@
 	String file = new FileDAO().fileSelect(new FileDTO(0,"product",p_idx));
 			
 	UserDTO info = (UserDTO)session.getAttribute("info");
+	int user_idx = 0; 
+	if(info != null) {
+		user_idx = info.getUser_idx();
+	}
 	%>
 			
 			<div id = "ProductDetail">
@@ -32,7 +36,7 @@
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td><%=info.getNick() %></td>
+						<td><%=productDetail.getNick() %></td>
 					</tr>
 					<tr>
 						<td>가격</td>
@@ -54,8 +58,12 @@
 						<%if(info != null && info.getUser_idx() == productDetail.getUser_idx() ) {%>
 						<td><a href="/Kkeonaeng/Product/Write/?p_idx=<%=p_idx %>"><button>수정하기</button></a></td>
 						<td><button onclick="ProductDelete()">삭제하기</button></td>
+						<% }else{%>
+								<td><a href="../Reservation/?user_idx=<%=user_idx%>&p_idx=<%=p_idx%>"><button>예약하기</button></a></td>
+						
 						<% } %>
 						<td><a href="../"><button>뒤로가기</button></a></td>
+						
 					</tr>
 				</table>
 				

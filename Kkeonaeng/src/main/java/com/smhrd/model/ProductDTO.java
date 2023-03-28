@@ -19,7 +19,7 @@ public class ProductDTO {
 	private String p_contents;
 	private String p_reg_date;
 	private String p_flag;
-	private String user_name;
+	private String nick;
 	
 
 }
