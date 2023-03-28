@@ -224,18 +224,15 @@ div#iconWrapper {
 </head>
 <body>
 	<%
-	
-		String user_idx = request.getParameter("user_idx");
-		String p_idx = request.getParameter("p_idx");
-		
-	
+	String user_idx = request.getParameter("user_idx");
+	String p_idx = request.getParameter("p_idx");
 	%>
-	<form action="ReservationCon.do">
+	<form name="formData" action="ReservationCon.do" method="post">
 		<input type="text" name="user_idx" id="user_idx" value="<%=user_idx%>">
 		<input type="text" name="p_idx" id="p_idx" value="<%=p_idx%>">
-		<input type="text" name="rv_start_date" id="rv_start_date">
-		<input type="text" name="rv_end_date" id="rv_end_date">
-		
+		<input type="text" name="rv_start_date" id="rv_start_date"> <input
+			type="text" name="rv_end_date" id="rv_end_date">
+
 	</form>
 	<div id="iconWrapper"></div>
 	<div id="calAndTable">
@@ -348,12 +345,20 @@ div#iconWrapper {
 
 			<!-- 적용 버튼 -->
 			<div id="submitButtonWrapper">
-				<button id="submit">예약하기</button>
+				<button id="submit" onclick="reservation()">예약하기</button>
 			</div>
 
 		</div>
+	</div>
 
 
-		<script src="./callender.js"></script>
+
+	<script src="./callender.js"></script>
+	<script type="text/javascript">
+			const reservation = () => {
+				let formData = document.formData;
+				formData.submit();
+			}
+		</script>
 </body>
 </html>

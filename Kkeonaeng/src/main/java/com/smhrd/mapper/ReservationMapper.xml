@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 파일 업로드 -->
 	<insert id="reservation" parameterType="ReservationDTO">
-		insert into reservation_info values(reservation_info_seq.nextval,#{user_idx},#{p_idx},#{rv_start-date},#{rv_end_date})
+		insert into reservation_info values(reservation_info_seq.nextval,#{user_idx},#{p_idx},#{rv_start_date},#{rv_end_date})
 	</insert>
 	
 
