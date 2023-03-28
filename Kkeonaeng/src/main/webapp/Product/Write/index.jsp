@@ -90,6 +90,11 @@
             font-weight: bold;
         }
 
+		.me-3:hover {
+		color:#527fef;
+		cursor: pointer;
+		}
+		
         button {
             height: 40px;
             width: 150px;
