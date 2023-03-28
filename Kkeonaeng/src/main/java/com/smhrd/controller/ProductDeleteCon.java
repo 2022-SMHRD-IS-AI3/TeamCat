@@ -19,11 +19,11 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		String moveUrl = "";
 		if (cnt > 0) {
 			System.out.println("삭제성공"); // 지울예정
-			moveUrl = "/Kkeonaeng/Product/";
+			moveUrl = "../";
 			
 		} else {
 			System.out.println("삭제실패"); // 지울예정
-			moveUrl = "/Kkeonaeng/Product/Detail/?p_idx="+p_idx;
+			moveUrl = "./?p_idx="+p_idx;
 		}
 		
 		return moveUrl; 

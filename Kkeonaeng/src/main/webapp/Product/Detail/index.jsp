@@ -53,7 +53,7 @@
 					
 						<%if(info != null && info.getUser_idx() == productDetail.getUser_idx() ) {%>
 						<td><a href="/Kkeonaeng/Product/Write/?p_idx=<%=p_idx %>"><button>수정하기</button></a></td>
-						<td><a href="/Kkeonaeng/src/main/java/com/smhrd/controller/ProductDeleteCon?p_idx=<%=p_idx %>"><button onclick="ProductDelete()">삭제하기</button></td>
+						<td><button onclick="ProductDelete()">삭제하기</button></td>
 						<% } %>
 						<td><a href="../"><button>뒤로가기</button></a></td>
 					</tr>
