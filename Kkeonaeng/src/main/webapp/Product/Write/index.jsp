@@ -139,8 +139,10 @@
 		contact_addr = dto.getContact_addr();
 		contact_gps = dto.getContact_gps();
 		p_contents = dto.getP_contents();
-		p_contents = dto.getP_contents();
-		p_contents = dto.getP_contents();
+		
+		String[] gpsArr = contact_gps.split(",");
+		
+		
 		
 	}
 	
@@ -220,7 +222,7 @@
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="text" class="price" placeholder="가격" name="price" maxlength="50">
+                        <input type="text" class="price" placeholder="가격" name="price" maxlength="50" value="<%=price %>">
 
                     </td>
                     <td align="right">
@@ -229,7 +231,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea class="content" placeholder="물품에 대한 내용을 작성하세요." name="p_contents" maxlength="2048"></textarea>
+                        <textarea class="content" placeholder="물품에 대한 내용을 작성하세요." name="p_contents" id="myTextarea" maxlength="2048"></textarea>
                     </td>
                 </tr>
                 <!-- 카카오 맵 -->
@@ -243,8 +245,8 @@
                             <p style="font-weight: bold;">만나서 거래할 때에는 안전한 공공장소에서 거래하세요.</p>
                             <p>원하는 거래 위치를 클릭하고 상세 장소명을 입력하세요.</p>
                             <div id="map" style="width:100%;height:350px;"></div>
-                            <input type="hidden" name="contact_gps" id="contact_gps">
-                            <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요">
+                            <input type="hidden" name="contact_gps" id="contact_gps" value="<%=contact_gps %>">
+                            <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요" value="<%=contact_addr %>">
                         </div>
                         <div>
                             <button type="button" onclick="saveAddr()">거래장소선택완료</button>
@@ -354,7 +356,7 @@
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
+		
         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
 
         displayMarker(locPosition);
@@ -389,8 +391,12 @@
         });
 
     }
+    // ProductUpdate
+    var textarea = document.getElementById("myTextarea");
+    textarea.value = "<%=p_contents %>"
+    var c_idx = document.getElementById("c_idx");
     
-    
+    	
     	function submitData(){
     		
     		let formdata = document.formdata;

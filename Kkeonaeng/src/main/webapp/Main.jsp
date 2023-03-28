@@ -130,8 +130,8 @@ h1.title {
 			<!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="검색어를 입력하세요">
                 </form> -->
-			<img class="mb-3" src="/Kkeonaeng/img/search.png" width=350
-				alt="">
+			<a href="./search/"><img class="mb-3" src="/Kkeonaeng/img/search.png" width=350
+				alt=""></a>
 		</div>
 
 	</header>
@@ -195,7 +195,7 @@ h1.title {
     <div class="container">
         <div class="more1">
             <span class="pop">최신 대여 목록</span>
-            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black" href=""><i href="icon.html"
+            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black"><i href="icon.html"
                         class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
         </div>
         <div class="row">

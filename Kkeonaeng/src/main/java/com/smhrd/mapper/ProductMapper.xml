@@ -40,5 +40,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		set p_flag = 9 where p_idx = #{p_idx}
 	</update>
 	
+	<!-- 게시물 검색 -->
+	<select id="ProductSearch" resultType= "ProductDTO" parameterType="String">
+		select * from product_info where p_flag != 9 and (p_name like '%'||#{parameter}||'%' or p_contents like '%'||#{parameter}||'%') order by p_idx desc
+	</select>	
+	
 	
 </mapper>

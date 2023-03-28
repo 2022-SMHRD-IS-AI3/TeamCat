@@ -27,7 +27,6 @@ public class ProductDAO {
 	}
 	
 	// 게시글 목록 조회
-	// select * from web_Product
 	public List<ProductDTO> ProductAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ProductDTO> Product_list = sqlsession.selectList("ProductAll");
@@ -59,5 +58,14 @@ public class ProductDAO {
 		sqlsession.close();
 		
 		return cnt;
+	}
+	
+	// 게시물 검색
+	public List<ProductDTO> ProductSearch(String search) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> search_list = sqlsession.selectList("ProductSearch", search);
+		sqlsession.close();
+		
+		return search_list;
 	}
 }

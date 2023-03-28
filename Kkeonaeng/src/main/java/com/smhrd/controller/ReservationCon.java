@@ -16,7 +16,7 @@ public class ReservationCon implements Command {
 		System.out.println("[ReservationCon]");
 
 		int user_idx = Integer.parseInt(request.getParameter("user_idx"));
-		int p_idx = Integer.parseInt(request.getParameter("user_idx"));
+		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 		String rv_start_date = request.getParameter("rv_start_date");
 		String rv_end_date = request.getParameter("rv_end_date");
 
