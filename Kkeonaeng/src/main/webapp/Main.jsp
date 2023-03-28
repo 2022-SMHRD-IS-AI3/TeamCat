@@ -130,8 +130,8 @@ h1.title {
 			<!-- <form class="d-flex">
                     <input class="form-control me-2" type="text" placeholder="검색어를 입력하세요">
                 </form> -->
-			<img class="mb-3" src="/Kkeonaeng/img/search.png" width=350
-				alt="">
+			<a href="./search/"><img class="mb-3" src="/Kkeonaeng/img/search.png" width=350
+				alt=""></a>
 		</div>
 
 	</header>
