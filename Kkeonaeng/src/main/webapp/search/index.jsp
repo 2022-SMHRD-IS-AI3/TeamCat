@@ -221,7 +221,10 @@
 <body>
 
 	<%
-	System.out.println(123);
+		Cookie[] cookies = request.getCookies();
+		
+		
+		
 		%>
     <div>
         <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
@@ -236,8 +239,8 @@
                             <span><input id="searchText" onkeyup="if(window.event.keyCode==13){search()}" placeholder="검색어를 입력하세요." type="text" maxlength="15" autocomplete="off"
                                     autocorrect="off" autocorrect="off" autocapitalize="off" autofocus="autofocus"
                                     class="SearchFormModal__input">
-                                    <button type="button" class="SearchFormModal__clear-button">
-                                        <img src="close-circle.svg" alt="">
+                                    <button onclick="removeText()" type="button" class="SearchFormModal__clear-button">
+                                        <img src="../img/close-circle.svg" alt="">
                                     </button>
                             </span>
                         </div>
@@ -247,119 +250,10 @@
                                     <div class="Recommend__header">
                                         <div class="Recommend__title">
                                             최근 검색어
-                                            <button type="button" class="SearchHistory__clear-button">전체삭제</button>
+                                            <button type="button" class="SearchHistory__clear-button"><span onclick="removeCookie()">전체삭제</span></span></button>
                                         </div>
-                                        <div class="Recommend__list">
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">1</span>
-                                                <span class="Recommend__item-label">드릴</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">2</span>
-                                                <span class="Recommend__item-label">텐트</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">3</span>
-                                                <span class="Recommend__item-label">테이블</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">4</span>
-                                                <span class="Recommend__item-label">도서</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">5</span>
-                                                <span class="Recommend__item-label">유아용 가구</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">6</span>
-                                                <span class="Recommend__item-label">스캐너</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">7</span>
-                                                <span class="Recommend__item-label">정장</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">8</span>
-                                                <span class="Recommend__item-label">군복</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">9</span>
-                                                <span class="Recommend__item-label">망치</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                            <div class="Recommend__item">
-                                                <span class="Recommend__item-order">10</span>
-                                                <span class="Recommend__item-label">간이의자</span>
-                                                <span class="close"><svg width="24" height="24" viewBox="0 0 24 24"
-                                                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path
-                                                            d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
-                                                            fill="black" />
-                                                    </svg>
-                                                </span>
-                                            </div>
+                                        <div id="Recommend__list" class="Recommend__list">
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -371,16 +265,112 @@
         </div>
     </div>
     <script type="text/javascript">
+    		
     
+    	let cookieData = getCookie('searchData');
+    	let cookieArr = [];
+    	if(cookieData != null) {
+    		searchDataList(cookieData);
+    	}
+    	
+    	
+    	// 검색 엔터 시 쿠키저장 및 페이지 이동
     	const search = () =>{
+    		
     		let searchData = document.getElementById('searchText').value;
     		if(searchData.length > 0){
+    			console.log(123)
+    			if(cookieData != null) {
+    				cookieData += ","+cookieData;
+    			}
+    			setCookie("searchData",searchData,30);
 	    		moveUrl('./Product/?search='+searchData);
     			
     		}
     	}
+    	
+    	// 최근 검색어 목록에 추가하기
+    	var searchListHtml = '';
+    	
+    	function searchDataList(cData){
+    		searchListHtml = '';
+    		cookieArr = cData.split(",");
+    		var k = 1;
+    		var cookieArrSize = cookieArr.length;
+    		if(cookieArrSize > 10) cookieArrSize = 10;
+    		for (var i = 0; i < cookieArrSize; i++){
+    			searchListHtml += `
+    			<div class="Recommend__item">
+                    <span class="Recommend__item-label">${cookieArr[i]}</span>
+                    <span onclick="removeSearch(${i})" class="close"><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
+                                fill="black" />
+                        </svg>
+                    </span>
+                </div>`;
+    		}
+    		document.getElementById('Recommend__list').innerText = '';
+    		document.getElementById('Recommend__list').innerHTML = searchListHtml;
+    		
+    	}
+    	
+    	function removeSearch(index){
+    		console.log(cookieArr)
+    		
+    		cookieData = null;
+    		if(cookieArr.length == 1){
+    			cookieArr = [];
+    			document.getElementById('Recommend__list').innerText = '';
+    			cookieData = null;
+    			removeCookie();
+    		}else{
+    			cookieArr.splice(index, 1);
+    			var str = '';
+        		for(var i = 0; i < cookieArr.length; i++){
+        			if(str != ''){
+        				str += ',';
+        			}
+        			str += cookieArr[i];
+        		}
+        		cookieData = str;
+    	    	searchDataList(cookieData)	
+    	    	setCookie("searchData",cookieData,30);
+    		}
+    	}
+    	
+    	// 페이지 이동
     	const moveUrl = (url)=>{
     		location.href=url;
+    	}
+    	
+    	
+    	// 쿠키 가져오기
+    	function getCookie(name) {
+    		
+    	    var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+    	    return value? value[2] : null;
+    	}
+    	
+    	// 쿠키 저장
+    	function setCookie(k,v,day){
+    		console.log(k,v)
+    		var d = new Date();
+    		d.setTime(d.getTime() + (day * 24 * 60 * 60 * 1000));
+    		var expires = "expires=" + d.toUTCString();
+    		document.cookie = k+"="+v+"; " + expires + "; path=/";
+    	}
+    	
+    	// 쿠키 없애기
+    	function removeCookie(){
+    		document.cookie = "searchData=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    		document.getElementById('Recommend__list').innerText = '';
+    		cookieData = '';
+    	}
+    	
+    	function removeText(){
+    		document.getElementById('searchText').value = '';
     	}
     </script>
 </body>
