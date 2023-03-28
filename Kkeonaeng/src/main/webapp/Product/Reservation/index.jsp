@@ -226,12 +226,17 @@ div#iconWrapper {
 	<%
 	String user_idx = request.getParameter("user_idx");
 	String p_idx = request.getParameter("p_idx");
+
+	if (user_idx.equals("0")) {
+		response.sendRedirect("/Kkeonaeng/Login/");
+	}
 	%>
 	<form name="formData" action="ReservationCon.do" method="post">
-		<input type="text" name="user_idx" id="user_idx" value="<%=user_idx%>">
-		<input type="text" name="p_idx" id="p_idx" value="<%=p_idx%>">
-		<input type="text" name="rv_start_date" id="rv_start_date"> <input
-			type="text" name="rv_end_date" id="rv_end_date">
+		<input type="hidden" name="user_idx" id="user_idx"
+			value="<%=user_idx%>"> <input type="hidden" name="p_idx"
+			id="p_idx" value="<%=p_idx%>"> <input type="hidden"
+			name="rv_start_date" id="rv_start_date"> <input type="hidden"
+			name="rv_end_date" id="rv_end_date">
 
 	</form>
 	<div id="iconWrapper"></div>
