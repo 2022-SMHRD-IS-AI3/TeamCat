@@ -219,6 +219,10 @@
 </head>
 
 <body>
+
+	<%
+	System.out.println(123);
+		%>
     <div>
         <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
             <div class="KmongDialog__container">
@@ -370,7 +374,10 @@
     
     	const search = () =>{
     		let searchData = document.getElementById('searchText').value;
-    		moveUrl('./Product/?search='+searchData);
+    		if(searchData.length > 0){
+	    		moveUrl('./Product/?search='+searchData);
+    			
+    		}
     	}
     	const moveUrl = (url)=>{
     		location.href=url;
