@@ -24,20 +24,29 @@ public class ProductUpdateCon implements Command {
 		// 3. Max사이즈
 		int maxSize = 10 * 1024 * 1024;
 
+		System.out.println("1");
 		// 4. 인코딩방식
 		String encoding = "UTF-8";
 
+		System.out.println("2");
 		// 5. 중복제거
 		DefaultFileRenamePolicy rename = new DefaultFileRenamePolicy();
+		System.out.println("3");
 
 		MultipartRequest multi;
 		try {
 			// 사용자가 입력한 정보 가져오기
+			System.out.println("4");
 			multi = new MultipartRequest(request, path, maxSize, encoding, rename);
+			System.out.println("5");
 			int p_idx = Integer.parseInt(multi.getParameter("p_idx"));
+			System.out.println("6");
 			int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
+			System.out.println("7");
 			String p_name = multi.getParameter("p_name");
+			System.out.println("8");
 			int c_idx = Integer.parseInt(multi.getParameter("c_idx"));
+			System.out.println("9");
 			String contact_addr = multi.getParameter("contact_addr");
 			String contact_gps = multi.getParameter("contact_gps");
 			int price = Integer.parseInt(multi.getParameter("price"));
@@ -57,6 +66,6 @@ public class ProductUpdateCon implements Command {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/Kkeonaeng/Product/";
+		return "../";
 	}
 }
