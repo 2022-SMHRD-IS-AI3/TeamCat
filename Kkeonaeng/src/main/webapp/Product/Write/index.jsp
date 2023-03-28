@@ -389,7 +389,7 @@
     	function submitData(){
     		
     		let formdata = document.formdata;
-    		formdata.action = <%=actionUrl %>
+    		formdata.action = "<%=actionUrl %>";
     		formdata.submit();
     		
     		
