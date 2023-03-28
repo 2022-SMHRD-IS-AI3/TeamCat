@@ -134,8 +134,6 @@
 		contact_addr = dto.getContact_addr();
 		contact_gps = dto.getContact_gps();
 		p_contents = dto.getP_contents();
-		p_contents = dto.getP_contents();
-		p_contents = dto.getP_contents();
 		
 	}
 	
@@ -215,7 +213,7 @@
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="text" class="price" placeholder="가격" name="price" maxlength="50">
+                        <input type="text" class="price" placeholder="가격" name="price" maxlength="50" value="<%=price %>">
 
                     </td>
                     <td align="right">
@@ -224,7 +222,7 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea class="content" placeholder="물품에 대한 내용을 작성하세요." name="p_contents" maxlength="2048"></textarea>
+                        <textarea class="content" placeholder="물품에 대한 내용을 작성하세요." name="p_contents" id="myTextarea" maxlength="2048"></textarea>
                     </td>
                 </tr>
                 <!-- 카카오 맵 -->
@@ -238,8 +236,8 @@
                             <p style="font-weight: bold;">만나서 거래할 때에는 안전한 공공장소에서 거래하세요.</p>
                             <p>원하는 거래 위치를 클릭하고 상세 장소명을 입력하세요.</p>
                             <div id="map" style="width:100%;height:350px;"></div>
-                            <input type="hidden" name="contact_gps" id="contact_gps">
-                            <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요">
+                            <input type="hidden" name="contact_gps" id="contact_gps" value="<%=contact_gps %>">
+                            <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요" value="<%=contact_addr %>">
                         </div>
                         <div>
                             <button type="button" onclick="saveAddr()">거래장소선택완료</button>
@@ -384,8 +382,36 @@
         });
 
     }
-    
-    
+    // ProductUpdate
+    var textarea = document.getElementById("myTextarea");
+    textarea.value = "<%=p_contents %>"
+    var c_idx = document.getElementById("c_idx");
+    if(c_idx == 1) {
+    	c_idx.value = "1";
+    }else if(c_idx == 2) {
+    	c_idx.value = "2";
+    }else if(c_idx == 3) {
+    	c_idx.value = "3";
+    }else if(c_idx == 4) {
+    	c_idx.value = "4";
+    }else if(c_idx == 5) {
+    	c_idx.value = "5";
+    }else if(c_idx == 6) {
+    	c_idx.value = "6";
+    }else if(c_idx == 7) {
+    	c_idx.value = "7";
+    }else if(c_idx == 8) {
+    	c_idx.value = "8";
+    }else if(c_idx == 9) {
+    	c_idx.value = "9";
+    }else if(c_idx == 10) {
+    	c_idx.value = "10";
+    }else if(c_idx == 11) {
+    	c_idx.value = "11";
+    }else if(c_idx == 12) {
+    	c_idx.value = "12";
+    }
+    	
     	function submitData(){
     		
     		let formdata = document.formdata;
