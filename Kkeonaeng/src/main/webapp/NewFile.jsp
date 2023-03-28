@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div>
-		<form action="WishlistDeleteCon.do">
+		<form action="WishlistUpdateCon.do">
 			<table>
 				<tr>
 					<td>찜 누른사람(user_idx)</td>

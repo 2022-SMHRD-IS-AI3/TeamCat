@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
@@ -182,7 +184,20 @@
                         <td>
                             <div id="divWrap">
 
-                                <div id="image_container"></div>
+                                <div id="image_container">
+                                	<% if(p_idx != null){ 
+                                		String filename = "";
+										String file = new FileDAO().fileSelect(new FileDTO(0, "product", Integer.parseInt(p_idx)));
+													
+										if (file != null) {
+											filename = file;
+										}
+													
+										%>
+                                		<img src="/Kkeonaeng/file/<%= filename  %>">
+                                	<%} %>
+                                
+                                </div>
                             </div>
                         </td>
                     </tr>
