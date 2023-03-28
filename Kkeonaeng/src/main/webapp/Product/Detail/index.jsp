@@ -32,7 +32,7 @@
 					</tr>
 					<tr>
 						<td>작성자</td>
-						<td></td>
+						<td><%=info.getNick() %></td>
 					</tr>
 					<tr>
 						<td>가격</td>
