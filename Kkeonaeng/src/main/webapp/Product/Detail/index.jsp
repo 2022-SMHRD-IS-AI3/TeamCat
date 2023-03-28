@@ -53,10 +53,18 @@
 					
 						<%if(info != null && info.getUser_idx() == productDetail.getUser_idx() ) {%>
 						<td><a href="/Kkeonaeng/Product/Write/?p_idx=<%=p_idx %>"><button>수정하기</button></a></td>
-						<td><a href="/Kkeonaeng/src/main/java/com/smhrd/controller/ProductDeleteCon?p_idx=<%=p_idx %>"><button>삭제하기</button></td>
+						<td><a href="/Kkeonaeng/src/main/java/com/smhrd/controller/ProductDeleteCon?p_idx=<%=p_idx %>"><button onclick="ProductDelete()">삭제하기</button></td>
 						<% } %>
 						<td><a href="../"><button>뒤로가기</button></a></td>
 					</tr>
 				</table>
+				
+				<script type="text/javascript">
+					const ProductDelete = () => {
+						if(confirm("삭제 하시겠습니까?") == true) {
+							location.href="ProductDeleteCon.do?p_idx="+<%=p_idx %>
+						}
+					}
+				</script>
 </body>
 </html>

@@ -11,6 +11,7 @@ import com.smhrd.Command.Command;
 import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
+import com.smhrd.controller.ProductDeleteCon;
 import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.UpdateCon;
@@ -66,7 +67,11 @@ public class Frontcontroller extends HttpServlet {
 			
 			con = new ProductUpdateCon();
 
-		} 
+		} else if (result.equals("ProductDeleteCon.do")) {
+			
+			con = new ProductDeleteCon();
+
+		}
 		
 		response.sendRedirect(con.execute(request,response));
 
