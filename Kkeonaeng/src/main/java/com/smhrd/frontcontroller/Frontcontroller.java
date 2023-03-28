@@ -12,6 +12,7 @@ import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
 import com.smhrd.controller.ProductDeleteCon;
+import com.smhrd.controller.ProductSearchCon;
 import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.ReservationCon;
@@ -75,6 +76,10 @@ public class Frontcontroller extends HttpServlet {
 			
 			con = new ProductDeleteCon();
 			
+		}else if (result.equals("ProductSearchCon.do")) {
+			
+			con = new ProductSearchCon();
+			
 		} else if (result.equals("ReservationCon.do")) {
 			
 			con = new ReservationCon();
@@ -88,7 +93,6 @@ public class Frontcontroller extends HttpServlet {
 			con = new WishlistDeleteCon();
 		
 		}
-		
 		response.sendRedirect(con.execute(request,response));
 
 	}

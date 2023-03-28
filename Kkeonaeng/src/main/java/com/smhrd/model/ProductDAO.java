@@ -59,4 +59,13 @@ public class ProductDAO {
 		
 		return cnt;
 	}
+	
+	// 게시물 검색
+	public List<ProductDTO> ProductSearch(String search) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> search_list = sqlsession.selectList("ProductSearch", search);
+		sqlsession.close();
+		
+		return search_list;
+	}
 }
