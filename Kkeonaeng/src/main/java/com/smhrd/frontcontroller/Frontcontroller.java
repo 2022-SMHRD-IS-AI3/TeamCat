@@ -64,17 +64,19 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("ProductWriteCon.do")) {
 
 			con = new ProductWriteCon();
+			
 		} else if (result.equals("ProductUpdateCon.do")) {
 			
 			con = new ProductUpdateCon();
-		} else if (result.equals("ReservationCon.do")) {
 			
-			con = new ReservationCon();
-
 		} else if (result.equals("ProductDeleteCon.do")) {
 			
 			con = new ProductDeleteCon();
-
+			
+		} else if (result.equals("ReservationCon.do")) {
+			
+			con = new ReservationCon();
+		
 		}
 		
 		response.sendRedirect(con.execute(request,response));

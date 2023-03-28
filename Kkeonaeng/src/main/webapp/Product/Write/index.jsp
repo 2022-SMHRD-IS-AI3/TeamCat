@@ -125,7 +125,7 @@
 	String contact_addr = "";
 	String contact_gps = "";
 	if(p_idx != null){
-		actionUrl = "ProductUdateCon.do";
+		actionUrl = "ProductUpdateCon.do?p_idx="+p_idx;
 		writeType = "글수정";
 		
  		ProductDTO dto = new ProductDAO().ProductDetail(Integer.parseInt(p_idx));
