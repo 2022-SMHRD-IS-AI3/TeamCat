@@ -135,6 +135,10 @@
 		contact_gps = dto.getContact_gps();
 		p_contents = dto.getP_contents();
 		
+		String[] gpsArr = contact_gps.split(",");
+		
+		
+		
 	}
 	
 	if (info == null) {
@@ -347,7 +351,7 @@
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
+		
         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
 
         displayMarker(locPosition);
@@ -386,31 +390,7 @@
     var textarea = document.getElementById("myTextarea");
     textarea.value = "<%=p_contents %>"
     var c_idx = document.getElementById("c_idx");
-    if(c_idx == 1) {
-    	c_idx.value = "1";
-    }else if(c_idx == 2) {
-    	c_idx.value = "2";
-    }else if(c_idx == 3) {
-    	c_idx.value = "3";
-    }else if(c_idx == 4) {
-    	c_idx.value = "4";
-    }else if(c_idx == 5) {
-    	c_idx.value = "5";
-    }else if(c_idx == 6) {
-    	c_idx.value = "6";
-    }else if(c_idx == 7) {
-    	c_idx.value = "7";
-    }else if(c_idx == 8) {
-    	c_idx.value = "8";
-    }else if(c_idx == 9) {
-    	c_idx.value = "9";
-    }else if(c_idx == 10) {
-    	c_idx.value = "10";
-    }else if(c_idx == 11) {
-    	c_idx.value = "11";
-    }else if(c_idx == 12) {
-    	c_idx.value = "12";
-    }
+    
     	
     	function submitData(){
     		
