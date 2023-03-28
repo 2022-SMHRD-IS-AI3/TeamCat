@@ -24,7 +24,7 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 	}
 	
-	// 회원정보수정
+	// 파일 수정
 	public int fileUpdate(FileDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
@@ -32,7 +32,7 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		
 		return cnt;
 	}
-	// 로그인
+	// 파일가져오기 1개
 	public String fileSelect(FileDTO dto) {
 		
 		SqlSession sqlsession = sqlSessionFactory.openSession();

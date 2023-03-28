@@ -124,7 +124,6 @@
 	String p_contents = "";
 	String contact_addr = "";
 	String contact_gps = "";
-	
 	if(p_idx != null){
 		actionUrl = "ProductUdateCon.do";
 		writeType = "글수정";
@@ -164,7 +163,7 @@
     <div class="container">
         <div class="text-center mt-5">
             <form name="formdata" method="post" action="ProductWriteCon.do" enctype="multipart/form-data">
-                <input type="hidden" name="user_idx" id="user_idx" value="<%=%>">
+                <input type="hidden" name="user_idx" id="user_idx" value="<%=info.getUser_idx()%>">
                 <table class="table table-striped" style="border-collapse: collapse;">
 
                     <tr>

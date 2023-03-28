@@ -14,6 +14,7 @@ import com.smhrd.controller.LogoutCon;
 import com.smhrd.controller.ProductDeleteCon;
 import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
+import com.smhrd.controller.ReservationCon;
 import com.smhrd.controller.UpdateCon;
 import com.smhrd.controller.DeleteCon;
 
@@ -66,6 +67,9 @@ public class Frontcontroller extends HttpServlet {
 		} else if (result.equals("ProductUpdateCon.do")) {
 			
 			con = new ProductUpdateCon();
+		} else if (result.equals("ReservationCon.do")) {
+			
+			con = new ReservationCon();
 
 		} else if (result.equals("ProductDeleteCon.do")) {
 			
