@@ -316,7 +316,7 @@ h1.title {
                         fill="black" />
                 </svg>
 
-                <div class="title active">나의 채팅</div>
+                <div class="title active">나의 예약</div>
             </div>
         </div>
         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/')">
