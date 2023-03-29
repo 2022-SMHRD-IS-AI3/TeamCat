@@ -244,6 +244,8 @@
 				if (file != null) {
 					filename = file;
 				}
+				
+				System.out.println(filename);
 
 				String contact_addr = product_list.get(i).getContact_addr();
 				if (contact_addr == null) {
