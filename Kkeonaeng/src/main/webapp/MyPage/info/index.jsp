@@ -19,21 +19,47 @@
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 <style>
-#endBtn {
+button {
+    line-height: 30px!important;
+    font-size: 13px!important;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 48px;
+    background-color: #fff;
+    font-size: 15px;
+    text-align: center;
+    color: #161616;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #b9b9b9;
+    vertical-align: middle;
+        }
+        
+        button:hover{
+        
+        }
+        
+        li {
+			list-style: none;
+			width: 100%;
+			display: flex;
+    justify-content: space-between;
+    align-items: center;
+        }
+        
+	#endBtn {
 	border: none;
 	background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 	float: right;
 	margin-right: 10px;
 }
 
-#endBtn:hover {
+	#endBtn:hover {
 	color: #527fef;
 }
 
 
-.filebox .upload-display {  /* 이미지가 표시될 지역 */
-  margin-bottom: 5px;
-}
+	
 
 @media(min-width: 768px) { 
   .filebox .upload-display {
@@ -43,23 +69,75 @@
   }
 }
 
-.filebox .upload-thumb-wrap {  /* 추가될 이미지를 감싸는 요소 */
-  display: inline-block;
-  width: 54px;
-  padding: 2px;
-  vertical-align: middle;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background-color: #fff;
+
+
+.profileBox{
+position:relative;
+overflow: hidden;
 }
 
-.filebox .upload-display img {  /* 추가될 이미지 */
-  display: block;
-  max-width: 100%;
-  width: auto;
-  height: auto;
+
+        
+        
+       .profileBox label {
+    overflow: hidden;
+    position: relative;
+    display: block;
+    text-align: center;
+    height: 100%;}
+    
+    i {
+    width: 16px;
+    height: 12px;
+    
+    }
+    
+    label.profileBtn {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    background: #ced4da;
+    text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    border-radius: 14px;
+    margin-right: 8rem;
+}
+        
+        img {
+    border: 0;
+    vertical-align: top;
+    border-radius: 70px; }
+    
+  
+    
+.uplist{
+    width: 30%;
+    
 }
 
+.uplistp{
+    width: 70%;
+    
+}
+input{
+border: none;
+margin-top: 15px;
+text-align: right;
+}
+
+select {
+	width: 100px;
+	
+	
+}
+
+ul{
+padding:15px;
+margin-bottom: 0;
+}
 </style>
 </head>
 <body>
@@ -71,81 +149,102 @@
 	} else {
 	%>
 	<!-- navbar -->
+	<form action="UpdateCon.do" method="post"
+				enctype="multipart/form-data">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<div class="container">
-			<form action="UpdateCon.do" method="post"
-				enctype="multipart/form-data">
+			
 				<a href="/Kkeonaeng/MyPage/index.jsp"
 					style="text-decoration-line: none;"> <i
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
-				</a> <span class="navbar-brand">내 정보 수정</span> <input type="submit"
-					value="완료" id="endBtn">
+				</a> <strong class="navbar-brand">내 정보 수정</strong>
+				<input type="submit"
+					value="완료" id="endBtn" style="margin: 0;">
 		</div>
 	</nav>
 
 	<!-- main contents -->
 	<div class="container">
 		<div class="text-center mt-5">
-
-			<div>
-				<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
-			</div>
-
-
-			<div>
+			<div class="profileBox">
+			<label for="filename">
 				<%
 				if (info.getFile_name() == null) {
 				%>
 				<img id="profile_img" src="../../file/unknown.png" alt=""
-					width="50px" height="50px"> <input type="hidden"
+					width="100px" height="100px"> <input type="hidden"
 					name="post_idx" value="">
 				<%
 				} else {
 				%>
 				<img id="profile_img" src="../../file/<%=info.getFile_name()%>"
-					alt="" width="50px" height="50px"> <input type="hidden"
+					alt="" width="100px" height="100px"> <input type="hidden"
 					name="post_idx" value="1">
 				<%
 				}
 				%>
-
-				<div class="fileBox">
-					<input type="hidden" name="fileExt" id="fileExt" value="">
-					<input type="hidden" name="filesize" id="filesize" value="">
-					<label for="filename">
-					<i class="fa-solid fa-images"></i></label>
-					<input type="file" name="filename" id="filename"
+				<input type="file" name="filename" id="filename"
 						onchange="fileSize(this)" value=""
 						accept="image/png,image/jpg, image/jpeg" style="display: none;">
-				</div>
-
+				</label>
+				<label for="filename" class="profileBtn">
+					<i class="fa-solid fa-camera"></i>
+					</label>
+					
 			</div>
 
-			<div>
-				<input type="text" name="kakao_id" value="<%=info.getKakao_id()%>"
-					readonly style="background-color: rgb(216, 216, 216);">
+			<div style="width: 100%; margin-top:10px;">
+			<ul class="titleList">
+			<li>
+			<span class="uplist">닉네임</span>
+			<p class="uplistp"><input type="text" name="nick" id="nick" value="<%=info.getNick()%>"><br>
+				<p id="nickChk"></p></p>
+					</li>
+			<li>
+			<span class="uplist">이메일</span>
+			<p class="uplistp"><input type="text" name="kakao_id" value="<%=info.getKakao_id()%>"
+					readonly></p>
+			</li>
+			<li style="height: 20px; margin-top: 20px">
+			<span class="uplist">주소</span>
+			<select>
+			<option value="행정구">행정구</option>
+                <option value="">행정구 넣어주세요</option>
+            </select>
+            <select>
+			<option value="행정동">행정동</option>
+                <option value="">행정동 넣어주세요</option>
+                
+            </select>
+           
+			</li>
+			</ul>
+			<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
+			<input type="hidden" name="fileExt" id="fileExt" value="" placeholder="fileExt">
+			<input type="hidden" name="filesize" id="filesize" value="" placeholder="fileSize">
 			</div>
-			<div>
-				<input type="text" name="nick" id="nick" value="<%=info.getNick()%>"><br>
-				<p id="nickChk"></p>
-
 			</div>
+	</div>
+	
 			</form>
+			
+		<div class="text-center" style="margin-top: 10rem;">
+		<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
+		<button onclick="DeleteUser('1')">회원탈퇴</button>
 		</div>
 
-		<div>
-			<span onclick="DeleteUser('1')">회원탈퇴</span>
-		</div>
-	</div>
-	</div>
+		
+		
+	
+	
 	<script type="text/javascript">
 	   
 	   let urlSearch = new URLSearchParams(location.search);
        let result = urlSearch.get('result');
 	   if(result.length >= 0){
 		   if(result == "200") {
-			   alert("정보 수정이 완료되었습니다");
+			   alert("정보 수정이 완료되었습니다.");
 		   }else{
 			   document.getElementById("nickChk").innerText = "닉네임이 이미 존재합니다";
 			   document.getElementById("nick").value = urlSearch.get('nick');
@@ -161,7 +260,7 @@
              }
     	} --%>
        const DeleteUser = (idx) => {
-            if(confirm('삭제시 복구 불가 진짜삭제?')){
+            if(confirm('탈퇴시 계정의 복구가 불가합니다. 정말로 삭제하시겠습니까?')){
                location.href = "DeleteCon.do?user_idx="+<%=info.getUser_idx()%>
             }
        }
