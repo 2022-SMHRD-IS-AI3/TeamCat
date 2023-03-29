@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
@@ -362,12 +364,18 @@
 							<%
 							if (search_list.size() > 0) {
 								for (ProductDTO dto : search_list) {
+									
+									String file = new FileDAO().fileSelect(new FileDTO(0, "product", dto.getP_idx()));
+									String filename = "";
+									if (file != null) {
+										filename = file;
+									}
 							%>
 							<li class="_4a1tzy2">
-								<a class="smb-list-item _1o1a6ke0 korcsc4" href="">
+								<a class="smb-list-item _1o1a6ke0 korcsc4" href="../../Product/Detail/?p_idx=<%=dto.getP_idx()%>">
 									<div class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
 										<div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
-											<img class="thumbnail-image qudd1g9" src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Forigin%2Farticle%2F202201%2F2db4ee69075c401b523dc8612bfb1fcdac0634428e7e2d078cf66608386fb2b7.webp%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=a340" alt="">
+											<img class="thumbnail-image qudd1g9" src="/Kkeonaeng/file/<%=filename%>" alt="">
 										</div>
 									</div>
 
@@ -377,7 +385,7 @@
 											<!-- <span class="smb-list-item-region _1o1a6ke6">금남로5가</span> -->
 										</div>
 										<span class="smb-list-item-description _1o1a6ke7"><%=dto.getPrice() %></span>
-										<!-- <span class="smb-list-item-infos _1o1a6ke8">후기 1,720 ∙ 생활/주방</span> -->
+										<span class="smb-list-item-infos _1o1a6ke8">후기 1,720 ∙ 생활/주방</span>
 									</div>
 							</a></li>
 							<hr>

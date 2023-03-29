@@ -49,6 +49,7 @@
             margin: 0;
             padding-left: 25px;
             padding-right: 25px;
+            padding-bottom: 60px;
         }
 
         ._4a1tzy2 {
@@ -183,7 +184,6 @@
         background: white;
         box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
         min-height: 50px;
-        padding-inline: 12px;
      }
      .QuickMenuMobile .menu-items{
         display: flex;
