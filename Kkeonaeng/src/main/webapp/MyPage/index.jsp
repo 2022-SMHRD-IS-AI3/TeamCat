@@ -22,19 +22,17 @@
 	<style type="text/css">
 	
 		
-		.imgWrap {
-  width: 200px;
+		#imgWrap {
+  width: 150px;
   height: 150px;
   overflow: hidden; /* 넘치는 이미지를 가린다 */
   
 }
  
-	.imgWrap> img {
-  position: absolute;
-  width: 100%;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
+	#imgWrap> img {
+  border: 0;
+    vertical-align: top;
+    border-radius: 70px;
 	}
 	
 	.wrap{
@@ -44,9 +42,17 @@
     padding: 10px 20px 20px;
 	}
 
+	ul {
+	padding:0!important;
+	}
 		 li {
 			list-style: none;
-			text-align: left;
+			
+			display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+    height: 2rem;
         }
          
          a {
@@ -73,6 +79,7 @@
     border: 1px solid #b9b9b9;
     vertical-align: middle;
         }
+        
         
         .QuickMenuMobile {
 	position: fixed;
@@ -111,10 +118,13 @@
      
 hr {
   width : 100%;
-  height : 10px;
-  background-color : gray;
+  height : 10px!important;
+  background-color : #e5e5e5;
   border : 0;
 
+}
+i{
+padding-left:10px;
 }
 	</style>
 
@@ -130,10 +140,10 @@ hr {
 	 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-				<strong class="navbar-brand">마이페이지</strong>
+				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">마이페이지</p>
 		</div>
 	</nav>
-	<hr>
+	
 	
     <div class="container">
         <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;  margin-bottom: 20px;">
@@ -149,25 +159,41 @@ hr {
         	<a href="./info/"><button>정보수정</button></a>
 	    	
 	    	</div>
+	    	</div>
 	    	<hr>
-    <p style="margin-top: 20px;">나의거래</p>
-    <div class="wrap" style="height: 120px; width:100%; padding:5px;">
+	<div class="container">  	
+    <p style="margin-top: 20px; margin-bottom: 10px; padding-left:10px; font-weight: bold;">나의 거래</p>
+    <div style="height: 120px; width:100%; padding:5px;">
     <ul>
-    <li><i class="fa-solid fa-heart fa-xl"></i>
-    <a href="./Wishlist/">관심목록</a></li>
+    <li>
+    <span><i class="fa-solid fa-heart fa-xl"></i>
+    </span>
+    <span style="padding-right:10px;"><a href="./Wishlist/">관심목록</a></span>
+    </li>
             
-    <li><i class="fa-solid fa-box-archive fa-xl"></i>
-    <a href="/Kkeonaeng/Rent/">대여목록</a></li>
+    <li>
+    <span><i class="fa-solid fa-box-archive fa-xl"></i>
+   </span>
+    <span style="padding-right:10px;"> <a href="/Kkeonaeng/Rent/">대여목록</a></span>
+    </li>
             
-    <li><i class="fa-solid fa-check fa-xl"></i>
-    <a href="/Kkeonaeng/Reservation/">예약내역</a></li>
+    <li>
+    <span><i class="fa-solid fa-check fa-xl"></i>
+    
+    </span>
+    <span style="padding-right:10px;"><a href="/Kkeonaeng/Reservation/">예약내역</a></span>
+    </li>
             </ul>
-            </div>     
-    <p style="margin-top: 20px;">기타</p>
-    <div  class="wrap" style="height: 120px; width:100%; padding:5px;">
+            </div> 
+            </div>
+            <hr>
+            <div class="container">    
+    <p style="margin-top: 20px; margin-bottom: 10px; padding-left:10px; font-weight: bold;">기타</p>
+    <div  style="height: 120px; width:100%; padding:5px;">
         <ul>
             <li>
-                <i class="fa-solid fa-clipboard-list fa-xl"></i><a href="./Review/">내가 받은 리뷰 보기</a>
+            <span><i class="fa-solid fa-clipboard-list fa-xl"></i></span>
+                <span style="padding-right:10px;"><a href="./Review/">내가 받은 리뷰 보기</a></span>
             </li>
         </ul>
         </div>
