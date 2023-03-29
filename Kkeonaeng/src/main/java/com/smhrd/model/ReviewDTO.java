@@ -1,12 +1,23 @@
 package com.smhrd.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+
+@Getter
+@AllArgsConstructor
+@RequiredArgsConstructor
+
 public class ReviewDTO {
 
-	private int rv_idx;
-	private int user_idx;
-	private String thumbs_flag;
-	private String rv_contents;
-	private int rv_flag;
-	private int rp_idx;
+	@NonNull private int rv_idx;
+	@NonNull private int user_idx;
+	@NonNull private String thumbs_flag;
+	@NonNull private String rv_contents;
+	@NonNull private int rp_flag;
+	@NonNull private int rp_idx;
+	private String rv_nick; // 받은사람
+	private String rp_nick; // 보낸사람
 	
 }
