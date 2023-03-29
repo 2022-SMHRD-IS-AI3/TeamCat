@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.UserDAO"%>
+<%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -25,7 +27,7 @@
 	List<UserDTO> user_list = new UserDAO().userAll();
 	
 	for (int i=0; i<user_list.size(); i++) { 
-		userDTO user = user_list.get(i);
+		UserDTO user = user_list.get(i);
 	%>
 		
 		
