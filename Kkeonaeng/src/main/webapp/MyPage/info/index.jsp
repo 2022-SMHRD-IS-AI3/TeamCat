@@ -173,7 +173,7 @@ margin-bottom: 0;
 				if (info.getFile_name() == null) {
 				%>
 				<img id="profile_img" src="../../file/unknown.png" alt=""
-					width="100px" height="100px"> <input type="hidden"
+					width="100px" height="100px" style="object-fit: cover;"> <input type="hidden"
 					name="post_idx" value="">
 				<%
 				} else {
@@ -242,7 +242,7 @@ margin-bottom: 0;
 	   
 	   let urlSearch = new URLSearchParams(location.search);
        let result = urlSearch.get('result');
-	   if(result.length >= 0){
+	   if(result != null && result.length > 0){
 		   if(result == "200") {
 			   alert("정보 수정이 완료되었습니다.");
 		   }else{
