@@ -140,20 +140,20 @@
     <div class="wrap" style="height: 120px; width:100%; padding:5px;">
     <ul>
     <li><i class="fa-solid fa-heart fa-xl"></i>
-    <a href="./wish/">관심목록</a></li>
+    <a href="./Wishlist/">관심목록</a></li>
             
     <li><i class="fa-solid fa-box-archive fa-xl"></i>
-    <a href="./rent/">대여목록</a></li>
+    <a href="/Kkeonaeng/Rent/">대여목록</a></li>
             
     <li><i class="fa-solid fa-check fa-xl"></i>
-    <a href="./reservation/">예약내역</a></li>
+    <a href="/Kkeonaeng/Reservation/">예약내역</a></li>
             </ul>
             </div>     
     <p style="margin-top: 20px;">기타</p>
     <div  class="wrap" style="height: 120px; width:100%; padding:5px;">
         <ul>
             <li>
-                <i class="fa-solid fa-clipboard-list fa-xl"></i><a href="./review/">내가 받은 리뷰 보기</a>
+                <i class="fa-solid fa-clipboard-list fa-xl"></i><a href="./Review/">내가 받은 리뷰 보기</a>
             </li>
         </ul>
         </div>

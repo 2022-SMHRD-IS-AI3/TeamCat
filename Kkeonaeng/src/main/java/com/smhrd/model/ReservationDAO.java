@@ -1,5 +1,7 @@
 package com.smhrd.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -18,5 +20,14 @@ public class ReservationDAO {
 
 		return cnt;
 
+	}
+	
+	// 예약 목록
+	public List<ProductDTO> reservationList(int user_idx) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		List<ProductDTO> Product_list = sqlsession.selectList("reservationList",user_idx);
+		sqlsession.close();
+			
+		return Product_list;
 	}
 }

@@ -12,6 +12,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into reservation_info values(reservation_info_seq.nextval,#{user_idx},#{p_idx},#{rv_start_date},#{rv_end_date})
 	</insert>
 	
+	<select id="reservationList" parameterType="int" resultType="ProductDTO">
+		select p.* from product_info p inner join reservation_info r on p.p_idx = r.p_idx where r.user_idx = #{user_idx}
+	</select>
 
 	
 </mapper>
