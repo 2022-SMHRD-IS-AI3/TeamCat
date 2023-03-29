@@ -20,35 +20,31 @@
 
 	<style type="text/css">
 	
-		#imgWrap {
-	    	width: auto;
-	    	height: auto; 
-	    	border-radius: 70%;
-	    	overflow: hidden;
-	    	display: block;
-	    	
-	    	
-		}
-		#profile_img {
-	    	    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 50%;
-    left: 0%;
-    transform: translateY(-50%);
-	    	
-		}
-		img {
-    border: 0;
-    vertical-align: top;
-    width: 100%;
+		
+		.imgWrap {
+  width: 200px;
+  height: 150px;
+  overflow: hidden; /* 넘치는 이미지를 가린다 */
+  
 }
-		img {
-    overflow-clip-margin: content-box;
-    overflow: clip;
-    overflow-x: ;
-    overflow-y: ;
+ 
+.container > img {
+  position: absolute;
+  width: 100%;
+  border-radius: 30px;
+  
+  /* 이미지 위치 */
+  top: 50%; 
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+	
+	.wrap{
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 20px;
+	}
 
 		 li {
 			list-style: none;
@@ -57,16 +53,27 @@
          
          a {
          	text-decoration: none;
+         	box-sizing: border-box;
          	color: black;
+         	margin-left: auto;
          }
          
 
         button {
-        	border: none;
-        	border-radius: 10px;
-        	float: right;
-        	background-color: #cccccc;
-        	margin-right: 10px;
+        	
+        	line-height: 30px!important;
+    font-size: 13px!important;
+    display: inline-block;
+    padding: 0 10px;
+    line-height: 48px;
+    background-color: #fff;
+    font-size: 15px;
+    text-align: center;
+    color: #161616;
+    font-weight: bold;
+    border-radius: 4px;
+    border: 1px solid #b9b9b9;
+    vertical-align: middle;
         }
         
          .QuickMenuMobile{
@@ -116,17 +123,17 @@
 	
     <div class="container">
         <div class="wrap" style="height: 120px; width:100%; border:solid black; padding:5px; margin-top: 20px;">
-            <span id="imgWrap" style="height: 100%; width: 35%; float: left;"><%
+            <span id="imgWrap" style="height: 100%; width: 35%;"><%
 	    		if(info.getFile_name() == null) {%>
 	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
 	    	<%	}else{ %>
 	    			<img id="profile_img" src="../file/<%=info.getFile_name() %>" alt="" width="100px" height="100px">
 	    	<%  }%>
 	    	</span>
-	    	<div style="height: auto; width: 60%; float: left; margin-top:2.5rem; margin-left: 10px;">
-	    	<span id="nick"><%=info.getNick()%></span>
+	    	
+	    	<strong id="nick"><%=info.getNick()%></strong>
         	<a href="./info/"><button>정보수정</button></a>
-	    	</div>
+	    	
 	    	</div>
     <p style="margin-top: 20px;">나의거래</p>
     <div class="wrap" style="height: 120px; width:100%; border:solid black; padding:5px;">
