@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.ReviewDAO">
+
+	
+	<!-- 리뷰 작성 -->
+	<insert id="ReviewUpdate" parameterType="ReviewDTO">
+		insert into review_info values(reservation_info_seq.nextval,#{user_idx},#{thumbs_flag},#{rv_contents},#{rp_flag},#{rp_idx})
+	</insert>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="ReviewDelete" parameterType="ReviewDTO">
+		delete from Review_info where rv_idx=#{rv_idx}
+	</delete>
+	
+	<!-- 리뷰 전체 목록 -->
+	<select id="ReviewAll" resultType= "ReviewDTO">
+		select * from Review_info
+	</select>
+</mapper>
