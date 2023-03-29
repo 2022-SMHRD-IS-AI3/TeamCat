@@ -30,12 +30,24 @@ public class ReviewDAO {
 		return cnt;
 	}
 			
-	// 게시글 목록 조회
+	// 리뷰 목록 조회
 	public List<ReviewDTO> ReviewAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ReviewDTO> Review_list = sqlsession.selectList("ReviewAll");
 		sqlsession.close();
 				
+		return Review_list;
+	}
+	
+	// 나의 리뷰 목록
+	public List<ReviewDTO> myReviewList(int user_idx) {
+		System.out.println("dao");
+		System.out.println(user_idx);
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ReviewDTO> Review_list = sqlsession.selectList("myReviewList",user_idx);
+		System.out.println(Review_list.size());
+		sqlsession.close();
+		
 		return Review_list;
 	}
 }

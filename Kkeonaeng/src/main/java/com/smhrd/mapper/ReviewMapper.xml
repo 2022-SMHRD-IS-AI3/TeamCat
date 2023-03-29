@@ -19,6 +19,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 리뷰 전체 목록 -->
 	<select id="ReviewAll" resultType= "ReviewDTO">
-		select * from Review_info
+		select r.* , rv.nick as rv_nick, rp.nick as rp_nick from review_info r inner join user_info rp on r.rp_idx = rp.user_idx  inner join user_info rv on r.user_idx = rv.user_idx order by r.rv_idx desc
 	</select>
+	
+	<!-- 나의 리뷰 목록 -->
+	<select id="myReviewList" parameterType="int" resultType="ReviewDTO">
+		select r.* , rv.nick, rp.nick from review_info r inner join user_info rp on r.rp_idx = rp.user_idx  inner join user_info rv on r.user_idx = rv.user_idx where rv.user_idx = #{user_idx} order by r.rv_idx desc
+	</select>
+	
 </mapper>
