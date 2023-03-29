@@ -131,6 +131,7 @@
 	String p_contents = "";
 	String contact_addr = "";
 	String contact_gps = "";
+	int c_idx = 0;
 	if(p_idx != null){
 		actionUrl = "ProductUpdateCon.do?p_idx="+p_idx;
 		writeType = "글수정";
@@ -141,10 +142,8 @@
 		contact_addr = dto.getContact_addr();
 		contact_gps = dto.getContact_gps();
 		p_contents = dto.getP_contents();
-		
-		String[] gpsArr = contact_gps.split(",");
-		
-		
+		c_idx = dto.getC_idx();
+		String[] gpsArr = contact_gps.split(",");	
 		
 	}
 	
@@ -163,7 +162,7 @@
             </a>
 
             
-                <span class="me-3" onclick="submitData()">완료</span>
+                <span id="submit" class="me-3" onclick="submitData()">완료</span>
             
         </div>
     </nav>
@@ -209,7 +208,7 @@
 				<tr>
 				<tr>
                     <td colspan="2"><input type="text" class="p_name" placeholder="글 제목" name="p_name"
-                                maxlength="50" value="<%=p_name%>">
+                                id="p_name" maxlength="50" value="<%=p_name%>">
                     </td>
 
                 </tr>
@@ -237,7 +236,7 @@
                 </tr>
                 <tr>
                     <td align="left">
-                        <input type="text" class="price" placeholder="가격" name="price" maxlength="50" value="<%=price %>">
+                        <input type="text" class="price" placeholder="가격" name="price" id="price"maxlength="50" value="<%=price %>">
 
                     </td>
                     <td align="right">
@@ -276,12 +275,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
 	<script>
-	    let fileUploadCnt = 0;
-		function setThumbnail(event) {
+	   let fileUploadCnt = 0;
+	    function setThumbnail(event) {
 	        
-	
-            for (var image of event.target.files) {
-            	if (fileUploadCnt <= 5) {
+	    	
+           for (var image of event.target.files) {
+           	if (fileUploadCnt <= 5) {
 	                fileUploadCnt++;
 	                var reader = new FileReader();
 	
@@ -406,23 +405,67 @@
         });
 
     }
-    // ProductUpdate
+    // ProductUpdate - 수정
     var textarea = document.getElementById("myTextarea");
     textarea.value = "<%=p_contents %>"
-    var c_idx = document.getElementById("c_idx");
-    
+ 
+    	let arr = [{k:"1",v:"디지털기기"},{k:"2",v:"생활가전"},{k:"3",v:"가구/인테리어"},{k:"4",v:"생활/주방"},{k:"5",v:"유/아동"},{k:"6",v:"여성의류/잡화"},{k:"7",v:"뷰티/미용"},{k:"8",v:"스포츠/레저"},
+    		{k:"9",v:"취미/게임/음반"},{k:"10",v:"도서"},{k:"11",v:"반려동물용품"},{k:"12",v:"기타"}];
+    	
+    	var optionHtml = '<option value="">--카테고리--</option>';
+    	for(var j=0;j<arr.length;j++){
+    		var selected = '';
+    		if(arr[j].k == <%=c_idx%>){
+    			selected = 'selected';
+    		}
+    		optionHtml +=`<option value="${arr[j].k}" ${selected}>${arr[j].v}</option>`;
+    	}
+    	document.getElementById('c_idx').innerHTML = optionHtml;
+    	
     	
     	function submitData(){
     		
+    		var input1 = document.getElementById("p_name").value;
+    		var input2 = document.getElementById("c_idx").value;
+    		var input3 = document.getElementById("myTextarea").value;
+    		var input4 = document.getElementById("contact_addr").value;
+    		var input5 = document.getElementById("contact_gps").value;
+    		var input6 = document.getElementById("file").value;
+    	
+    		if (input1 == "") {
+    			alert("글 제목을 입력해주세요.");
+    			return;
+    		}
+    		if (input2 == "") {
+    			alert("카테고리를 입력해주세요.");
+    			return;
+    		}
+    		if (input3 == "") {
+    			alert("물품에 대한 내용을 입력해주세요.");
+    			return;
+    		}
+    		if (input4 == "") {
+    			alert("거래 할 장소를 체크해주세요.");
+    			return;
+    		}
+    		if (input5 == "") {
+    			alert("상세장소를 입력해주세요.");
+    			return;
+    		}
+    		if (input6 == "") {
+    			alert("사진을 올려주세요.");
+    			return;
+    		}	
+    		
     		let formdata = document.formdata;
     		formdata.action = "<%=actionUrl %>";
-    		formdata.submit();
-    		
-    		
+    		formdata.submit();		 		
     	}
+			
     </script>
 	<%
 	}
 	%>
+	
 </body>
 </html>
