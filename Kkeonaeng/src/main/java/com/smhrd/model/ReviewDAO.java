@@ -22,10 +22,9 @@ public class ReviewDAO {
 	}
 	
 	// 리뷰 삭제
-	public int ReviewDelete(ReviewDTO dto) {
-		System.out.println(123);
+	public int ReviewDelete(int rv_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.delete("ReviewDelete", dto);
+		int cnt = sqlsession.delete("ReviewDelete", rv_idx);
 		sqlsession.close();
 				
 		return cnt;

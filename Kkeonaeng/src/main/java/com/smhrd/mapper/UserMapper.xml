@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 전체회원조회(admin) -->
-	<select id="">
+	<select id="userAll" resultType="UserDTO">
 		select * from user_info
 	</select>
 	
