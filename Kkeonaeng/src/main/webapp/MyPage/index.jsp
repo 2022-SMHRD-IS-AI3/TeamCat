@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
+
 <meta charset="utf-8" />
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -29,16 +29,13 @@
   
 }
  
-.container > img {
+	.imgWrap> img {
   position: absolute;
   width: 100%;
-  border-radius: 30px;
-  
-  /* 이미지 위치 */
   top: 50%; 
   left: 50%;
   transform: translate(-50%, -50%);
-}
+	}
 	
 	.wrap{
 	display: flex;
@@ -105,13 +102,10 @@
         flex: 1;
      }
      
+     
+     
 	</style>
-=======
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI3/TeamCat.git
+
 </head>
 <body>
 
@@ -129,7 +123,7 @@
 	</nav>
 	
     <div class="container">
-        <div class="wrap" style="height: 120px; width:100%; border:solid black; padding:5px; margin-top: 20px;">
+        <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;">
             <span id="imgWrap" style="height: 100%; width: 35%;"><%
 	    		if(info.getFile_name() == null) {%>
 	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
@@ -143,7 +137,7 @@
 	    	
 	    	</div>
     <p style="margin-top: 20px;">나의거래</p>
-    <div class="wrap" style="height: 120px; width:100%; border:solid black; padding:5px;">
+    <div class="wrap" style="height: 120px; width:100%; padding:5px;">
     <ul>
     <li><i class="fa-solid fa-heart fa-xl"></i>
     <a href="./wish/">관심목록</a></li>
@@ -156,7 +150,7 @@
             </ul>
             </div>     
     <p style="margin-top: 20px;">기타</p>
-    <div  class="wrap" style="height: 120px; width:100%; border:solid black; padding:5px;">
+    <div  class="wrap" style="height: 120px; width:100%; padding:5px;">
         <ul>
             <li>
                 <i class="fa-solid fa-clipboard-list fa-xl"></i><a href="./review/">내가 받은 리뷰 보기</a>
