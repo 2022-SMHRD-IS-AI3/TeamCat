@@ -319,7 +319,7 @@
 			<div class="KmongDialog__content">
 				<div class="SearchFormModal">
 					<div class="SearchFormModal__header">
-						<button type="button" class="SearchFormModal__close">
+						<button onclick="moveUrl('../../Main.jsp')" type="button" class="SearchFormModal__close">
 							<img src="../../img/small-caret-left.svg" alt="">
 
 						</button>
