@@ -12,6 +12,7 @@
 		<typeAlias type="com.smhrd.model.ReservationDTO" alias="ReservationDTO" />
 		<typeAlias type="com.smhrd.model.WishlistDTO" alias="WishlistDTO" />
 		<typeAlias type="com.smhrd.model.ReviewDTO" alias="ReviewDTO" />
+		<typeAlias type="com.smhrd.model.RegionDTO" alias="RegionDTO" />
 		
 	</typeAliases>
 	
@@ -33,5 +34,6 @@
 		<mapper resource="com/smhrd/mapper/ReservationMapper.xml" />
 		<mapper resource="com/smhrd/mapper/WishlistMapper.xml" />
 		<mapper resource="com/smhrd/mapper/ReviewMapper.xml" />
+		<mapper resource="com/smhrd/mapper/RegionMapper.xml" />
 	</mappers>
 </configuration>

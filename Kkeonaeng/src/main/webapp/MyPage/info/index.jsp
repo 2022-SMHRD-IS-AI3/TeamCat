@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.RegionDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.RegionDAO"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -143,10 +146,11 @@ margin-bottom: 0;
 <body>
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-
+	List<RegionDTO> regionList = null;
 	if (info == null) {
 		response.sendRedirect("/Kkeonaeng/Login/");
 	} else {
+		regionList = new RegionDAO().regionAll();
 	%>
 	<!-- navbar -->
 	<form action="UpdateCon.do" method="post"
@@ -207,19 +211,41 @@ margin-bottom: 0;
 					readonly></p>
 			</li>
 			<li style="height: 20px; margin-top: 20px">
-			<span class="uplist">주소</span>
-			<select>
-			<option value="행정구">행정구</option>
-                <option value="">행정구 넣어주세요</option>
+			<span class="uplist">내 동네</span>
+			<select name="gu_code">
+                <option value="">-- 행정구 --</option>
+                <option value="1">동구</option>
+                <option value="2">서구</option>
+                <option value="3">남구</option>
+                <option value="4">북구</option>
+                <option value="5">광산구</option>
+                
+                
+                <%-- <%for(int i = 0; i < regionList.size();i++){ 
+                	
+                	String selected = "";
+                %>
+                	
+                <%} %> --%>
             </select>
-            <select>
-			<option value="행정동">행정동</option>
-                <option value="">행정동 넣어주세요</option>
+            <select name="rg_idx">
+                <option value="">-- 행정동 --</option>
+                <%for(int i = 0; i < regionList.size();i++){ 
+                	
+                	String selected = "";
+                	if(regionList.get(i).getRg_idx() == 5) {
+                		selected = "selected";
+                	}
+                	
+                %>
+                	<option value="<%=regionList.get(i).getRg_idx()%>"><%=regionList.get(i).getRegion()%></option>
+                	
+                <%} %>
                 
             </select>
-           
 			</li>
 			</ul>
+           요기는 구 별로 행정동 나오게 내일 바꿀 예정
 			<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
 			<input type="hidden" name="fileExt" id="fileExt" value="" placeholder="fileExt">
 			<input type="hidden" name="filesize" id="filesize" value="" placeholder="fileSize">
