@@ -13,6 +13,8 @@
 	font-style: normal;
 }
 
+
+
 table {
 	width: 100%;
 	border: 1px solid #444444;
@@ -61,9 +63,10 @@ input:focus {
 	outline: none
 }
 
-.nickInput {
-	margin-bottom: 50px;
+.userInput {
+	margin-bottom: 20px;
 }
+
 
 .myform {
 	width: 40%;
@@ -172,23 +175,35 @@ input:focus {
 		<div class="text-center mt-5">
 			<div class="myform">
 				<div class="logo">
-					<img src="/Kkeonaeng/img/user.png" alt="프로필 사진">
+					<img src="/Kkeonaeng/img/circle-user-regular.svg" alt="프로필 사진" style="width: 100px; height: 100px;">
 				</div>
 				<form action="JoinCon.do" method="post">
 					<p style="text-align: left;">닉네임</p>
-					<input class="nickInput" type="text" name="nick"
-						placeholder="닉네임을 적어주세요." /> <input type="hidden" name="gender"
+					<input class="userInput" type="text" name="nick"
+						placeholder="닉네임을 적어주세요." style="border-bottom: none;"> 
+					<p style="text-align: left;">주소</p>	
+					<select style="margin-bottom: 10px;">
+			<option value="행정구">행정구</option>
+                <option value="">행정구 넣어주세요</option>
+            </select>
+            <select style="margin-bottom: 10px;">
+			<option value="행정동">행정동</option>
+                <option value="">행정동 넣어주세요</option>
+                
+            </select>
+						<input type="hidden" name="gender"
 						id="gender" value="<%=gender%>"> <input type="hidden"
 						name="kakao_id" id="kakao_id" value="<%=kakao_id%>"> <br>
 					<span id="nickChk"></span>
-			</div>
+			
 
 			<button type="submit">회원가입</button>
 
 			</form>
+			</div>
 		</div>
 	</div>
-	</div>
+	
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
