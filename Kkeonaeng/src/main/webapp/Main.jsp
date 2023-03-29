@@ -13,7 +13,9 @@
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/Kkeonaeng/css/styles.css" rel="stylesheet" />
+    <link href="./css/btncss.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/c6d32e9c83.js" crossorigin="anonymous"></script>
+    
 <style>
 @font-face {
 	font-family: 'TheJamsil5Bold';
@@ -103,15 +105,52 @@ h1.title {
     top: 15px;
     right: 15px;
 }
+
+#writeBtn {
+    display: inline-block;
+    background-color: #5598f0;
+    height: 40px;
+    text-align: center;
+    border-radius: 25px;
+    position: fixed;
+    bottom: 75px;
+    right: 15px;
+    transition: background-color .3s, opacity .5s, visibility .5s;
+    opacity: 1;
+    z-index: 1000;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: white;
+    padding-left: 0.9rem;
+    padding-right: 0.7rem;
+    text-decoration-line: none;
+    line-height: 1.2;
+    box-shadow: 1px 1px 2px 1px #cdcdcd85;
+}
+
+#writeBtn:hover {
+  cursor: pointer;
+  background-color: #1d64c1;
+}
+#writeBtn:active {
+  background-color: #555;
+}
+#writeBtn.show {
+  opacity: 50;
+  visibility: visible;
+}
+#writeBtn>span{
+  font-size: 1.67rem;
+}
 </style>
 </head>
 <body>
-
+	
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
 	%>
 	<header class="py-1 bg-light border-bottom mb-4">
-		<div class="container">
+		<div class="container text-center" >
 			<div class="text-center my-3">
 				<h1 class="title fw-bolder mb-3" style="color: #527fef;">꺼냉</h1>
 					
@@ -123,7 +162,7 @@ h1.title {
 					<%}	%>
 
 				
-
+	
 			</div>
 
 
@@ -233,6 +272,9 @@ h1.title {
             </div>
         </div>
     </div>
+    
+    <a href="./Product/Write/" id="writeBtn">글쓰기<span>+</span></a>
+    
     <div class="QuickMenuMobile">
         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Main.jsp')">
             <div class="menu fl-1">
@@ -293,6 +335,8 @@ h1.title {
         </div>
 
     </div>
+    
+    
 	<script type="text/javascript">
 	
 		const moveUrl = (url) => {

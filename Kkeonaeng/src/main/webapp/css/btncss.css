@@ -1,0 +1,15 @@
+
+#writeBtn:hover {
+  cursor: pointer;
+  background-color: #1d64c1;
+}
+#writeBtn:active {
+  background-color: #555;
+}
+#writeBtn.show {
+  opacity: 50;
+  visibility: visible;
+}
+#writeBtn>span{
+  font-size: 1.67rem;
+}

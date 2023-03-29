@@ -278,13 +278,13 @@
     	const search = () =>{
     		
     		let searchData = document.getElementById('searchText').value;
+    		let searchText = searchData;
     		if(searchData.length > 0){
-    			console.log(123)
     			if(cookieData != null) {
-    				cookieData += ","+cookieData;
+    				searchData += ","+cookieData;
     			}
     			setCookie("searchData",searchData,30);
-	    		moveUrl('./Product/?search='+searchData);
+	    		moveUrl('./Product/?search='+searchText);
     			
     		}
     	}
@@ -301,8 +301,8 @@
     		for (var i = 0; i < cookieArrSize; i++){
     			searchListHtml += `
     			<div class="Recommend__item">
-                    <span class="Recommend__item-label">${cookieArr[i]}</span>
-                    <span onclick="removeSearch(${i})" class="close"><svg width="24" height="24" viewBox="0 0 24 24"
+                    <span onclick="moveUrl('./Product/?search=${cookieArr[i]}')" class="Recommend__item-label">${cookieArr[i]}</span>
+                    <span onclick="removeSearch(${i})" class="close"><svg width="15" height="15" viewBox="0 0 24 24"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M4.57715 18.7174L11.2946 12L4.57715 5.28247L5.28426 4.57537L12.0017 11.2928L18.7193 4.57532L19.4264 5.28242L12.7088 12L19.4264 18.7175L18.7193 19.4246L12.0017 12.7071L5.28426 19.4246L4.57715 18.7174Z"
