@@ -42,11 +42,8 @@ public class ReviewDAO {
 	
 	// 나의 리뷰 목록
 	public List<ReviewDTO> myReviewList(int user_idx) {
-		System.out.println("dao");
-		System.out.println(user_idx);
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ReviewDTO> Review_list = sqlsession.selectList("myReviewList",user_idx);
-		System.out.println(Review_list.size());
 		sqlsession.close();
 		
 		return Review_list;

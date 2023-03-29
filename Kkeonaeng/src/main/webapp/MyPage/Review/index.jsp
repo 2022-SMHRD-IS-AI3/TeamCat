@@ -166,7 +166,7 @@
         }
 
        
-        #profile{
+        .profile{
             margin-left: 0.8rem;
             padding-bottom: 5px;
             border-bottom: solid 1px #9595952e;
@@ -174,7 +174,8 @@
             padding-top: 10px;
         }
 
-        #profile #nickname {
+        .profile .nickname {
+        	padding-left: 0.6rem;
             font-size: 1rem;
             font-weight: bolder;
             line-height: 1.5;
@@ -183,7 +184,7 @@
             margin-bottom: 5px;
         }
 
-        #profile #region-name {
+        .profile .region-name {
             font-size: 0.8rem;
             line-height: 1.46;
             letter-spacing: -0.6px;
@@ -192,6 +193,13 @@
         .comment{
             font-size: 18px; 
             margin-right: 2px;
+        }
+        
+        .selection {
+            padding: 11px;
+		    background: #f5f5f5;
+		    border-radius: 9px;	
+		    font-size: 0.82rem;
         }
     </style>
 </head>
@@ -212,8 +220,8 @@
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
                     <div class="SearchFormModal__header">
-                        <button type="button" class="SearchFormModal__close">
-                            <img src="small-caret-left.svg" alt="" style="width: 30px;">
+                        <button onclick="moveBack();" type="button" class="SearchFormModal__close">
+                            <img src="../../img/small-caret-left.svg" alt="" style="width: 30px;">
                         </button>
                         <span style="font-size: 18px; font-weight: bold;">
                             거래 후기
@@ -221,59 +229,80 @@
                     </div>
                     <div>
                         <div class="review">
-                            <button class="sos" type="button">전체후기</button>
+                            <button onclick="changeFlag('all')" class="sos" type="button">전체후기</button>
                         </div>
                         <div class="review1">
-                            <button class="sos" type="button">좋아요</button>
+                            <button onclick="changeFlag('G')" class="sos" type="button">좋아요</button>
                         </div>
                         <div class="review2">
-                            <button class="sos" type="button">별로에요</button>
+                            <button onclick="changeFlag('B')" class="sos" type="button">별로에요</button>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div class="aaaa" style="padding-bottom: 5px; margin-left: 0.8rem;">
-                        <p style="font-size: 17px; font-weight: bold;">후기 3개</p>
+                    <div class="review-cnt" style="padding-bottom: 5px; margin-left: 0.8rem;">
+                        <p style="font-size: 17px; font-weight: bold;">후기 <%=review_list.size() %>개</p>
                     </div>
-                    <div id="profile">
-                        <div id="nickname">꺼냉좋아</div>
-                        <div id="region-name">광주광역시 동구 동명동</div>
-                        <div "plan_filter">
-                            <div class="selection">
-                               <p class="comment">좋은 물품 대여해주셔서감사합니다</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="profile">
-                        <div id="nickname">화가많은사람</div>
-                        <div id="region-name">광주광역시 동구 금남로5가</div>
-                        <div "plan_filter">
-                            <div class="selection">
-                               <p style="font-size: 18px;">덕분에 컴퓨터 잘 부쉈습니다</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="profile">
-                        <div id="nickname">프로젝트하다미친사람</div>
-                        <div id="region-name">광주광역시 동구 대인동</div>
-                        <div "plan_filter">
-                            <div class="selection">
-                               <p style="font-size: 18px;">ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ</p>
-                            </div>
-                        </div>
-                    </div>
+                    <div id="reviewList"></div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <input onchange="reviewListSet()" name="thumbsChk" id="thumbsChk" type="text" value="all">
 	<script type="text/javascript">
+		
+		let reviewHtml = '';
+		let reviewlistData = [];
+		const HtmlPrint = () => {
+			reviewHtml = '';
+			for(let i=0; i < reviewlistData.length;i++){
+				reviewHtml += `
+					<div class="profile">
+		                <div class="nickname">${reviewlistData[i].nick}</div>
+		                <div class="plan_filter">
+		                    <div class="selection">
+								${reviewlistData[i].review}
+		                    </div>
+		                </div>
+		            </div>
+		        `;
+			}
+			document.getElementById('reviewList').innerHTML = reviewHtml;
+		}
 		let reviewlist = [];
 		<% for(ReviewDTO rv : review_list){	%>
-			reviewlist.push({nick:"<%=rv.getRp_nick()%>",flag:"<%=rv.getThumbs_flag()%>",review:"<%=rv.getThumbs_flag()%>"});
+			reviewlist.push({nick:"<%=rv.getRp_nick()%>",flag:"<%=rv.getThumbs_flag()%>",review:"<%=rv.getRv_contents()%>"});
 	
 		<% }%>
 		
-		console.log(reviewlist)
+		const reviewListSet = () =>{
+			reviewlistData = [];
+			let thumbsChk = document.getElementById('thumbsChk').value;
+			for(let i=0; i < reviewlist.length;i++){
+				
+				if(thumbsChk == 'all'){
+					reviewlistData = reviewlist;
+				}else{
+					if(reviewlist[i].flag == thumbsChk){
+						reviewlistData.push(reviewlist[i]);
+					}
+				}
+			}
+			HtmlPrint();
+		}
+		reviewListSet();
+		
+		function changeFlag(v) {
+			document.getElementById('thumbsChk').value = v;
+			reviewListSet();
+		}
+		
+		const moveBack = () =>{
+    		window.history.back();
+    	}
+		
+		
 	</script>
 	<% }%>
 
