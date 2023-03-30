@@ -180,7 +180,7 @@ input:focus {
 				<form action="JoinCon.do" method="post">
 					<p style="text-align: left;">닉네임</p>
 					<input class="userInput" type="text" name="nick"
-						placeholder="닉네임을 적어주세요." style="border-bottom: none;"> 
+						placeholder="닉네임을 적어주세요."> 
 					<p style="text-align: left;">주소</p>	
 					<select style="margin-bottom: 10px;">
 			<option value="행정구">행정구</option>

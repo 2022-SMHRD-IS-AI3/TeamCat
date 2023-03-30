@@ -38,9 +38,11 @@ button {
     vertical-align: middle;
         }
         
-        button:hover{
-        
-        }
+        button:active {
+  box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
+}
         
         li {
 			list-style: none;
@@ -54,11 +56,18 @@ button {
 	border: none;
 	background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 	float: right;
-	margin-right: 10px;
+	
+  cursor: pointer;
+  outline: none;
+ 
 }
 
-	#endBtn:hover {
+	#endBtn:active {
 	color: #527fef;
+	box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
+  position: relative;
+  top:2px;
+	
 }
 
 
