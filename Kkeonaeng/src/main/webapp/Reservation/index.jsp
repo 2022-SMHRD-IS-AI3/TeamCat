@@ -286,9 +286,14 @@
 
         ._1o1a6ke8 {
             line-height: 1.3;
-            margin: 0.25rem 0 0;
-            color: #212124;
-            font-weight: 700;
+		    margin: -0.75rem 0px 8px 170px;
+		    color: #ffffff;
+		    font-weight: 700;
+		    font-size: 0.9rem;
+		    background: #ff5252;
+		    display: block;
+		    border-radius: 7px;
+		    padding: 5px;
         }
 
         .row>* {
@@ -313,7 +318,7 @@
 			response.sendRedirect("/Kkeonaeng/Login/");
 		}else{
 		List<ProductDTO> product_list =	new ReservationDAO().reservationList(info.getUser_idx());
-		
+		// rv_idx 를 가져올 방도가 없다...dto 좀더 다시 고민
 	%>
 	<div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
@@ -341,8 +346,8 @@
                             %>
 
 	                            <li class="_4a1tzy2">
-	                                <a class="smb-list-item _1o1a6ke0 korcsc4" href="/Kkeonaeng/Product/Detail/?p_idx=<%=product_list.get(i).getP_idx()%>">
-	                                    <div class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
+	                                <a class="smb-list-item _1o1a6ke0 korcsc4" href="">
+	                                    <div onclick="moveUrl('/Kkeonaeng/Product/Detail/?p_idx=<%=product_list.get(i).getP_idx()%>')" class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
 	                                        <div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
 	
 	                                            <img class="thumbnail-image qudd1g9"
@@ -352,16 +357,17 @@
 	                                    </div>
 	
 	                                    <div class="smb-list-item-content _1o1a6ke3">
-	                                        <div class="smb-list-item-name-wrapper _1o1a6ke4">
+	                                        <div onclick="moveUrl('/Kkeonaeng/Product/Detail/?p_idx=<%=product_list.get(i).getP_idx()%>')" class="smb-list-item-name-wrapper _1o1a6ke4">
 	                                            <span class="smb-list-item-name _1o1a6ke5"><%=product_list.get(i).getP_name() %></span>
 	
 	                                        </div>
 	                                        <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getContact_addr() %></span>
-	                                        <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span>
-	                                        <span class="wish">
+	                                        <span onclick="reservationCancel('rv_idx',p_idx)" class="smb-list-item-infos _1o1a6ke8">예약취소</span>
+	                                        <%-- <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span> --%>
+	                                        <!-- <span class="wish">
 	                                            <img src="../img/heart.svg" alt="">
 	                                            <span style="vertical-align: top; font-weight: 600;">132</span>
-	                                        </span>
+	                                        </span> -->
 	                                    </div>
 	                                </a>
 	
@@ -375,7 +381,7 @@
         </div>
     </div>
     
-        <div class="QuickMenuMobile">
+    <div class="QuickMenuMobile">
         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Main.jsp')">
             <div class="menu fl-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -437,6 +443,13 @@
     		window.history.back();
     	}
     
+    	// 예약취소
+    	function reservationCancel(rv_idx,p_idx){
+    		if(confirm('예약을 취소하시겠습니까?')){
+    			location.href = 'ReservationDeleteCon.do?p_idx='+p_idx+'&rv_idx='+rv_idx;
+    		}
+    		
+    	}
     
     </script>
     <%} %>

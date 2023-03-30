@@ -7,15 +7,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.smhrd.model.ReservationDAO">
 
 	
-	<!-- 파일 업로드 -->
+	<!-- 예약 등록 -->
 	<insert id="reservation" parameterType="ReservationDTO">
 		insert into reservation_info values(reservation_info_seq.nextval,#{user_idx},#{p_idx},#{rv_start_date},#{rv_end_date})
 	</insert>
 	
-	<!-- 나의 예약 내역 -->
+	<!-- 나의 예약내역 -->
 	<select id="reservationList" parameterType="int" resultType="ProductDTO">
-		select p.* from product_info p inner join reservation_info r on p.p_idx = r.p_idx where r.user_idx = #{user_idx} order by r.rv_start_date 
+		select p.* from product_info p inner join reservation_info r on p.p_idx = r.p_idx where p.p_flag!=9 and r.user_idx = #{user_idx} order by r.rv_start_date 
 	</select>
+	
+	<!-- 예약자 목록 -->
+	<select id="reservationUserList" parameterType="int" resultType="ReservationDTO">
+		select r.*, u.nick from reservation_info r, user_info u where r.user_idx = u.user_idx and r.p_idx = #{p_idx} 
+	</select>
+	
+	<!-- 예약삭제 -->
+	<delete id="reservationDelete" parameterType="int">
+		delete from reservation_info where rv_idx = #{rv_idx}
+	</delete>
+	
 
 	
 </mapper>

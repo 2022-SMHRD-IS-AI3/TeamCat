@@ -231,7 +231,7 @@ h1.title {
 				String file = new FileDAO().fileSelect(new FileDTO(0,"product",dto.getP_idx()));
 			%>
             <div class="col-4">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width: 100%;" onclick="moveUrl('./Product/Detail/?p_idx=<%=dto.getP_idx()%>')">
 
                     <img src="/Kkeonaeng/file/<%=file %>"
                         class="card-img-top" alt="...">
@@ -259,7 +259,7 @@ h1.title {
 				String file = new FileDAO().fileSelect(new FileDTO(0,"product",dto.getP_idx()));
 			%>
             <div class="col-4">
-                <div class="card" style="width: 100%;">
+                <div class="card" style="width: 100%;" onclick="moveUrl('./Product/Detail/?p_idx=<%=dto.getP_idx()%>')">
 
                     <img src="/Kkeonaeng/file/<%=file %>"
                         class="card-img-top" alt="...">

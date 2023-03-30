@@ -17,6 +17,7 @@ import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.RecoveryCon;
 import com.smhrd.controller.ReservationCon;
+import com.smhrd.controller.ReservationDeleteCon;
 import com.smhrd.controller.ReviewDeleteCon;
 import com.smhrd.controller.ReviewUpdateCon;
 import com.smhrd.controller.UpdateCon;
@@ -106,6 +107,9 @@ public class Frontcontroller extends HttpServlet {
 		}else if (result.equals("RecoveryCon.do")) {
 			
 			con = new RecoveryCon();
+		}else if (result.equals("ReservationDeleteCon.do")) {
+			
+			con = new ReservationDeleteCon();
 		
 		}
 		response.sendRedirect(con.execute(request,response));
