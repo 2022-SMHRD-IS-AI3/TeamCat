@@ -53,6 +53,7 @@
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     height: 2rem;
+    padding: 5px;
         }
          
          a {
