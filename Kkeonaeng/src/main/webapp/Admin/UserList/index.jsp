@@ -51,15 +51,16 @@
 				}
 			%>
 			<tr>
-				<td><%=user.getUser_idx()%></td>
-				<td><%=user.getNick()%></td>
-				<td><%=user.getGender()%></td>
-				<td><%=user.getKakao_id()%></td>
-				<td><%=user.getReg_date()%></td>
-				<td><%=user.getUser_flag()%></td>
+				<td><%=user.getUser_idx() %></td>
+				<td><%=user.getNick() %></td>
+				<td><%=user.getGender() %></td>
+				<td><%=user.getKakao_id() %></td>
+				<td><%=user.getReg_date() %></td>
+				<td><%=user.getUser_flag() %></td>
 				<td>
 					<button
-						onclick="moveUrl('<%=urlCon%>?admin=y&user_idx=<%=user.getUser_idx()%>')"><%=flag%></button>
+						onclick="moveUrl('<%=urlCon%>?admin=y&user_idx=<%=user.getUser_idx()%>')"><%=flag%>
+					</button>
 				</td>
 			</tr>
 
@@ -73,6 +74,6 @@
 	const moveUrl = (url) => {
 		location.href = url;
 	}
-</script>
+	</script>
 </body>
 </html>
