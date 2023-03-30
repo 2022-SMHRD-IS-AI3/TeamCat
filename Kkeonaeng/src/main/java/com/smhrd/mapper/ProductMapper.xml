@@ -18,7 +18,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 게시물 상세정보보기 -->
 	<select id="ProductDetail" parameterType="int" resultType="ProductDTO">
-		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx and p_idx = #{p_idx}
+		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx and a.p_flag != 9 and p_idx = #{p_idx}
 	</select>
 	
 	<!-- 게시물 수정 -->
@@ -44,6 +44,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="ProductSearch" resultType= "ProductDTO" parameterType="String">
 		select * from product_info where p_flag != 9 and (p_name like '%'||#{parameter}||'%' or p_contents like '%'||#{parameter}||'%') order by p_idx desc
 	</select>	
+	
+	<!-- 게시물 찜 1~3위 -->
+	<select id="ProductWishRank" resultType= "ProductDTO">
+		select p.* from (select p_idx , count(*) cnt from wishlist_info group by p_idx  order by cnt desc, p_idx desc) w inner join product_info p on w.p_idx = p.p_idx where p.p_flag != 9 and rownum &lt;= 3
+	</select>
+	
+	<!-- 게시물 최근 3개 -->
+	<select id="ProductNewAll" resultType= "ProductDTO">
+		select * from (select * from product_info where p_flag != 9 order by p_idx desc) where rownum &lt;= 3
+	</select>	
+	
 	
 	
 </mapper>
