@@ -203,7 +203,6 @@ color:  #343a40;
 	    	
 	    	<strong id="nick"><%=info.getNick()%></strong>
         	<a href="./info/"><button>정보수정</button></a>
-	    	
 	    	</div>
 	    	</div>
 	    	<hr>
