@@ -162,6 +162,13 @@ hr {
 i{
 padding-left:10px;
 }
+
+#profile_img{
+	object-fit : cover;
+}
+
+
+
 	</style>
 
 </head>

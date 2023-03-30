@@ -175,7 +175,7 @@ input:focus {
 		<div class="text-center mt-5">
 			<div class="myform">
 				<div class="logo">
-					<img src="/Kkeonaeng/img/circle-user-regular.svg" alt="프로필 사진" style="width: 100px; height: 100px;">
+					<img src="/Kkeonaeng/file/unknown.png" alt="프로필 사진" style="width: 100px; height: 100px;border-radius: 50%;">
 				</div>
 				<form action="JoinCon.do" method="post">
 					<p style="text-align: left;">닉네임</p>
