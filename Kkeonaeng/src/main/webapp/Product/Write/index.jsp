@@ -188,15 +188,17 @@
 
                         </td>
                         <td>
-                            <div id="divWrap">
-
-                                <div id="image_container">
-                                	<% if(p_idx != null){ 
+                     
                                 		String filename = "";
 										String file = new FileDAO().fileSelect(new FileDTO(0, "product", Integer.parseInt(p_idx)));
 													
 										if (file != null) {
 											filename = file;
+										}
+													
+										%> Integer.parseInt(p_idx)));
+													
+									eng/file/<%= filename  %>								filename = file;
 										}
 													
 										%>
@@ -280,6 +282,9 @@
 	        
 	    	
            for (var image of event.target.files) {
+        	   
+        	document.getElementById('fileExt').value = (image.name).split('.')[1];
+       	    document.getElementById('filesize').value = file.size;
            	if (fileUploadCnt <= 5) {
 	                fileUploadCnt++;
 	                var reader = new FileReader();
@@ -336,6 +341,7 @@
         }
         
         const fileChange =($target) => {
+        	console.log(123123123123)
     	    var file = $target.files[0];
     	    document.getElementById('fileExt').value = (file.name).split('.')[1];
     	    document.getElementById('filesize').value = file.size;
@@ -344,6 +350,8 @@
     	      	document.getElementById('file_view').src = e.target.result;
     	    };
     	    reader.readAsDataURL(file);
+    	    
+    	    console.log(document.getElementById('fileExt').value)
         } 
         
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
