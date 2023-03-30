@@ -61,6 +61,7 @@ public class ProductWriteCon implements Command {
 				String fileExt = multi.getParameter("fileExt");
 
 				FileDTO fdto = new FileDTO(0, "product", p_idx, filename_en, fileExt, path, filesize);
+				System.out.println( p_idx +" - "+ filename_en +" - "+ fileExt +" - "+ path +" - "+ filesize );
 				int cnt = new FileDAO().fileUpload(fdto);
 				System.out.println(cnt);
 				

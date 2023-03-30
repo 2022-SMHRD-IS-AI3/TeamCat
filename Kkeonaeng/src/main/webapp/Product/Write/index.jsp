@@ -5,7 +5,7 @@
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +27,7 @@
     <script src='http://jquery-multifile-plugin.googlecode.com/svn/trunk/jquery.blockUI.js' type="text/javascript"
         language="javascript"></script> -->
 
-	<style>
+   <style>
         tr {
             border-bottom: 1px solid #dddddd
         }
@@ -91,11 +91,11 @@
             font-weight: bold;
         }
 
-		.me-3:hover {
-		color:#527fef;
-		cursor: pointer;
-		}
-		
+      .me-3:hover {
+      color:#527fef;
+      cursor: pointer;
+      }
+      
         button {
             height: 40px;
             width: 150px;
@@ -119,47 +119,47 @@
         }
         
         #contact_addr {
-        	margin-top: 10px;
-        	border-bottom: 2px solid #cccccc;
+           margin-top: 10px;
+           border-bottom: 2px solid #cccccc;
         }
         
         
     </style>
 </head>
 <body>
-	<%
-	UserDTO info = (UserDTO) session.getAttribute("info");
-	String p_idx = request.getParameter("p_idx");
-	String actionUrl = "ProductWriteCon.do";
-	String writeType = "글쓰기";
-	String p_name = "";
-	int price = 0;
-	String p_contents = "";
-	String contact_addr = "";
-	String contact_gps = "";
-	int c_idx = 0;
-	if(p_idx != null){
-		actionUrl = "ProductUpdateCon.do?p_idx="+p_idx;
-		writeType = "글수정";
-		
- 		ProductDTO dto = new ProductDAO().ProductDetail(Integer.parseInt(p_idx));
-		p_name = dto.getP_name();
-		price = dto.getPrice();
-		contact_addr = dto.getContact_addr();
-		contact_gps = dto.getContact_gps();
-		p_contents = dto.getP_contents();
-		c_idx = dto.getC_idx();
-		String[] gpsArr = contact_gps.split(",");	
-		
-	}
-	
-	if (info == null) {
-		response.sendRedirect("/Kkeonaeng/Login/");
-	} else {
-		
-	%>
-	
-	<!-- Responsive navbar-->
+   <%
+   UserDTO info = (UserDTO) session.getAttribute("info");
+   String p_idx = request.getParameter("p_idx");
+   String actionUrl = "ProductWriteCon.do";
+   String writeType = "글쓰기";
+   String p_name = "";
+   int price = 0;
+   String p_contents = "";
+   String contact_addr = "";
+   String contact_gps = "";
+   int c_idx = 0;
+   if(p_idx != null){
+      actionUrl = "ProductUpdateCon.do?p_idx="+p_idx;
+      writeType = "글수정";
+      
+       ProductDTO dto = new ProductDAO().ProductDetail(Integer.parseInt(p_idx));
+      p_name = dto.getP_name();
+      price = dto.getPrice();
+      contact_addr = dto.getContact_addr();
+      contact_gps = dto.getContact_gps();
+      p_contents = dto.getP_contents();
+      c_idx = dto.getC_idx();
+      String[] gpsArr = contact_gps.split(",");   
+      
+   }
+   
+   if (info == null) {
+      response.sendRedirect("/Kkeonaeng/Login/");
+   } else {
+      
+   %>
+   
+   <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
                 <span class="navbar-brand" style="font-weight: bold;">
@@ -171,7 +171,7 @@
     </nav>
     
     
-	 <!-- Page content-->
+    <!-- Page content-->
     <div class="container" style="padding-top: 20px;">
         <div class="text-center mt-5">
             <form name="formdata" method="post" action="ProductWriteCon.do" enctype="multipart/form-data">
@@ -193,24 +193,24 @@
                             <div id="divWrap">
 
                                 <div id="image_container">
-                                	<% if(p_idx != null){ 
-                                		String filename = "";
-										String file = new FileDAO().fileSelect(new FileDTO(0, "product", Integer.parseInt(p_idx)));
-													
-										if (file != null) {
-											filename = file;
-										}
-													
-										%>
-                                		<img src="/Kkeonaeng/file/<%= filename  %>">
-                                	<%} %>
+                                   <% if(p_idx != null){ 
+                                      String filename = "";
+                              String file = new FileDAO().fileSelect(new FileDTO(0, "product", Integer.parseInt(p_idx)));
+                                       
+                              if (file != null) {
+                                 filename = file;
+                              }
+                                       
+                              %>
+                                      <img src="/Kkeonaeng/file/<%= filename  %>">
+                                   <%} %>
                                 
                                 </div>
                             </div>
                         </td>
                     </tr>
-				<tr>
-				<tr>
+            <tr>
+            <tr>
                     <td colspan="2"><input type="text" class="p_name" placeholder="글 제목" name="p_name"
                                 id="p_name" maxlength="50" value="<%=p_name%>">
                     </td>
@@ -270,40 +270,41 @@
                     </td>
                 </tr>
        
-			</table>
-		</form>
-	</div>
-	</div>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
-	<script>
-	   let fileUploadCnt = 0;
-	    function setThumbnail(event) {
-	        
-	    	
+         </table>
+      </form>
+   </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
+   <script>
+      let fileUploadCnt = 0;
+       function setThumbnail(event) {
+           
+          
            for (var image of event.target.files) {
-           	if (fileUploadCnt <= 5) {
-	                fileUploadCnt++;
-	                var reader = new FileReader();
-	
-	                reader.onload = function (event) {
-	                	fileUploadCnt++;
-	                    var img = document.createElement("img");
-	                    img.setAttribute("src", event.target.result);
-	                    document.querySelector("div#image_container").appendChild(img);
-	                };
-	
-	                reader.readAsDataURL(image);
-            	} else {
-    	            alert("첨부 사진은최대 5장까지만 가능합니다.")
-    	            break;
-	    	    }
-	        }
-	       
-	    }
-		
-	    // 접기
-		var bDisplay = true;
+              if (fileUploadCnt < 5) {
+                 document.getElementById('fileExt').value = (image.name).split('.')[1];
+               document.getElementById('filesize').value = image.size;
+                   var reader = new FileReader();
+   
+                   reader.onload = function (event) {
+                      fileUploadCnt++;
+                       var img = document.createElement("img");
+                       img.setAttribute("src", event.target.result);
+                       document.querySelector("div#image_container").appendChild(img);
+                   };
+   
+                   reader.readAsDataURL(image);
+               } else {
+                   alert("첨부 사진은최대 5장까지만 가능합니다.")
+                   break;
+              }
+           }
+          
+       }
+      
+       // 접기
+      var bDisplay = true;
         function doDisplay() {
             var con = document.getElementById("myDIV");
 
@@ -314,15 +315,15 @@
                 con.style.display = 'none';
             }
         }
-		
-		/* for (var i = 0; i < target.length; i++) {
+      
+      /* for (var i = 0; i < target.length; i++) {
             target[i].addEventListener('click', function () {
                 targetID = this.getAttribute('href');
                 document.querySelector(targetID).style.display = 'block';
             });
         } */
-		
-		
+      
+      
         const addrDel = () => {
             document.getElementById('contact_addr').value = '';
             document.getElementById('contact_addr_view').innerText = '';
@@ -338,14 +339,14 @@
         }
         
         const fileChange =($target) => {
-    	    var file = $target.files[0];
-    	    document.getElementById('fileExt').value = (file.name).split('.')[1];
-    	    document.getElementById('filesize').value = file.size;
-        	var reader = new FileReader();
-        	reader.onload = function(e) { 
-    	      	document.getElementById('file_view').src = e.target.result;
-    	    };
-    	    reader.readAsDataURL(file);
+           var file = $target.files[0];
+           document.getElementById('fileExt').value = (file.name).split('.')[1];
+           document.getElementById('filesize').value = file.size;
+           var reader = new FileReader();
+           reader.onload = function(e) { 
+                document.getElementById('file_view').src = e.target.result;
+           };
+           reader.readAsDataURL(file);
         } 
         
         var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -373,7 +374,7 @@
         });
 
     } else { // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-		
+      
         var locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
 
         displayMarker(locPosition);
@@ -412,63 +413,63 @@
     var textarea = document.getElementById("myTextarea");
     textarea.value = "<%=p_contents %>"
  
-    	let arr = [{k:"1",v:"디지털기기"},{k:"2",v:"생활가전"},{k:"3",v:"가구/인테리어"},{k:"4",v:"생활/주방"},{k:"5",v:"유/아동"},{k:"6",v:"여성의류/잡화"},{k:"7",v:"뷰티/미용"},{k:"8",v:"스포츠/레저"},
-    		{k:"9",v:"취미/게임/음반"},{k:"10",v:"도서"},{k:"11",v:"반려동물용품"},{k:"12",v:"기타"}];
-    	
-    	var optionHtml = '<option value="">--카테고리--</option>';
-    	for(var j=0;j<arr.length;j++){
-    		var selected = '';
-    		if(arr[j].k == <%=c_idx%>){
-    			selected = 'selected';
-    		}
-    		optionHtml +=`<option value="${arr[j].k}" ${selected}>${arr[j].v}</option>`;
-    	}
-    	document.getElementById('c_idx').innerHTML = optionHtml;
-    	
-    	
-    	function submitData(){
-    		
-    		var input1 = document.getElementById("p_name").value;
-    		var input2 = document.getElementById("c_idx").value;
-    		var input3 = document.getElementById("myTextarea").value;
-    		var input4 = document.getElementById("contact_addr").value;
-    		var input5 = document.getElementById("contact_gps").value;
-    		var input6 = document.getElementById("file").value;
-    	
-    		if (input1 == "") {
-    			alert("글 제목을 입력해주세요.");
-    			return;
-    		}
-    		if (input2 == "") {
-    			alert("카테고리를 입력해주세요.");
-    			return;
-    		}
-    		if (input3 == "") {
-    			alert("물품에 대한 내용을 입력해주세요.");
-    			return;
-    		}
-    		if (input4 == "") {
-    			alert("거래 할 장소를 체크해주세요.");
-    			return;
-    		}
-    		if (input5 == "") {
-    			alert("상세장소를 입력해주세요.");
-    			return;
-    		}
-    		if (input6 == "") {
-    			alert("사진을 올려주세요.");
-    			return;
-    		}	
-    		
-    		let formdata = document.formdata;
-    		formdata.action = "<%=actionUrl %>";
-    		formdata.submit();		 		
-    	}
-			
+       let arr = [{k:"1",v:"디지털기기"},{k:"2",v:"생활가전"},{k:"3",v:"가구/인테리어"},{k:"4",v:"생활/주방"},{k:"5",v:"유/아동"},{k:"6",v:"여성의류/잡화"},{k:"7",v:"뷰티/미용"},{k:"8",v:"스포츠/레저"},
+          {k:"9",v:"취미/게임/음반"},{k:"10",v:"도서"},{k:"11",v:"반려동물용품"},{k:"12",v:"기타"}];
+       
+       var optionHtml = '<option value="">--카테고리--</option>';
+       for(var j=0;j<arr.length;j++){
+          var selected = '';
+          if(arr[j].k == <%=c_idx%>){
+             selected = 'selected';
+          }
+          optionHtml +=`<option value="${arr[j].k}" ${selected}>${arr[j].v}</option>`;
+       }
+       document.getElementById('c_idx').innerHTML = optionHtml;
+       
+       
+       function submitData(){
+          
+          var input1 = document.getElementById("p_name").value;
+          var input2 = document.getElementById("c_idx").value;
+          var input3 = document.getElementById("myTextarea").value;
+          var input4 = document.getElementById("contact_addr").value;
+          var input5 = document.getElementById("contact_gps").value;
+          var input6 = document.getElementById("file").value;
+       
+          if (input1 == "") {
+             alert("글 제목을 입력해주세요.");
+             return;
+          }
+          if (input2 == "") {
+             alert("카테고리를 입력해주세요.");
+             return;
+          }
+          if (input3 == "") {
+             alert("물품에 대한 내용을 입력해주세요.");
+             return;
+          }
+          if (input4 == "") {
+             alert("거래 할 장소를 체크해주세요.");
+             return;
+          }
+          if (input5 == "") {
+             alert("상세장소를 입력해주세요.");
+             return;
+          }
+          if (input6 == "") {
+             alert("사진을 올려주세요.");
+             return;
+          }   
+          
+          let formdata = document.formdata;
+          formdata.action = "<%=actionUrl %>";
+          formdata.submit();             
+       }
+         
     </script>
-	<%
-	}
-	%>
-	
+   <%
+   }
+   %>
+   
 </body>
 </html>
