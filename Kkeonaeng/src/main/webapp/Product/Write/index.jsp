@@ -26,7 +26,6 @@
         language="javascript"></script>
     <script src='http://jquery-multifile-plugin.googlecode.com/svn/trunk/jquery.blockUI.js' type="text/javascript"
         language="javascript"></script> -->
-    <script src="https://kit.fontawesome.com/c108db6a29.js" crossorigin="anonymous"></script>
 
 	<style>
         tr {
@@ -118,6 +117,11 @@
         #addr {
             font-size: 0.85rem;
         }
+        
+        #contact_addr {
+        	margin-top: 10px;
+        	border-bottom: 2px solid #cccccc;
+        }
     </style>
 </head>
 <body>
@@ -154,21 +158,19 @@
 	%>
 	
 	<!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a href="../" style="text-decoration-line: none;">
-                <i class="fa-solid fa-chevron-left"></i>
-                <span class="navbar-brand">대여 <%=writeType %></span>
-            </a>
-
-            
+                <span class="navbar-brand" style="font-weight: bold;">
+                <a href="../" style="text-decoration-line: none;">
+                <i class="fa-solid fa-chevron-left"></i></a>대여 <%=writeType %></span>
                 <span id="submit" class="me-3" onclick="submitData()">완료</span>
             
         </div>
     </nav>
     
+    
 	 <!-- Page content-->
-    <div class="container">
+    <div class="container" style="padding-top: 20px;">
         <div class="text-center mt-5">
             <form name="formdata" method="post" action="ProductWriteCon.do" enctype="multipart/form-data">
                 <input type="hidden" name="user_idx" id="user_idx" value="<%=info.getUser_idx()%>">
@@ -245,33 +247,31 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <textarea class="content" placeholder="물품에 대한 내용을 작성하세요." name="p_contents" id="myTextarea" maxlength="2048"></textarea>
+                        <textarea style="font-size: 13px;" class="content" placeholder="물품에 대한 상세 설명을 작성하세요.&#13;&#10;자세할수록 다른 고객이 물건 선택하는 데 도움이 돼요!" name="p_contents" id="myTextarea" maxlength="2048"></textarea>
                     </td>
                 </tr>
                 <!-- 카카오 맵 -->
                 <tr>
                     <td align="left" colspan="2">
-                    거래가능장소<span class="addrText"></span>
+                    <details>
+                    <summary>거래가능장소</summary>
                     
-                        <i onclick="doDisplay()" class="fa-solid fa-angle-down" style="float:right;"
-                            style="padding: 0;"></i>
                         <div id="myDIV" align="left">
                             <p style="font-weight: bold;">만나서 거래할 때에는 안전한 공공장소에서 거래하세요.</p>
                             <p>원하는 거래 위치를 클릭하고 상세 장소명을 입력하세요.</p>
                             <div id="map" style="width:100%;height:350px;"></div>
                             <input type="hidden" name="contact_gps" id="contact_gps" value="<%=contact_gps %>">
                             <input type="text" id="contact_addr" name="contact_addr" placeholder="상세 장소를 입력해주세요" value="<%=contact_addr %>">
+                        
                         </div>
-                        <div>
-                            <button type="button" onclick="saveAddr()">거래장소선택완료</button>
-                        </div>
+                        </details>
                     </td>
                 </tr>
-				
+       
 			</table>
 		</form>
 	</div>
-	
+	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
 	<script>
@@ -300,6 +300,7 @@
 	       
 	    }
 		
+	    // 접기
 		var bDisplay = true;
         function doDisplay() {
             var con = document.getElementById("myDIV");
