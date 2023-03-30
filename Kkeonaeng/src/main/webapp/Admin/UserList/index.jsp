@@ -21,6 +21,14 @@
 <body>
 	<div>
     	<table border="1">
+       		<tr>
+            	<th>회원순번(user_idx)</th>
+                <th>닉네임</th> 
+                <th>성별</th> 
+                <th>카카오계정</th> 
+                <th>등록일</th> 
+                <th>회원상태</th> 
+          	</tr>
 	<%
 	UserDTO info = (UserDTO)session.getAttribute("info");
 	
@@ -32,33 +40,15 @@
 		
 		
                 <tr>
-                    <th>user_idx</th>
-                    <th>닉네임</th> 
-                    <th>카카오 아이디</th> 
-                    <th></th> 
-                    <th>nick</th> 
-                    <th>nick</th> 
+                    <td><%=user.getUser_idx() %></td>
+                    <td><%=user.getNick() %></td>
+                    <td><%=user.getGender() %></td>
+                    <td><%=user.getKakao_id() %></td>
+                    <td><%=user.getReg_date() %></td>
+                    <td><%=user.getUser_flag() %></td>
+                    <td></td>
                 </tr>
-                <tr>
-                    <td>nick</td>
-                    <td><%=user.get %></td> 
-                </tr>
-                <tr>
-                    <td>gender</td>
-                    <td><%=info.getGender(i) %></td> 
-                </tr>
-                <tr>
-                    <td>kakao_id</td>
-                    <td><%=info.getKakao_id(i) %></td> 
-                </tr>
-                <tr>
-                    <td>reg_date</td>
-                    <td><%=info.getReg_date(i) %></td> 
-                </tr>
-                <tr>
-                    <td>user_flag</td>
-                    <td><%=info.getUser_flag(i) %></td> 
-                </tr>
+               
     <%} %>
             </table>
         </div>
