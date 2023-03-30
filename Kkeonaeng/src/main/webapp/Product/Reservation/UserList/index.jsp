@@ -228,9 +228,6 @@
 	const moveBack = () =>{
 		window.history.back();
 	}
-	http://localhost:8087/Kkeonaeng/Product/Detail/?p_idx=40
-	http://localhost:8087/Kkeonaeng/Product/Detail/?p_idx=40
-	http://localhost:8087/Kkeonaeng/Product/Detail/?p_idx=66
 	// 예약취소
 	function reservationCancel(rv_idx){
 		if(confirm('예약을 취소하시겠습니까?')){
