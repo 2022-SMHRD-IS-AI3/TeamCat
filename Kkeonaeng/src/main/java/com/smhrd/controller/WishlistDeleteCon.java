@@ -14,6 +14,7 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		int user_idx = Integer.parseInt(request.getParameter("user_idx"));
 		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 		System.out.println(p_idx);
+		
 		WishlistDAO dao = new WishlistDAO();
 		int cnt = dao.WishlistDelete(new WishlistDTO(0,user_idx, p_idx));
 		

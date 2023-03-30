@@ -65,14 +65,21 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		return cnt;
 	}
 	
-	// 회원정보 모두 가져오기 (관리자용 추후 사용)
+	// 회원정보 모두 가져오기 (Admin)
 	public List<UserDTO> userAll() {
-		
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		
 		List<UserDTO> list = sqlsession.selectList("userAll");
 		sqlsession.close();
 		return list;
+	}
+	
+	// 유저 복구 하기 (Admin)
+	public int recovery(int user_idx) {
+		SqlSession sqlsession = sqlSessionFactory.openSession(true);
+		int cnt = sqlsession.update("recovery",user_idx);
+		sqlsession.close();
+		
+		return cnt;
 	}
 	
 }
