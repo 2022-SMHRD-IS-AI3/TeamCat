@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 회원가입 -->
 	<insert id="join" parameterType="UserDTO">
-		insert into user_info  values( user_info_seq.nextval, #{nick}, #{gender}, #{kakao_id}, sysdate, 'Y')
+		insert into user_info  values( user_info_seq.nextval, #{nick}, #{gender}, #{kakao_id}, sysdate, 'Y', #{rg_idx})
 	</insert>
 	
 	<!-- 로그인 -->
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 정보수정 -->
 	<update id="update" parameterType="UserDTO">
-		update user_info set nick = #{nick} where user_idx = #{user_idx}
+		update user_info set nick = #{nick}, rg_idx = #{rg_idx} where user_idx = #{user_idx}
 	</update>
 	
 	<!-- 회원이용중지 -->

@@ -16,8 +16,9 @@ public class JoinCon implements Command {
 		String nick = request.getParameter("nick");
 		String gender = request.getParameter("gender");
 		String kakao_id = request.getParameter("kakao_id");
+		int rg_idx = Integer.parseInt(request.getParameter("rg_idx"));
 
-		UserDTO dto = new UserDTO(0, nick, gender, kakao_id, null, null, null);
+		UserDTO dto = new UserDTO(0, nick, gender, kakao_id, null, null, null,rg_idx);
 		System.out.println(nick + " - " + gender + " - " + kakao_id); // 지울예정
 
 		UserDAO dao = new UserDAO();
@@ -31,7 +32,7 @@ public class JoinCon implements Command {
 		
 		} else {
 			System.out.println("회원가입실패"); // 지울예정
-			moveURL = "./index.jsp?result=300&g="+gender+"&k="+kakao_id; // 실패시 어떻게 할 것인지
+			moveURL = "./index.jsp?result=300&g="+gender+"&k="+kakao_id+"&rg_idx="+rg_idx; // 실패시 어떻게 할 것인지
 		}
 
 		return moveURL;

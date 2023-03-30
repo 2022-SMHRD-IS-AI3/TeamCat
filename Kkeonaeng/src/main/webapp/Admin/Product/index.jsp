@@ -22,21 +22,41 @@
 				<th>대여가격</th>
 				<th>물건설명</th>
 				<th>물건등록일시</th>
+				<th>선택</th>
 			</tr>
 			
-			<% 
+			<%
 			List<ProductDTO> product_list = new ProductDAO().ProductAll();
+			
 			for (int i=0; i<product_list.size(); i++) {
+
 				ProductDTO product = product_list.get(i);
-			} %>
+				String urlCon = "ProductDeleteCon.do";
+			%>
 			<tr>
-				<td><%=product.getP_idx()%></td>
-				
+				<td><%=product.getP_idx() %></td>
+				<td><%=product.getUser_idx() %></td>
+				<td><%=product.getP_name() %></td>
+				<td><%=product.getC_idx() %></td>
+				<td><%=product.getContact_addr() %></td>
+				<td><%=product.getContact_gps() %></td>
+				<td><%=product.getPrice() %></td>
+				<td><%=product.getP_contents() %></td>
+				<td><%=product.getP_reg_date() %></td>
 				<td>
-					<button></button>
+					<button onclick="moveUrl('<%=urlCon%>?admin=y&p_idx=<%=product.getP_idx()%>')">
+						삭제
+					</button>
 				</td>
 			</tr>
+			<%} %>
 		</table>
 	</div>
+	
+	<script type="text/javascript">
+	const moveUrl = (url) => {
+		location.href = url;
+	}
+	</script>
 </body>
 </html>
