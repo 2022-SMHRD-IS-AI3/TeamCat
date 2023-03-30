@@ -185,7 +185,8 @@ color:  #343a40;
 	 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">마이페이지</p>
+				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">
+				마이페이지</p>
 		</div>
 	</nav>
 	
