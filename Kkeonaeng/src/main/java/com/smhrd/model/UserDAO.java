@@ -66,9 +66,9 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	}
 	
 	// 회원정보 모두 가져오기 (Admin)
-	public List<UserDTO> userAll() {
+	public List<AdminUserDTO> userAll() {
 		SqlSession sqlsession = sqlSessionFactory.openSession(true);
-		List<UserDTO> list = sqlsession.selectList("userAll");
+		List<AdminUserDTO> list = sqlsession.selectList("userAll");
 		sqlsession.close();
 		return list;
 	}
