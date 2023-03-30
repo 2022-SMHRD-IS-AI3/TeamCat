@@ -57,7 +57,7 @@ button {
 	border: none;
 	background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 	float: right;
-	
+	 padding: 0 10px;
   cursor: pointer;
   outline: none;
  
@@ -65,9 +65,11 @@ button {
 
 	#endBtn:active {
 	color: #527fef;
-	box-shadow: 1px 1px 0 rgb(0,0,0,0.5);
-  position: relative;
-  top:2px;
+	border: 1px solid #527fef;
+	border-radius: 4px;
+	font-weight: bold;
+	vertical-align: middle;
+	
 	
 }
 
@@ -99,11 +101,7 @@ overflow: hidden;
     text-align: center;
     height: 100%;}
     
-    i {
-    width: 16px;
-    height: 12px;
-    
-    }
+   
     
     label.profileBtn {
     display: inline-block;
@@ -193,14 +191,15 @@ select {
 	<!-- navbar -->
 	<form action="UpdateCon.do" method="post"
 				enctype="multipart/form-data">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
 		<div class="container">
 			
 				<a href="/Kkeonaeng/MyPage/index.jsp"
 					style="text-decoration-line: none;"> <i
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
-				</a> <strong class="navbar-brand">내 정보 수정</strong>
+				</a> 
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내 정보 수정</strong>
 				<input type="submit"
 					value="완료" id="endBtn" style="margin: 0;">
 		</div>
