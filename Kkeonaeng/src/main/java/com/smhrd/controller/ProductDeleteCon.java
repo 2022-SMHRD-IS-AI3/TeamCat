@@ -13,7 +13,6 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		
 		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 		String admin = request.getParameter("admin");
-		System.out.println(p_idx);
 		ProductDAO dao = new ProductDAO();
 		int cnt = dao.ProductDelete(p_idx);
 		
