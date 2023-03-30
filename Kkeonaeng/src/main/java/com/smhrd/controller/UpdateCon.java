@@ -68,8 +68,6 @@ public class UpdateCon implements Command {
 					System.out.println(1+post_idx);
 					
 					FileDTO fdto = new FileDTO(0,"profile",user_idx,filename_en,fileExt,path,filesize);
-					System.out.println( p_idx +" - "+ filename_en +" - "+ fileExt +" - "+ path +" - "+ filesize );
-
 					cnt = new FileDAO().fileUpload(fdto);
 					System.out.println(cnt);
 					
