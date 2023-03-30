@@ -16,6 +16,8 @@ import com.smhrd.controller.ProductSearchCon;
 import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.ReservationCon;
+import com.smhrd.controller.ReviewDeleteCon;
+import com.smhrd.controller.ReviewUpdateCon;
 import com.smhrd.controller.UpdateCon;
 import com.smhrd.controller.WishlistDeleteCon;
 import com.smhrd.controller.WishlistUpdateCon;
@@ -91,6 +93,14 @@ public class Frontcontroller extends HttpServlet {
 		}else if (result.equals("WishlistDeleteCon.do")) {
 			
 			con = new WishlistDeleteCon();
+		
+		}else if (result.equals("ReviewUpdateCon.do")) {
+			
+			con = new ReviewUpdateCon();
+		
+		}else if (result.equals("ReviewDeleteCon.do")) {
+			
+			con = new ReviewDeleteCon();
 		
 		}
 		response.sendRedirect(con.execute(request,response));

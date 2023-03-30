@@ -36,4 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update user_info set user_flag = 'N' where user_idx = #{user_idx}
 	</delete>
 	
+	<!-- 전체회원조회(admin) -->
+	<select id="userAll" resultType="UserDTO">
+		select * from user_info
+	</select>
+	
 </mapper>

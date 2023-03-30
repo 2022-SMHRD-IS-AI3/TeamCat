@@ -7,46 +7,44 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.smhrd.mybatis.SqlSessionManager;
 
-public class WishlistDAO {
+public class ReviewDAO {
 
 	SqlSessionFactory sqlSessionfactory = SqlSessionManager.getSqlSession();
-
-	// 위시리스트 업로드
-	public int WishlistUpdate(WishlistDTO dto) {
+	
+	// 리뷰 업로드
+	public int ReviewUpdate(ReviewDTO dto) {
 		System.out.println("dao");
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.insert("WishlistUpdate", dto);
+		int cnt = sqlsession.insert("ReviewUpdate", dto);	
 		sqlsession.close();
-
+		 		
 		return cnt;
 	}
-
-	// 위시리스트 삭제
-	public int WishlistDelete(WishlistDTO dto) {
-		System.out.println(123);
+	
+	// 리뷰 삭제
+	public int ReviewDelete(int rv_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.delete("WishlistDelete", dto);
+		int cnt = sqlsession.delete("ReviewDelete", rv_idx);
 		sqlsession.close();
-
+				
 		return cnt;
 	}
-
-	// 위시 목록 조회
-	public List<WishlistDTO> WishlistAll() {
+			
+	// 리뷰 목록 조회
+	public List<ReviewDTO> ReviewAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		List<WishlistDTO> Wishlist_list = sqlsession.selectList("WishlistAll");
+		List<ReviewDTO> Review_list = sqlsession.selectList("ReviewAll");
 		sqlsession.close();
-
-		return Wishlist_list;
+				
+		return Review_list;
 	}
-
-	// 개인 관심목록
-	public List<ProductDTO> myWishlist(int user_idx) {
+	
+	// 나의 리뷰 목록
+	public List<ReviewDTO> myReviewList(int user_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		List<ProductDTO> Product_list = sqlsession.selectList("myWishlist", user_idx);
+		List<ReviewDTO> Review_list = sqlsession.selectList("myReviewList",user_idx);
 		sqlsession.close();
-
-		return Product_list;
+		
+		return Review_list;
 	}
-
 }

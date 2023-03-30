@@ -20,5 +20,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="WishlistAll" resultType= "WishlistDTO">
 		select user_idx, p_idx from wishlist_info
 	</select>
+
+	<!-- 개인 위시리스트 목록 -->
+	<select id="myWishlist" parameterType="int" resultType="ProductDTO">
+		select p.* from product_info p inner join wishlist_info w on p.p_idx = w.p_idx where w.user_idx = #{user_idx} order by p.p_idx desc
+	</select>
+	
+	
+	
 	
 </mapper>

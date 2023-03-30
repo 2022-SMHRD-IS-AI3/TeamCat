@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.RegionDAO">
+
+	<!-- 행정구역 전체 가져오기 -->
+	<select id="regionAll" resultType="RegionDTO">
+		select * from region_info
+	</select>
+		
+	
+	
+</mapper>

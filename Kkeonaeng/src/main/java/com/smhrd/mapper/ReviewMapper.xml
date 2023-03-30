@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.ReviewDAO">
+
+	
+	<!-- 리뷰 작성 -->
+	<insert id="ReviewUpdate" parameterType="ReviewDTO">
+		insert into review_info values(reservation_info_seq.nextval,#{user_idx},#{thumbs_flag},#{rv_contents},#{rp_flag},#{rp_idx})
+	</insert>
+	
+	<!-- 리뷰 삭제 -->
+	<delete id="ReviewDelete" parameterType="int">
+		delete from Review_info where rv_idx=#{rv_idx}
+	</delete>
+	
+	<!-- 리뷰 전체 목록 -->
+	<select id="ReviewAll" resultType= "ReviewDTO">
+		select r.* , rv.nick as rv_nick, rp.nick as rp_nick from review_info r inner join user_info rp on r.rp_idx = rp.user_idx  inner join user_info rv on r.user_idx = rv.user_idx order by r.rv_idx desc
+	</select>
+	
+	<!-- 나의 리뷰 목록 -->
+	<select id="myReviewList" parameterType="int" resultType="ReviewDTO">
+		select r.* , rv.nick rv_nick, rp.nick rp_nick from review_info r inner join user_info rp on r.rp_idx = rp.user_idx  inner join user_info rv on r.user_idx = rv.user_idx where rv.user_idx = #{user_idx} order by r.rv_idx desc
+	</select>
+	
+</mapper>
