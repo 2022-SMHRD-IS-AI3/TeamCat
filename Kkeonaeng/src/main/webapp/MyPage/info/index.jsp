@@ -20,6 +20,7 @@
 <script src="https://kit.fontawesome.com/c108db6a29.js"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<link href="./css/btncss.css" rel="stylesheet" />
 
 <style>
 button {

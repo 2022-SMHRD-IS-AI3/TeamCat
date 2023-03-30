@@ -53,6 +53,7 @@
     align-items: center;
     border-bottom: 1px solid #e5e5e5;
     height: 2rem;
+    padding: 5px;
         }
          
          a {
@@ -184,7 +185,8 @@ color:  #343a40;
 	 
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">마이페이지</p>
+				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">
+				마이페이지</p>
 		</div>
 	</nav>
 	
@@ -201,7 +203,6 @@ color:  #343a40;
 	    	
 	    	<strong id="nick"><%=info.getNick()%></strong>
         	<a href="./info/"><button>정보수정</button></a>
-	    	
 	    	</div>
 	    	</div>
 	    	<hr>
