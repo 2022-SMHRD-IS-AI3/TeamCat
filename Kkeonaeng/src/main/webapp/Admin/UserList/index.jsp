@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.UserDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.UserDTO"%>
@@ -28,14 +29,31 @@
                 <th>카카오계정</th> 
                 <th>등록일</th> 
                 <th>회원상태</th> 
+                <th>회원상태변경</th> 
           	</tr>
 	<%
-	UserDTO info = (UserDTO)session.getAttribute("info");
+	/* UserDTO info = (UserDTO)session.getAttribute("info"); */
 	
 	List<UserDTO> user_list = new UserDAO().userAll();
+	for (int i = 0; i < user_list.size(); i++) {
+	    UserDTO user = user_list.get(i);
+	    String userflag = user.getUser_flag();
+	    System.out.println(userflag);
+		String flag = "";
+	    String urlCon = ""; 
+	    if (userflag.equals("Y")) { 
+	        flag = "탈퇴";
+	        urlCon = "DeleteCon.do";
+	    } else { 
+	        flag = "복구";
+	        urlCon = "RecoveryCon.do";
+	    } 
+	    
+	     System.out.println(flag);
+	    
 	
-	for (int i=0; i<user_list.size(); i++) { 
-		UserDTO user = user_list.get(i);
+		
+		
 	%>
 		
 		
@@ -46,13 +64,20 @@
                     <td><%=user.getKakao_id() %></td>
                     <td><%=user.getReg_date() %></td>
                     <td><%=user.getUser_flag() %></td>
-                    <td></td>
+                    <td>
+                    	<button onclick="moveUrl('<%=urlCon%>?admin=y&user_idx=<%=user.getUser_idx() %>')" ><%=flag %></button>
+                    </td>
                 </tr>
                
     <%} %>
             </table>
         </div>
-</body>
-</html>
+        
+        
+<script type="text/javascript">
+	const moveUrl = (url) => {
+		location.href = url;
+	}
+</script>
 </body>
 </html>
