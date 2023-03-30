@@ -56,5 +56,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>	
 	
 	
+	<!-- 게시물 정보 취합(Admin) -->
+	<select id="ProductSum" resultType="ProductDTO">
+		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx
+	</select>
 	
 </mapper>

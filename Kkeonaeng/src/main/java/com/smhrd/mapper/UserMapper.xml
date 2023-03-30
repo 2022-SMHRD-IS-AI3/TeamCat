@@ -46,4 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update user_info set user_flag = 'Y' where user_idx = #{user_idx}
 	</update>
 	
+	<!-- 회원 정보 취합(Admin) -->
+	
+	
 </mapper>
