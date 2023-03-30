@@ -68,4 +68,22 @@ public class ProductDAO {
 		
 		return search_list;
 	}
+	
+	// 메인용 찜 순위 3개 
+	public List<ProductDTO> ProductWishRank() {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> product_list = sqlsession.selectList("ProductWishRank");
+		sqlsession.close();
+		
+		return product_list;
+	}
+	
+	// 메인용 찜 순위 3개 
+	public List<ProductDTO> ProductNewAll() {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> product_list = sqlsession.selectList("ProductNewAll");
+		sqlsession.close();
+		
+		return product_list;
+	}
 }
