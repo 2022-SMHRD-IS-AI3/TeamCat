@@ -45,5 +45,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product_info where p_flag != 9 and (p_name like '%'||#{parameter}||'%' or p_contents like '%'||#{parameter}||'%') order by p_idx desc
 	</select>	
 	
+	<!-- 게시물 정보 취합(Admin) -->
+	<select id="ProductSum" resultType="ProductDTO">
+		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx
+	</select>
 	
 </mapper>

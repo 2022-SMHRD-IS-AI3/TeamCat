@@ -15,6 +15,7 @@
 			<tr>
 				<th>물건 순번</th>
 				<th>회원 순번(등록자)</th>
+				<th>닉네임</th>
 				<th>물품명</th>
 				<th>분류코드</th>
 				<th>거래위치주소</th>
@@ -26,7 +27,7 @@
 			</tr>
 
 			<%
-			List<ProductDTO> product_list = new ProductDAO().ProductAll();
+			List<ProductDTO> product_list = new ProductDAO().ProductSum();
 
 			for (int i = 0; i < product_list.size(); i++) {
 
@@ -34,15 +35,16 @@
 				String urlCon = "ProductDeleteCon.do";
 			%>
 			<tr>
-				<td><%=product.getP_idx()%></td>
-				<td><%=product.getUser_idx()%></td>
-				<td><%=product.getP_name()%></td>
-				<td><%=product.getC_idx()%></td>
-				<td><%=product.getContact_addr()%></td>
-				<td><%=product.getContact_gps()%></td>
-				<td><%=product.getPrice()%></td>
-				<td><%=product.getP_contents()%></td>
-				<td><%=product.getP_reg_date()%></td>
+				<td><%=product.getP_idx() %></td>
+				<td><%=product.getUser_idx() %></td>
+				<td><%=product.getNick() %></td>
+				<td><%=product.getP_name() %></td>
+				<td><%=product.getC_idx() %></td>
+				<td><%=product.getContact_addr() %></td>
+				<td><%=product.getContact_gps() %></td>
+				<td><%=product.getPrice() %></td>
+				<td><%=product.getP_contents( )%></td>
+				<td><%=product.getP_reg_date() %></td>
 				<td>
 					<button
 						onclick="moveUrl('<%=urlCon%>?admin=y&p_idx=<%=product.getP_idx()%>')">

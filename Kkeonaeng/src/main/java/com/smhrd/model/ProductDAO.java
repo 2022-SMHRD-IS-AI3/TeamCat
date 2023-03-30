@@ -68,4 +68,11 @@ public class ProductDAO {
 		
 		return search_list;
 	}
+	
+	// 게시물 정보 취합(Admin)
+	public List<ProductDTO> ProductSum() {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> ProductSum = sqlsession.selectList("ProductSum");
+		return ProductSum;
+	}
 }
