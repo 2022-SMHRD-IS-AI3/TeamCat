@@ -43,10 +43,16 @@ div#period {
 }
 
 input[type="date"] {
-	width: 111px;
-	height: 25px;
-	margin-top: 12.5px;
-	margin-left: 10px;
+	width: 123px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    border: none;
+    background: #c5c5c557;
+    padding: 7px;
+    border-radius: 25px;
+    font-size: 15px;
+    margin-right: 9px;
 }
 
 div#betweenDate {
@@ -108,17 +114,19 @@ div#submitButtonWrapper {
 	flex-direction: row-reverse;
 }
 
-button#submit {
-	width: 130px;
-	height: 40px;
-	font-size: 1.3rem;
-	font-weight: 550;
-	margin-right: 20px;
-	margin-top: 15px;
-	color: white;
-	background-color: rgb(82, 127, 239);
-	border-radius: 0.5em;
-	border-width: 1px;
+
+
+#submitButtonWrapper button {
+	width: 106px;
+    height: 38px;
+    font-size: 1.1rem;
+    font-weight: 550;
+    margin-right: 53px;
+    margin-top: 6px;
+    color: white;
+    background-color: rgb(82, 127, 239);
+    border-radius: 0.5em;
+    border-width: 1px;
 }
 
 td {
@@ -351,12 +359,11 @@ div#iconWrapper {
 			<!-- 적용 버튼 -->
 			<div id="submitButtonWrapper">
 				<button id="submit" onclick="reservation()">예약하기</button>
+				<a href="../Detail/?p_idx=<%=p_idx%>"><button id="returnBtn" onclick="()" style="background-color: rgb(139 139 139);">나가기</button></a>
 			</div>
 
 		</div>
 	</div>
-
-
 
 	<script src="./callender.js"></script>
 	<script type="text/javascript">

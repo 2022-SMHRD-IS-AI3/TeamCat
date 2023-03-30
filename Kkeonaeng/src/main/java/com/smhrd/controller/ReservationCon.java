@@ -20,7 +20,7 @@ public class ReservationCon implements Command {
 		String rv_start_date = request.getParameter("rv_start_date");
 		String rv_end_date = request.getParameter("rv_end_date");
 
-		ReservationDTO dto = new ReservationDTO(0, user_idx, p_idx, rv_start_date, rv_end_date);
+		ReservationDTO dto = new ReservationDTO(0, user_idx, p_idx, rv_start_date, rv_end_date,null);
 		System.out.println(user_idx + " - " + p_idx + " - " + rv_start_date + " - " + rv_end_date); // 지울예정
 
 		ReservationDAO dao = new ReservationDAO();
