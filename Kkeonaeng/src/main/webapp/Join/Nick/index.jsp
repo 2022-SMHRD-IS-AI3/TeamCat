@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.RegionDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.RegionDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -117,6 +120,15 @@ input:focus {
 		width: 60%;
 	}
 }
+
+select{
+	word-wrap: normal;
+    border: none;
+    background: #a3a3a340;
+    border-radius: 25px;
+    padding: 7px;
+    margin-bottom: 5px!important;
+}
 </style>
 
 <meta charset="utf-8" />
@@ -134,16 +146,8 @@ input:focus {
 
 <!-- Pheasant Buttons -->
 <!-- Pheasant Demure Buttons Reset: Optional -->
-<link rel="stylesheet"
-	href="./dist/css/pheasant-demure-buttons-reset.css" type="text/css"
-	media="all" />
 <!-- Pheasant Demure Buttons Layout: Optional -->
-<link rel="stylesheet"
-	href="./dist/css/pheasant-demure-buttons-layout.css" type="text/css"
-	media="all" />
 <!-- Pheasant Demure Buttons: Required -->
-<link rel="stylesheet" href="./dist/css/pheasant-demure-buttons.css"
-	type="text/css" media="all" />
 
 <script src="https://kit.fontawesome.com/c108db6a29.js"
 	crossorigin="anonymous"></script>
@@ -156,6 +160,18 @@ input:focus {
 	<%
 	String kakao_id = request.getParameter("k");
 	String gender = request.getParameter("g");
+	List<RegionDTO> regionList = new RegionDAO().regionAll();
+	int rg_idx = Integer.parseInt(request.getParameter("rg_idx"));
+    int gu_code = 0;
+    for(int i = 0; i < regionList.size();i++){ 
+    	
+    	String selected = "";
+    	if(regionList.get(i).getRg_idx() == rg_idx) {
+    		selected = "selected";
+    		gu_code = regionList.get(i).getGu_code();
+    	}
+    	
+   }
 	%>
 	
 	<!-- Responsive navbar-->
@@ -182,24 +198,27 @@ input:focus {
 					<input class="userInput" type="text" name="nick"
 						placeholder="닉네임을 적어주세요."> 
 					<p style="text-align: left;">주소</p>	
-					<select style="margin-bottom: 10px;">
-			<option value="행정구">행정구</option>
-                <option value="">행정구 넣어주세요</option>
-            </select>
-            <select style="margin-bottom: 10px;">
-			<option value="행정동">행정동</option>
-                <option value="">행정동 넣어주세요</option>
-                
-            </select>
-						<input type="hidden" name="gender"
-						id="gender" value="<%=gender%>"> <input type="hidden"
-						name="kakao_id" id="kakao_id" value="<%=kakao_id%>"> <br>
+					<select name="gu_code_select" id="gu_code_select" onchange="setObjDong()">
+		                <option value="">-- 행정구 --</option>
+		                <option value="1">동구</option>
+		                <option value="2">서구</option>
+		                <option value="3">남구</option>
+		                <option value="4">북구</option>
+		                <option value="5">광산구</option>
+		                
+		            </select>
+		            <select name="rg_idx" id="rg_idx">
+		                <option value="" >-- 행정동 --</option>
+		            </select>
+					<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
+					<input type="hidden" name="gender" id="gender" value="<%=gender%>">
+					<input type="hidden" name="kakao_id" id="kakao_id" value="<%=kakao_id%>">
+					<br>
 					<span id="nickChk"></span>
-			
 
-			<button type="submit">회원가입</button>
-
-			</form>
+					<button type="submit">회원가입</button>
+	
+				</form>
 			</div>
 		</div>
 	</div>
@@ -208,7 +227,7 @@ input:focus {
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<!-- <script src="js/scripts.js"></script> -->
 	<script>
 		document.querySelector("form").addEventListener("submit", function(e) {
 			if (document.getElementsByClassName("nickInput").value == '') {
@@ -216,13 +235,10 @@ input:focus {
 				alert("닉네임을 입력하세요.")
 			}
 		});
-	</script>
-
-
-	<script type="text/javascript">
+	
 		let urlSearch = new URLSearchParams(location.search);
 		let result = urlSearch.get('result');
-		if (result.length >= 0) {
+		if (result != null && result.length >= 0) {
 			if (result == "300") {
 				document.getElementById("nickChk").innerHTML = "계정이나 닉네임이<br> 이미 존재합니다";
 				document.getElementById("nick").value = urlSearch.get('nick');
@@ -230,6 +246,66 @@ input:focus {
 			}
 
 		}
+		
+		// 페이지 열리면 동 모든 동 정보 담기
+	       let dongList = [];
+	       let dongListData = [];
+	       function objDong(){
+	    	   
+	    	   <%for(RegionDTO r : regionList){%>
+	    	   dongList.push({gu:<%=r.getGu_code()%>,idx:<%=r.getRg_idx()%>,dong:'<%=r.getRegion()%>'});
+	    	   <%}%>
+	       }
+	       objDong();
+	       
+	       // 페이지 열리면 구 정보 맞춰서 체크하기
+	       function changeRegion(){
+	    	   let gu_code_select = document.getElementById('gu_code_select');
+	       	   let gu_code = document.getElementById('gu_code').value;
+	    	   gu_code_select.value = gu_code;
+	    	   setObjDong();
+	    	   document.getElementById('rg_idx').value = <%=rg_idx%>;
+	    	   
+	       }
+	       
+	       let rg_idx = urlSearch.get('rg_idx');
+		   if (rg_idx != null) {
+	           if (result == "300") {
+	        	   changeRegion()
+	           }
+
+		   }
+	       // 보여줄 동 새로만들기
+	       function setObjDong(){
+	    	   dongListData = [];
+	    	   
+	    	   for(var i = 0; i < dongList.length;i++){
+	    		   var dong = dongList[i];
+	    		   let gu_code = document.getElementById('gu_code_select').value;
+	    		   if(dong.gu == gu_code) {
+	    			   dongListData.push(dong);
+	    		   }
+	    	   }
+	    	   
+	    	   dongPrint();
+	       }
+	       
+	       
+	       function dongPrint() {
+	    	   
+	    	   var dongHtml = '<option value="">-- 행정동 --</option>';
+	    	   for(var i = 0; i < dongListData.length;i++){
+	    		   var dongData = dongListData[i];
+	    		   let gu_code = document.getElementById('gu_code').value;
+	    		   dongHtml += `<option value="${dongData.idx}">${dongData.dong}</option>`;
+	    	   }
+	    	   
+	    	   document.getElementById('rg_idx').innerHTML = dongHtml;
+	    	   
+	    	   
+	    	   
+	       };
+		
 	</script>
 
 </body>
