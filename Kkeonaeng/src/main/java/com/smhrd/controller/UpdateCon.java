@@ -42,7 +42,7 @@ public class UpdateCon implements Command {
 			String nick = multi.getParameter("nick");
 			int rg_idx = Integer.parseInt(multi.getParameter("rg_idx"));
 			cnick = nick;
-			System.out.println(nick);
+			System.out.println(rg_idx);
 			String filename = multi.getFilesystemName("filename");
 			UserDTO dto = null;
 			String file_img = "";
@@ -88,7 +88,7 @@ public class UpdateCon implements Command {
 				if(filename != null) {
 					profile_img = file_img;
 				}
-				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img,d.getRg_idx());
+				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img,rg_idx);
 				session.setAttribute("info", updatedto); 
 				qString = "200";
 			} else {

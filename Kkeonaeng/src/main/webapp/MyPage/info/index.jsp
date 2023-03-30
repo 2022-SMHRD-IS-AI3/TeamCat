@@ -157,7 +157,12 @@ margin-bottom: 0;
 
 select {
   max-height: 100px;
-  overflow-y: scroll;
+  word-wrap: normal;
+  border: none;
+  background: #a3a3a340;
+  border-radius: 25px;
+  padding: 7px;
+  margin-bottom: 5px!important;
 }
 </style>
 </head>
@@ -169,6 +174,20 @@ select {
 		response.sendRedirect("/Kkeonaeng/Login/");
 	} else {
 		regionList = new RegionDAO().regionAll();
+		
+		int gu_code = 0;
+        
+        for(int i = 0; i < regionList.size();i++){ 
+        	
+        	String selected = "";
+        	if(regionList.get(i).getRg_idx() == info.getRg_idx()) {
+        		selected = "selected";
+        		gu_code = regionList.get(i).getGu_code();
+        	}
+        	
+       }
+		
+		
 	%>
 	<!-- navbar -->
 	<form action="UpdateCon.do" method="post"
@@ -238,37 +257,13 @@ select {
                 <option value="4">북구</option>
                 <option value="5">광산구</option>
                 
-                
-                <%-- <%for(int i = 0; i < regionList.size();i++){ 
-                	
-                	String selected = "";
-                %>
-                	
-                <%} %> --%>
             </select>
             <select name="rg_idx" id="rg_idx">
                 <option value="" >-- 행정동 --</option>
-                <%
-                int gu_code = 0;
-                
-                for(int i = 0; i < regionList.size();i++){ 
-                	
-                	String selected = "";
-                	if(regionList.get(i).getRg_idx() == info.getRg_idx()) {
-                		selected = "selected";
-                		gu_code = regionList.get(i).getGu_code();
-                	}
-                	
-                %>
-                	
-                	<%-- <option value="<%=gu_code%>"><%=regionList.get(i).getRegion()%></option> --%>
-                <%} %>
-						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
-                
             </select>
+						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
 			</li>
 			</ul>
-           요기는 구 별로 행정동 나오게 내일 바꿀 예정
 			<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
 			<input type="hidden" name="fileExt" id="fileExt" value="">
 			<input type="hidden" name="filesize" id="filesize" value="">
@@ -322,7 +317,6 @@ select {
     	    document.getElementById('fileExt').value = (file.name).split('.')[1];
     	    document.getElementById('filesize').value = file.size;
     	    var reader = new FileReader();
-    	    	console.log(reader);
     	    reader.onload = function(e) {
     	      	document.getElementById('profile_img').src = e.target.result;
     	    };
@@ -360,7 +354,6 @@ select {
     	   for(var i = 0; i < dongList.length;i++){
     		   var dong = dongList[i];
     		   let gu_code = document.getElementById('gu_code_select').value;
-    		   console.log(gu_code)
     		   if(dong.gu == gu_code) {
     			   dongListData.push(dong);
     		   }
@@ -379,7 +372,6 @@ select {
     		   dongHtml += `<option value="${dongData.idx}">${dongData.dong}</option>`;
     	   }
     	   
-    	   console.log(dongHtml)
     	   document.getElementById('rg_idx').innerHTML = dongHtml;
     	   
     	   
