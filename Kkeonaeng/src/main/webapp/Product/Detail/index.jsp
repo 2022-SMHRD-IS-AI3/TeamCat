@@ -293,10 +293,10 @@
             background-color: rgb(82 127 239);
             color: white;
             width: 100px;
-            height: 40px;
+            height: 35px;
             position: absolute;
             right: 15px;
-            top: 10px;
+            top: 7px;
             border: none;
             border-radius: 9px;
             font-weight: bold;
@@ -401,6 +401,7 @@
 		user_idx = info.getUser_idx();
 	}
 	%>
+	
 	
 	<div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
@@ -517,42 +518,17 @@
                         <div class="card-body">
                             <span style="margin-left: 10px; font-weight: 600;">댓글 4개</span>
                             <!-- Comment form-->
-                            <form class="mb-4" style="margin-top: 10px;"><textarea class="form-control" rows="3"
-                                    placeholder="댓글을 입력하세요!"></textarea></form>
+                            <form class="mb-4" style="margin-top: 10px;">
+                            	<textarea class="form-control" rows="3" placeholder="댓글을 입력하세요!"></textarea>
+                            	<button onclick="">작성완료</button>
+                            </form>
+                                    
                             <!-- Comment with nested comments-->
                             <div class="d-flex mb-4">
                                 <!-- Parent comment-->
-                                <div class="ms-3">
-                                    <div class="fw-bold">프로젝트 개극혐</div>
-                                    이걸 어케 2주만에 하라는거임?
-                                    <!-- Child comment 1-->
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0"><img class="rounded-circle" src="arrow-return-right.svg"
-                                                alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">꺼냉좋아</div>
-                                            저도 지금 꺼냉싫어로 닉변할까 고민중
-                                        </div>
-                                    </div>
-                                    <!-- Child comment 2-->
-                                    <div class="d-flex mt-4">
-                                        <div class="flex-shrink-0"><img class="rounded-circle"
-                                                src="arrow-return-right.svg" alt="..." /></div>
-                                        <div class="ms-3">
-                                            <div class="fw-bold">프로젝트 개극혐</div>
-                                            ㄱㄱㄱㄱ
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single comment-->
-                            <div class="d-flex">
-                               
-                                <div class="ms-3">
-                                    <div class="fw-bold">화가 많은 사람</div>
-                                    이 의자로 컴퓨터 부숴도 되나요?
-                                </div>
-                            </div>
+                             <div class="fw-bold"></div>
+                                    이걸 어케 2주만에 하라는거임?    
+                             </div>  
                         </div>
                     </div>
                 </section>
@@ -609,11 +585,11 @@
 		}
 		const moveUrl = (url) => {
 			location.href=url;
-		}
-		
+		}	
+	</script>
+	<script type="text/javascript">
 		
 	</script>
-	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
