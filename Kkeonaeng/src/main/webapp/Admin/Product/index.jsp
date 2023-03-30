@@ -30,7 +30,7 @@
 				ProductDTO product = product_list.get(i);
 			} %>
 			<tr>
-				<td><%=prodcut.getP_idx()%></td>
+				<td><%=product.getP_idx()%></td>
 				
 				<td>
 					<button></button>

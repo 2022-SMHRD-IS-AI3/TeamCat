@@ -441,7 +441,7 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img style="object-fit: cover;" src="/Kkeonaeng/file/<%=file%>" class="d-block w-100" alt="...">
+                            <img style="object-fit: cover;" onclick="moveUrl('../../Product/Detail/Detail_img?p_idx=<%=p_idx%>')" src="/Kkeonaeng/file/<%=file%>" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -613,6 +613,7 @@
 		
 		
 	</script>
+	
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
