@@ -1,3 +1,8 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.ProductDAO"%>
+<%@page import="com.smhrd.model.ProductDTO"%>
 <%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -28,11 +33,13 @@
 
 h1.title {
 	background: rgb(2, 0, 36);
-	background: linear-gradient(90deg, rgb(88 85 148) 0%, rgba(82, 127, 239, 1) 35%, rgb(91 218 243) 100%);
+	background: linear-gradient(90deg, rgb(88 85 148) 0%,
+		rgba(82, 127, 239, 1) 35%, rgb(91, 218, 243) 100%);
 	-webkit-text-fill-color: transparent;
 	-webkit-background-clip: text;
 	font-family: 'TheJamsil5Bold';
 }
+
 .QuickMenuMobile {
 	position: fixed;
 	bottom: 0;
@@ -72,23 +79,6 @@ h1.title {
 	display: flex;
 }
 
-.card-body{
-            padding: 5px;
-        }
-        .card-text {
-            font-size: small;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-             height: 35px;
-             text-align: center;
-             
-        }
-        .card-img-top{
-            height: 100px;
-        }
 
 .pp {
 	font-size: large;
@@ -114,47 +104,79 @@ h1.title {
 	padding-bottom: 5%;
 	font-weight: bold;
 }
-.log{
+
+.log {
 	position: absolute;
-    top: 15px;
-    right: 15px;
+	top: 15px;
+	right: 15px;
 }
 
 #writeBtn {
-    display: inline-block;
-    background-color: #5598f0;
-    height: 40px;
-    text-align: center;
-    border-radius: 25px;
-    position: fixed;
-    bottom: 75px;
-    right: 15px;
-    transition: background-color .3s, opacity .5s, visibility .5s;
-    opacity: 1;
-    z-index: 1000;
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: white;
-    padding-left: 0.9rem;
-    padding-right: 0.7rem;
-    text-decoration-line: none;
-    line-height: 1.2;
-    box-shadow: 1px 1px 2px 1px #cdcdcd85;
+	display: inline-block;
+	background-color: #5598f0;
+	height: 40px;
+	text-align: center;
+	border-radius: 25px;
+	position: fixed;
+	bottom: 75px;
+	right: 15px;
+	transition: background-color .3s, opacity .5s, visibility .5s;
+	opacity: 1;
+	z-index: 1000;
+	font-size: 1.1rem;
+	font-weight: 900;
+	color: white;
+	padding-left: 0.9rem;
+	padding-right: 0.7rem;
+	text-decoration-line: none;
+	line-height: 1.2;
+	box-shadow: 1px 1px 2px 1px #cdcdcd85;
 }
 
 #writeBtn:hover {
-  cursor: pointer;
-  background-color: #1d64c1;
+	cursor: pointer;
+	background-color: #1d64c1;
 }
+
 #writeBtn:active {
-  background-color: #555;
+	background-color: #555;
 }
+
 #writeBtn.show {
-  opacity: 50;
-  visibility: visible;
+	opacity: 50;
+	visibility: visible;
 }
-#writeBtn>span{
-  font-size: 1.67rem;
+
+#writeBtn>span {
+	font-size: 1.67rem;
+}
+
+.card-body {
+	padding: 10px;
+}
+
+.card-text {
+	font-size: small;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.card-text {
+	font-size: small;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	height: 35px;
+	text-align: center;
+}
+
+.card-img-top {
+	height: 100px;
 }
 </style>
 </head>
@@ -162,6 +184,10 @@ h1.title {
 	
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
+	List<ProductDTO> productWishList = new ProductDAO().ProductWishRank();
+	List<ProductDTO> productNewList = new ProductDAO().ProductNewAll();
+	
+	
 	%>
 	<header class="py-1 bg-light border-bottom mb-4">
 		<div class="container text-center" >
@@ -169,7 +195,6 @@ h1.title {
 				<h1 class="title fw-bolder mb-3" style="color: #527fef;">꺼냉</h1>
 					
 					<% if (info != null) {%>
-						<!-- out.print("<a href=\"my_page/\">마이페이지 </a>"); -->
 						<a class="log" href="LogoutCon.do"><button class="btn" style="margin-left: 0px;">로그아웃</button></a>
 					<%} else {%>
 						<a class="log" href="./Login/"><button class="btn" style="margin-left: 0px;">로그인</button></a>
@@ -188,18 +213,7 @@ h1.title {
 		</div>
 
 	</header>
-	<%-- <div>
-		<%
-		if (info != null) {
-
-			out.print(info.getNick() + "님 환영합니다");
-			out.print("<a href=\"my_page/\">마이페이지 </a>");
-			out.print("<a href=\"LogoutCon.do\">로그아웃</a>");
-		} else {
-			out.print("<a href=\"./Login/\">로그인</a>");
-		}
-		%>
-	</div> --%>
+	
 
 	<!-- Page content-->
     <div class="container">
@@ -210,37 +224,21 @@ h1.title {
         </div>
         <div class="row">
             <!-- Blog entries-->
-
+			<%for(ProductDTO dto : productWishList) { 
+				String file = new FileDAO().fileSelect(new FileDTO(0,"product",dto.getP_idx()));
+			%>
             <div class="col-4">
                 <div class="card" style="width: 100%;">
 
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
+                    <img src="/Kkeonaeng/file/<%=file %>"
                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
+                        <p class="card-text"><%=dto.getP_name() %></p>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card" style="width: 100%;">
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" style="width: 100%;">
-
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
-                    </div>
-                </div>
-                <br>
-            </div>
+            
+            <%}%>
         </div>
     </div>
 
@@ -254,36 +252,21 @@ h1.title {
         <div class="row">
             <!-- Blog entries-->
 
+            <%for(ProductDTO dto : productNewList) { 
+				String file = new FileDAO().fileSelect(new FileDTO(0,"product",dto.getP_idx()));
+			%>
             <div class="col-4">
                 <div class="card" style="width: 100%;">
 
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
+                    <img src="/Kkeonaeng/file/<%=file %>"
                         class="card-img-top" alt="...">
                     <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
+                        <p class="card-text"><%=dto.getP_name() %></p>
                     </div>
                 </div>
             </div>
-            <div class="col-4">
-                <div class="card" style="width: 100%;">
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card" style="width: 100%;">
-
-                    <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fshop1.phinf.naver.net%2F20230105_9%2F1672920707448dNV77_JPEG%2F74056606127887922_206500833.jpeg&type=a340"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">안녕하세요</p>
-                    </div>
-                </div>
-                <br>
-            </div>
+            
+            <%}%>
         </div>
     </div>
     
