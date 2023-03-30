@@ -151,7 +151,10 @@ h1.title {
 }
 
 .card-body {
-	padding: 10px;
+	padding: 2px;
+}
+.container {
+    margin-bottom: 0.8rem;
 }
 
 .card-text {
@@ -164,14 +167,14 @@ h1.title {
 }
 
 .card-text {
-	font-size: small;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	display: -webkit-box;
-	-webkit-line-clamp: 2;
-	-webkit-box-orient: vertical;
-	height: 35px;
-	text-align: center;
+    font-size: small;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 39px;
+    text-align: center;
 }
 
 .card-img-top {
