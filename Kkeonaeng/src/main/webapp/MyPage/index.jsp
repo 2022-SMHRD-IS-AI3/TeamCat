@@ -18,7 +18,7 @@
 <script src="https://kit.fontawesome.com/c108db6a29.js"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
 	<style type="text/css">
 	
 		
@@ -155,12 +155,13 @@
 hr {
   width : 100%;
   height : 10px!important;
-  background-color : #e5e5e5;
+  background-color : #cccccc;
   border : 0;
 
 }
 i{
 padding-left:10px;
+color:  #343a40;
 }
 
 #profile_img{
@@ -209,22 +210,24 @@ padding-left:10px;
     <div style="height: 120px; width:100%; padding:5px;">
     <ul>
     <li>
-    <span><i class="fa-solid fa-heart fa-xl"></i>
+    <span><i class="fa-regular fa-heart fa-lg"></i>
+    <a href="./Wishlist/">관심목록</a>
     </span>
-    <span style="padding-right:10px;"><a href="./Wishlist/">관심목록</a></span>
+    <span></span>
     </li>
             
     <li>
-    <span><i class="fa-solid fa-box-archive fa-xl"></i>
+    <span><i class="fa-solid fa-box-archive fa-lg"></i>
+    <a href="/Kkeonaeng/Rent/">대여목록</a>
    </span>
-    <span style="padding-right:10px;"> <a href="/Kkeonaeng/Rent/">대여목록</a></span>
+    <span> </span>
     </li>
             
     <li>
-    <span><i class="fa-solid fa-check fa-xl"></i>
-    
+    <span><i class="fa-solid fa-clock-rotate-left fa-lg"></i>
+    <a href="/Kkeonaeng/Reservation/">예약내역</a>
     </span>
-    <span style="padding-right:10px;"><a href="/Kkeonaeng/Reservation/">예약내역</a></span>
+    <span></span>
     </li>
             </ul>
             </div> 
@@ -235,8 +238,10 @@ padding-left:10px;
     <div  style="height: 120px; width:100%; padding:5px;">
         <ul>
             <li>
-            <span><i class="fa-solid fa-clipboard-list fa-xl"></i></span>
-                <span style="padding-right:10px;"><a href="./Review/">내가 받은 리뷰 보기</a></span>
+            <span><i class="fa-regular fa-thumbs-up fa-lg"></i></i>
+            <a href="./Review/">내가 받은 리뷰 보기</a>
+            </span>
+                <span></span>
             </li>
         </ul>
         </div>
