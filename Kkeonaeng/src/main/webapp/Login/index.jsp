@@ -44,7 +44,7 @@
 			<a href="../Main.jsp" style="text-decoration-line: none;"> <i
 				class="fa-solid fa-chevron-left"
 				style="padding: 0px 10px 10px; color: black;"></i>
-			</a> <span class="navbar-brand" style="font-size: 15px; color: black;">로그인</span>
+			</a> <span class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold"">로그인</span>
 		</div>
 	</nav>
 
