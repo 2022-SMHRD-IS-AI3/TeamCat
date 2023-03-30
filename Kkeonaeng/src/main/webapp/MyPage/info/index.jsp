@@ -242,11 +242,14 @@ margin-bottom: 0;
                 <%for(int i = 0; i < regionList.size();i++){ 
                 	
                 	String selected = "";
+                	int gu_code = 0;
                 	if(regionList.get(i).getRg_idx() == 5) {
                 		selected = "selected";
+                		gu_code = regionList.get(i).getGu_code();
                 	}
                 	
                 %>
+						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
                 	<option value="<%=regionList.get(i).getRg_idx()%>"><%=regionList.get(i).getRegion()%></option>
                 	
                 <%} %>
@@ -256,8 +259,9 @@ margin-bottom: 0;
 			</ul>
            요기는 구 별로 행정동 나오게 내일 바꿀 예정
 			<input type="hidden" name="user_idx" value="<%=info.getUser_idx()%>">
-			<input type="hidden" name="fileExt" id="fileExt" value="" placeholder="fileExt">
-			<input type="hidden" name="filesize" id="filesize" value="" placeholder="fileSize">
+			<input type="hidden" name="fileExt" id="fileExt" value="">
+			<input type="hidden" name="filesize" id="filesize" value="">
+			
 			</div>
 			</div>
 	</div>
@@ -314,6 +318,10 @@ margin-bottom: 0;
     	    reader.readAsDataURL(file);
     	    
     	    
+       }
+       
+       const changeRegion(){
+    	   
        }
        
        $(document).ready(function(){
