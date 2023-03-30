@@ -282,8 +282,9 @@
 	        
 	    	
            for (var image of event.target.files) {
-           	if (fileUploadCnt <= 5) {
-	                fileUploadCnt++;
+           	if (fileUploadCnt < 5) {
+           		document.getElementById('fileExt').value = (image.name).split('.')[1];
+        	    document.getElementById('filesize').value = image.size;
 	                var reader = new FileReader();
 	
 	                reader.onload = function (event) {
