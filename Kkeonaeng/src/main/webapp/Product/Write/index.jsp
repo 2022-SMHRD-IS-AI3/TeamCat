@@ -122,6 +122,8 @@
         	margin-top: 10px;
         	border-bottom: 2px solid #cccccc;
         }
+        
+        
     </style>
 </head>
 <body>
@@ -161,8 +163,8 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
                 <span class="navbar-brand" style="font-weight: bold;">
-                <a href="../" style="text-decoration-line: none;">
-                <i class="fa-solid fa-chevron-left"></i></a>대여 <%=writeType %></span>
+                <a href="../" style="text-decoration-line: none; color: black;">
+                <i class="fa-solid fa-chevron-left"></i>대여 <%=writeType %></a></span>
                 <span id="submit" class="me-3" onclick="submitData()">완료</span>
             
         </div>
