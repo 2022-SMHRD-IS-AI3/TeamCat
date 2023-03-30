@@ -14,39 +14,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>꺼냉</title>
     <style>
-            .QuickMenuMobile {
-	position: fixed;
-	bottom: 0;
-	z-index: 111;
-	flex-direction: row;
-	display: flex !important;
-	width: 100%;
-	background: white;
-	box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
-	min-height: 50px;
-}
 
-.QuickMenuMobile .menu-items {
-	display: flex;
-	align-items: center;
-	flex: 1;
-}
-
-.QuickMenuMobile .menu {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 8px 0;
-}
-    .fl-1 {
-	flex: 1;
-}
-
-.QuickMenuMobile .title {
-	font-size: 11px;
-	margin-top: 3px;
-}
+		body{
+			margin: 0 !important;
+		}
   
         .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile {
             background-color: rgba(33, 33, 33, 0.46);
@@ -63,7 +34,7 @@
             overflow-x: hidden;
             overflow-y: auto;
             text-align: center;
-            z-index: 10000;
+            /* z-index: 10000; */
         }
 
         .KmongDialog--fullscreen .KmongDialog__container {
@@ -89,7 +60,7 @@
             /* height: 100%; */
             position: relative;
             background-color: #ffffff;
-            box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+            /* box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05); */
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -161,7 +132,7 @@
         ._4a1tzy0 {
             /* margin: 0 -1rem; */
             position: relative;
-            height: 607px;
+            /* height: 607px; */
         }
 
         ._4a1tzy1 {
@@ -197,6 +168,7 @@
             padding-left: 0;
             padding-right: 0;
             padding-top: 20px;
+            padding-bottom: 20px;
         }
 
         ._1o1a6ke2 {
@@ -286,14 +258,15 @@
 
         ._1o1a6ke8 {
             line-height: 1.3;
-		    margin: -0.75rem 0px 8px 170px;
 		    color: #ffffff;
 		    font-weight: 700;
 		    font-size: 0.9rem;
 		    background: #ff5252;
-		    display: block;
 		    border-radius: 7px;
 		    padding: 5px;
+		    position: absolute;
+		    right: 30px;
+		    bottom: 0.5rem;
         }
 
         .row>* {
@@ -307,9 +280,42 @@
         .wish {
             align-self: self-end;
         }
+        
+        
+        .QuickMenuMobile{
+        position: fixed;
+	bottom: 0;
+	z-index: 111;
+	flex-direction: row;
+	display: flex !important;
+	width: 100%;
+	background: white;
+	box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
+	min-height: 50px;
+     }
+     .QuickMenuMobile .menu-items{
+        display: flex;
+        align-items: center;
+        flex: 1;
+     }
+     .QuickMenuMobile .menu{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 8px 0;
+     }
+     .fl-1 {
+	flex: 1;
+}
+
+.QuickMenuMobile .title {
+	font-size: 11px;
+	margin-top: 3px;
+}
     </style>
 </head>
-
+ 
 <body>
 	<%
 		UserDTO info = (UserDTO)session.getAttribute("info");
@@ -337,7 +343,11 @@
 
                     <div class="_4a1tzy0">
                         <ul class="_4a1tzy1 korcsc5">
-                            <%for(int i= 0;i < product_list.size();i++){ 
+                            <%
+                            if(product_list.size() > 0){
+                            	
+                            
+                            for(int i= 0;i < product_list.size();i++){ 
                             	String file = new FileDAO().fileSelect(new FileDTO(0, "product", product_list.get(i).getP_idx()));
                 				String filename = "unknown.png";
                 				if (file != null) {
@@ -362,7 +372,7 @@
 	
 	                                        </div>
 	                                        <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getContact_addr() %></span>
-	                                        <span onclick="reservationCancel('rv_idx',p_idx)" class="smb-list-item-infos _1o1a6ke8">예약취소</span>
+	                                        <span onclick="reservationCancel(<%=product_list.get(i).getRv_idx() %>)" class="smb-list-item-infos _1o1a6ke8">예약취소</span>
 	                                        <%-- <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span> --%>
 	                                        <!-- <span class="wish">
 	                                            <img src="../img/heart.svg" alt="">
@@ -372,7 +382,14 @@
 	                                </a>
 	
 	                            </li>
-							<%} %>
+							<%}
+                            
+                            }else{
+                            %>
+                            <li class="_4a1tzy2" style="text-align: center;padding: 1rem;">
+	                  			<p>예약내역이 없습니다</p>              
+							</li>
+                            <%} %>
                         </ul>
                     </div>
 
@@ -382,6 +399,7 @@
     </div>
     
     <div class="QuickMenuMobile">
+
         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Main.jsp')">
             <div class="menu fl-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -435,9 +453,6 @@
 			location.href = url;
 		}
 	
-	</script>
-	
-    <script type="text/javascript">
     	
     	const moveBack = () =>{
     		window.history.back();

@@ -49,7 +49,7 @@ public class ProductWriteCon implements Command {
 
 			// DTO로 묶기
 			ProductDTO dto = new ProductDTO(0, user_idx, p_name, c_idx, contact_addr, contact_gps, price, p_contents,
-					null, null, null);
+					null, null, null, 0);
 			int p_idx = new ProductDAO().ProductUpload(dto);
 			System.out.println("p_idx : "+p_idx);
 			String filename = multi.getFilesystemName("filename");
