@@ -68,11 +68,29 @@ public class ProductDAO {
 		
 		return search_list;
 	}
-	
+
 	// 게시물 정보 취합(Admin)
 	public List<ProductDTO> ProductSum() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ProductDTO> ProductSum = sqlsession.selectList("ProductSum");
 		return ProductSum;
+	}
+	
+	// 메인용 찜 순위 3개 
+	public List<ProductDTO> ProductWishRank() {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> product_list = sqlsession.selectList("ProductWishRank");
+		sqlsession.close();
+		
+		return product_list;
+	}
+	
+	// 메인용 최근순위 3개 
+	public List<ProductDTO> ProductNewAll() {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> product_list = sqlsession.selectList("ProductNewAll");
+		sqlsession.close();
+		
+		return product_list;
 	}
 }
