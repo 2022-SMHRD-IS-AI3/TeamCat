@@ -263,7 +263,7 @@
             width: 100%;
             background: white;
             box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
-            min-height: 60px;
+            min-height: 50px;
         }
 
         .QuickMenuMobile .menu-items {
