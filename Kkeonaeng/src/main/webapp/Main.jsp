@@ -180,6 +180,7 @@ h1.title {
 
 .card-img-top {
 	height: 100px;
+	object-fit: cover;
 }
 </style>
 </head>

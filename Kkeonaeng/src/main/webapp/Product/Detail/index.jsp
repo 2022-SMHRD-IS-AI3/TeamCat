@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.RentDAO"%>
+<%@page import="com.smhrd.model.RentDTO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
 <%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.UserDTO"%>
@@ -293,10 +295,10 @@
             background-color: rgb(82 127 239);
             color: white;
             width: 100px;
-            height: 40px;
+            height: 35px;
             position: absolute;
             right: 15px;
-            top: 10px;
+            top: 7px;
             border: none;
             border-radius: 9px;
             font-weight: bold;
@@ -573,10 +575,32 @@
                 <%=productDetail.getPrice() %>원(일)
             </div>
             <div>
-            <%if(info !=null && user_idx == productDetail.getUser_idx()) {%>
+            <%if(info !=null && user_idx == productDetail.getUser_idx()) {            
+            %>
                 <a href="../Reservation/UserList/?p_idx=<%=p_idx%>"><button class="reservation" type="button">예약자내역</button></a>
-            <% }else{%>
-            	<a href="../Reservation/?user_idx=<%=user_idx%>&p_idx=<%=p_idx%>"><button class="reservation" type="button">예약하기</button></a>
+            <% }else{
+           
+            	RentDTO r = new RentDAO().rentStatuesInfo(new RentDTO(p_idx,user_idx));
+            	String button = "<button class='reservation' type='button'>예약하기</button>";
+            			System.out.println(r);
+            	if(r != null){
+            		// 예약대기 r_idx == 0
+	            	if(r.getR_idx() == 0){
+	            		button = "<button class='reservation' type='button'>예약중</button>";
+            		// 대여시작 r_status == N
+	            	}else if(r.getR_status().equals("N")){
+	            		button = "<button onclick='rentStartStatus()' class='reservation' type='button'>대여시작</button>";
+	            	// 반납완료 return_chk == N
+	            	}else if(r.getReturn_chk().equals("N")){
+	            		button = "<button onclick='rentReturn()' class='reservation' type='button'>반납완료</button>";
+	            	// 반납중 return_date == null
+	            	}else if(r.getReturn_chk().equals("N") && r.getReturn_date() == null){
+	            		button = "<button class='reservation' type='button'>반납중</button>";
+	            	}
+            	} 
+            	
+            	%>
+            	<%=button%>
             <%} %>
             </div>
         </div>
@@ -611,6 +635,19 @@
 			location.href=url;
 		}
 		
+		// 예약자 대여시작
+		const rentStartStatus = () => {
+			moveUrl('RentStartStatusCon.do?p_idx=<%=p_idx%>');
+		}
+		
+		// 예약자 반납완료
+		const rentReturn = () => {
+			
+			if(confirm("대여물건을 반납하시겠습니까?")){
+				alert("개발중")
+			}
+			<%-- moveUrl('RentReturnCon.do?p_idx=<%=p_idx%>'); --%>
+		}
 		
 	</script>
 	

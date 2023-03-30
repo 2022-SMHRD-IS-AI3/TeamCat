@@ -264,9 +264,9 @@
 		    background: #ff5252;
 		    border-radius: 7px;
 		    padding: 5px;
-		    position: absolute;
+		    /* position: absolute;
 		    right: 30px;
-		    bottom: 0.5rem;
+		    bottom: 0.5rem; */
         }
 
         .row>* {
@@ -313,6 +313,12 @@
 	font-size: 11px;
 	margin-top: 3px;
 }
+
+.btnWrap{
+	text-align: right;
+    width: 100%;
+    height: 25px;
+}
     </style>
 </head>
  
@@ -356,7 +362,7 @@
                             %>
 
 	                            <li class="_4a1tzy2">
-	                                <a class="smb-list-item _1o1a6ke0 korcsc4" href="">
+	                                <div class="smb-list-item _1o1a6ke0 korcsc4">
 	                                    <div onclick="moveUrl('/Kkeonaeng/Product/Detail/?p_idx=<%=product_list.get(i).getP_idx()%>')" class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
 	                                        <div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
 	
@@ -372,7 +378,9 @@
 	
 	                                        </div>
 	                                        <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getContact_addr() %></span>
-	                                        <span onclick="reservationCancel(<%=product_list.get(i).getRv_idx() %>)" class="smb-list-item-infos _1o1a6ke8">예약취소</span>
+	                                        <div class="btnWrap">
+	                                        	<span onclick="reservationCancel(<%=product_list.get(i).getRv_idx() %>)" class="smb-list-item-infos _1o1a6ke8">예약취소</span>
+	                                        </div>
 	                                        <%-- <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span> --%>
 	                                        <!-- <span class="wish">
 	                                            <img src="../img/heart.svg" alt="">

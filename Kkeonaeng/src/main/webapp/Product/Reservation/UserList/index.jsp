@@ -213,7 +213,7 @@
                         </p>
                     </div>
                     <div class="notbad">
-                        <button class="bbttnn" type="button">대여시작</button>
+                        <button onclick="rentStart(<%=rv.getRv_idx()%>)" class="bbttnn" type="button">대여시작</button>
                         <button class="bbttnn returnBtn" type="button">반납완료</button>
                         <button onclick="reservationCancel(<%=rv.getRv_idx()%>)" class="bbttnn cancelBtn" type="button">예약취소</button>
                     </div>
@@ -237,9 +237,9 @@
 	}
 	
 	// 대여시작
-	function reservationStart(rv_idx){
-		if(confirm('예약을 취소하시겠습니까?')){
-			location.href = 'ReservationDeleteCon.do?p_idx=<%=p_idx%>&rv_idx='+rv_idx;
+	function rentStart(rv_idx){
+		if(confirm('대여를 시작하시겠습니까?')){
+			location.href = 'RentStartCon.do?rv_idx='+rv_idx;
 		}
 		
 	}

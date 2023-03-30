@@ -2,6 +2,7 @@ package com.smhrd.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
@@ -22,5 +23,4 @@ public class ProductDTO {
 	private String nick;
 	private int rv_idx;
 	
-
 }

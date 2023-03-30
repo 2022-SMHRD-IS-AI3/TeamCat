@@ -13,6 +13,7 @@
 		<typeAlias type="com.smhrd.model.WishlistDTO" alias="WishlistDTO" />
 		<typeAlias type="com.smhrd.model.ReviewDTO" alias="ReviewDTO" />
 		<typeAlias type="com.smhrd.model.RegionDTO" alias="RegionDTO" />
+		<typeAlias type="com.smhrd.model.RentDTO" alias="RentDTO" />
 		
 	</typeAliases>
 	
@@ -35,5 +36,6 @@
 		<mapper resource="com/smhrd/mapper/WishlistMapper.xml" />
 		<mapper resource="com/smhrd/mapper/ReviewMapper.xml" />
 		<mapper resource="com/smhrd/mapper/RegionMapper.xml" />
+		<mapper resource="com/smhrd/mapper/RentMapper.xml" />
 	</mappers>
 </configuration>
