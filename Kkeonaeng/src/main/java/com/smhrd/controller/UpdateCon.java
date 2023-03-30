@@ -40,6 +40,7 @@ public class UpdateCon implements Command {
 			multi = new MultipartRequest(request, path, maxSize, encoding, rename);
 			int user_idx = Integer.parseInt(multi.getParameter("user_idx"));
 			String nick = multi.getParameter("nick");
+			int rg_idx = Integer.parseInt(multi.getParameter("rg_idx"));
 			cnick = nick;
 			System.out.println(nick);
 			String filename = multi.getFilesystemName("filename");
@@ -47,7 +48,7 @@ public class UpdateCon implements Command {
 			String file_img = "";
 			if(filename == null) {
 				// 이미지 데이터가 없을때 닉네임만 변경
-				dto = new UserDTO(user_idx, nick);
+				dto = new UserDTO(user_idx, nick, rg_idx);
 				cnt = new UserDAO().update(dto);
 				
 				
@@ -87,7 +88,7 @@ public class UpdateCon implements Command {
 				if(filename != null) {
 					profile_img = file_img;
 				}
-				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img);
+				UserDTO updatedto = new UserDTO(d.getUser_idx(), nick, d.getGender(), d.getKakao_id(), d.getReg_date(), d.getUser_flag(), profile_img,d.getRg_idx());
 				session.setAttribute("info", updatedto); 
 				qString = "200";
 			} else {

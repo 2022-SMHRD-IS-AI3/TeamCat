@@ -150,6 +150,15 @@ ul{
 padding:15px;
 margin-bottom: 0;
 }
+
+#profile_img{
+	object-fit : cover;
+}
+
+select {
+  max-height: 100px;
+  overflow-y: scroll;
+}
 </style>
 </head>
 <body>
@@ -221,7 +230,7 @@ margin-bottom: 0;
 			</li>
 			<li style="height: 20px; margin-top: 20px">
 			<span class="uplist">내 동네</span>
-			<select name="gu_code">
+			<select name="gu_code_select" id="gu_code_select" onchange="setObjDong()">
                 <option value="">-- 행정구 --</option>
                 <option value="1">동구</option>
                 <option value="2">서구</option>
@@ -237,22 +246,24 @@ margin-bottom: 0;
                 	
                 <%} %> --%>
             </select>
-            <select name="rg_idx">
-                <option value="">-- 행정동 --</option>
-                <%for(int i = 0; i < regionList.size();i++){ 
+            <select name="rg_idx" id="rg_idx">
+                <option value="" >-- 행정동 --</option>
+                <%
+                int gu_code = 0;
+                
+                for(int i = 0; i < regionList.size();i++){ 
                 	
                 	String selected = "";
-                	int gu_code = 0;
-                	if(regionList.get(i).getRg_idx() == 5) {
+                	if(regionList.get(i).getRg_idx() == info.getRg_idx()) {
                 		selected = "selected";
                 		gu_code = regionList.get(i).getGu_code();
                 	}
                 	
                 %>
-						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
-                	<option value="<%=regionList.get(i).getRg_idx()%>"><%=regionList.get(i).getRegion()%></option>
                 	
+                	<%-- <option value="<%=gu_code%>"><%=regionList.get(i).getRegion()%></option> --%>
                 <%} %>
+						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
                 
             </select>
 			</li>
@@ -320,9 +331,62 @@ margin-bottom: 0;
     	    
        }
        
-       const changeRegion(){
+       
+       // 페이지 열리면 동 모든 동 정보 담기
+       let dongList = [];
+       let dongListData = [];
+       function objDong(){
+    	   
+    	   <%for(RegionDTO r : regionList){%>
+    	   dongList.push({gu:<%=r.getGu_code()%>,idx:<%=r.getRg_idx()%>,dong:'<%=r.getRegion()%>'});
+    	   <%}%>
+       }
+       objDong();
+       
+       // 페이지 열리면 구 정보 맞춰서 체크하기
+       function changeRegion(){
+    	   let gu_code_select = document.getElementById('gu_code_select');
+       	   let gu_code = document.getElementById('gu_code').value;
+    	   gu_code_select.value = gu_code;
+    	   setObjDong();
+    	   let rg_idx = document.getElementById('rg_idx').value = <%=info.getRg_idx()%>;
     	   
        }
+       changeRegion()
+       // 보여줄 동 새로만들기
+       function setObjDong(){
+    	   dongListData = [];
+    	   
+    	   for(var i = 0; i < dongList.length;i++){
+    		   var dong = dongList[i];
+    		   let gu_code = document.getElementById('gu_code_select').value;
+    		   console.log(gu_code)
+    		   if(dong.gu == gu_code) {
+    			   dongListData.push(dong);
+    		   }
+    	   }
+    	   
+    	   dongPrint();
+       }
+       
+       
+       function dongPrint() {
+    	   
+    	   var dongHtml = '<option value="">-- 행정동 --</option>';
+    	   for(var i = 0; i < dongListData.length;i++){
+    		   var dongData = dongListData[i];
+    		   let gu_code = document.getElementById('gu_code').value;
+    		   dongHtml += `<option value="${dongData.idx}">${dongData.dong}</option>`;
+    	   }
+    	   
+    	   console.log(dongHtml)
+    	   document.getElementById('rg_idx').innerHTML = dongHtml;
+    	   
+    	   
+    	   
+       };
+       
+       
        
        $(document).ready(function(){
     	   var fileTarget = $('.filebox .upload-hidden');
@@ -339,7 +403,8 @@ margin-bottom: 0;
     	     $(this).siblings('.upload-name').val(filename);
     	   });
     	 }); 
-       
+      
+
     </script>
 	<%
 	}
