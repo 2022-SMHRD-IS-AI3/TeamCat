@@ -37,7 +37,7 @@
 				<td><%=review.getRp_flag()%></td>
 				<td><%=review.getRp_idx()%></td>
 				<td>
-					<button onclick="moveUrl('<%=urlCon%>?admin=y&Rv_idx=<%=review.getRv_idx()%>')">
+					<button onclick="moveUrl('<%=urlCon%>?admin=y&rv_idx=<%=review.getRv_idx()%>')">
 						삭제
 					</button>
 				</td>
