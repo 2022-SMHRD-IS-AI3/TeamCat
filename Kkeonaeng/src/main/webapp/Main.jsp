@@ -72,9 +72,23 @@ h1.title {
 	display: flex;
 }
 
-.card-text {
-	font-size: small;
-}
+.card-body{
+            padding: 5px;
+        }
+        .card-text {
+            font-size: small;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+             height: 35px;
+             text-align: center;
+             
+        }
+        .card-img-top{
+            height: 100px;
+        }
 
 .pp {
 	font-size: large;
