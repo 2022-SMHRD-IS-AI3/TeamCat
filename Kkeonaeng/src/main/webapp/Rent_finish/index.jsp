@@ -296,9 +296,11 @@
 <body>
 	
 	 <%
+    	int user_idx = Integer.parseInt(request.getParameter("user_idx"));
     	int user_nick = Integer.parseInt(request.getParameter("user_nick"));
-    	int rp_nick = Integer.parseInt(request.getParameter("rp_nick"));
     	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
+    	int rp_idx = Integer.parseInt(request.getParameter("rp_idx"));
+    	int rp_nick = Integer.parseInt(request.getParameter("rp_nick"));
     	
     	ProductDAO dao = new ProductDAO();
     	ProductDTO product = dao.ProductDetail(p_idx);

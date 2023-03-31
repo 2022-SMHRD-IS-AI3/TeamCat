@@ -42,6 +42,7 @@
 
     </head>
     <body>
+  
         <!-- Responsive navbar-->
         <nav class="navbar navbar-expand-lg">
             <div class="container">
@@ -75,7 +76,7 @@
             </li>
             </ul>
             </div>
-                <form action="reviewCon.html" method="get">
+                <form action="ReviewUpdateCon.do" method="post">
                     <input type="hidden" name="rp_idx" value="26">
                     <input type="hidden" name="user_idx" value="27">
                     <input type="hidden" name="thumbs_flag" id="thumbs_flag" value="">
