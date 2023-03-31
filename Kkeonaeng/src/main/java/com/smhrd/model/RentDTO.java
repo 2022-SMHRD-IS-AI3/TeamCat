@@ -10,7 +10,6 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @ToString
-
 public class RentDTO {
 
 	private int r_idx;
