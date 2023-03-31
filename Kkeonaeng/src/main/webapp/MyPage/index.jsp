@@ -250,7 +250,7 @@ color:  #343a40;
             </li>
             <li>
             <span><i class="fa-regular fa-paper-plane fa-lg"></i>
-            <a href="#">내가 받은 메세지</a>
+            <a href="/Kkeonaeng/Message/">내가 받은 메세지</a>
             </span>
                 <span></span>
             </li>
@@ -282,7 +282,7 @@ color:  #343a40;
                 <div class="title active">빌려드림</div>
             </div>
         </div>
-        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Reservation/')">
+        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Message/')">
             <div class="menu fl-1">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.9977 13L4.24501 21.8775C3.43645 22.2818 2.54902 21.4909 2.85796 20.6414L5.87599 12.3418C5.95627 12.121 5.95627 11.879 5.87599 11.6583L2.85783 3.35833C2.54891 2.50879 3.43624 1.71791 4.24479 2.12214L22.2114 11.1043C22.9484 11.4727 22.9485 12.5246 22.2115 12.8931L22.0003 12.9987V13H21.9977ZM5.59498 5.03316L17.5303 11H7.76462C7.76165 10.9916 7.75863 10.9832 7.75558 10.9748L5.59498 5.03316ZM7.76462 13C7.76165 13.0084 7.75863 13.0169 7.75558 13.0253L5.59524 18.9662L17.526 13H7.76462Z" fill="black"/>

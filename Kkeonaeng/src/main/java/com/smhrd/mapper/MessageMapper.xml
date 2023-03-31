@@ -7,11 +7,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.model.MessageDAO">
    <insert id="MessageSend" parameterType="MessageDTO">
-      insert into message values(num_message_con.nextval,#{ms_nick}, #{mr_nick}, #{message_con}, ms_reg_date)
+      insert into message_info values(message_info_seq.nextval,#{p_idx}, #{user_idx}, #{send_idx}, #{message_con}, sysdate)
    </insert>
    
-   <select id="myMessage" resultType="MessageDTO" parameterType="String">
-      select * from message where mr_nick = #{mr_nick} order by ms_reg_date desc
+   <select id="myMessageList" resultType="MessageDTO" parameterType="int">
+      select m.*, u.nick mr_nick from message_info m inner join user_info u on m.send_idx = u.user_idx where m.user_idx = #{user_idx} order by m.ms_reg_date desc
    </select>
    
    <delete id="messageDeleteAll" parameterType="String">

@@ -10,19 +10,18 @@ import com.smhrd.model.MessageDTO;
 public class MessageSendCon implements Command {
 
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		System.out.println("[SendMessageCon]");
+		System.out.println("[MessageSendCon]");
 
-		  int ms_idx = Integer.parseInt(request.getParameter("ms_idx"));
+		  int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 	      int user_idx = Integer.parseInt(request.getParameter("user_idx"));
 	      int send_idx = Integer.parseInt(request.getParameter("send_idx"));
 	      String message_con = request.getParameter("message_con");
-	      String ms_reg_date = request.getParameter("ms_reg_date");
 		  
-	      
-	      MessageDTO dto = new MessageDTO(ms_idx,user_idx, send_idx, message_con,ms_reg_date);
+	      System.out.println("test");
+	      MessageDTO dto = new MessageDTO(0,p_idx,user_idx, send_idx, message_con,null);
 	      MessageDAO dao = new MessageDAO();
 	      
-	      int cnt = dao.sendMessage(dto);
+	      int cnt = dao.MessageSend(dto);
 	      
 	      if(cnt > 0) {
 	         System.out.println("전송성공");
@@ -30,7 +29,7 @@ public class MessageSendCon implements Command {
 	      }else {
 	         System.out.println("전송실패");
 	      }
-		return "MessageList.jsp";
+		return "../?result=200";
 	}
 
 }
