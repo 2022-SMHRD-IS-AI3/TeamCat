@@ -11,7 +11,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MessageDTO {
 	   
-	private int num;
+	   private int num;
 	   @NonNull int ms_idx;
 	   @NonNull private int user_idx;
 	   private int p_idx;
