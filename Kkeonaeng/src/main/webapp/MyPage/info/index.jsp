@@ -14,7 +14,7 @@
 <meta name="author" content="" />
 <title>꺼냉</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
 <script src="https://kit.fontawesome.com/c108db6a29.js"
@@ -184,10 +184,11 @@ select {
         		gu_code = regionList.get(i).getGu_code();
         	}
         	
-       }
-		
-		
+        }
 	%>
+	<!-- 내 정보 변경 페이지 -->
+	
+	
 	<!-- navbar -->
 	<form action="UpdateCon.do" method="post"
 				enctype="multipart/form-data">

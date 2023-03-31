@@ -1,23 +1,14 @@
-<%@page import="com.smhrd.model.WishlistDAO"%>
-<%@page import="com.smhrd.model.FileDTO"%>
-<%@page import="com.smhrd.model.FileDAO"%>
+<%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.smhrd.model.ReservationDAO"%>
-<%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>꺼냉</title>
-<script src="https://kit.fontawesome.com/c108db6a29.js" crossorigin="anonymous"></script>
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
-   <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
-<style>
+    <title>Document</title>
+    <style>
         .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile {
             background-color: rgba(33, 33, 33, 0.46);
         }
@@ -30,8 +21,6 @@
             top: 0;
             width: 100%;
             height: 100%;
-            overflow-x: hidden;
-            overflow-y: auto;
             text-align: center;
             z-index: 10000;
         }
@@ -59,7 +48,6 @@
             /* height: 100%; */
             position: relative;
             background-color: #ffffff;
-            box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -73,18 +61,16 @@
         }
 
         .SearchFormModal__header {
-            /* flex-shrink: 0;
-            height: 47px; */
             border-bottom: 1px solid #e4e5ed;
-            /* display: flex; */
-            margin-top: 20px;
-            padding-bottom: 15px;
+            margin-top: 8px;
+            padding-bottom: 8px;
         }
 
         .SearchFormModal__close {
             background-color: transparent;
             border: none;
             vertical-align: middle;
+            margin-top: 2px;
         }
 
         .SearchFormModal__close-button {
@@ -100,7 +86,6 @@
             align-items: center;
             font-size: 20px;
             padding: 0;
-
         }
 
         .input,
@@ -128,6 +113,25 @@
             overflow: visible;
         }
 
+        .SearchFormModal__input {
+            flex: 1;
+            height: 46px;
+            line-height: 1.44;
+            font-size: 17px;
+
+            outline: none;
+            color: #303441;
+            width: 325px;
+        }
+
+        .SearchFormModal__clear-button {
+            position: absolute;
+            right: 2%;
+            background-color: transparent;
+            border: none;
+            height: 52px;
+        }
+
         ._4a1tzy0 {
             /* margin: 0 -1rem; */
             position: relative;
@@ -143,20 +147,28 @@
             list-style: none;
             padding: 0;
             margin: 0;
-            padding-left: 25px;
-            padding-right: 25px;
+
         }
 
         ._4a1tzy2 {
             width: 100%;
             box-sizing: border-box;
+            background-color: whitesmoke;
         }
+
+        /* ._4a1tzy2::after{
+            content: "";
+            height: .0625rem;
+            display: block;
+            background-color: var(--seed-semantic-color-divider-2);
+            margin: 0.5rem 1rem;
+        } */
 
         ._1o1a6ke0 {
             transition: background-color .15s;
             width: 100%;
             background-color: var(--seed-semantic-color-paper-default);
-
+            padding: 1rem;
             box-sizing: border-box;
             display: flex;
             align-items: flex-start;
@@ -164,9 +176,8 @@
             text-decoration: none;
             cursor: pointer;
             border-bottom: 1px solid #9595952e;
-            padding-left: 0;
+            padding-left: 10;
             padding-right: 0;
-            padding-top: 20px;
         }
 
         ._1o1a6ke2 {
@@ -174,8 +185,8 @@
         }
 
         ._1o1a6ke1 {
-            width: 4rem;
-            height: 4rem;
+            width: 5rem;
+            height: 5rem;
             border-radius: 6.25rem;
             overflow: hidden;
         }
@@ -258,7 +269,8 @@
             line-height: 1.3;
             margin: 0.25rem 0 0;
             color: #212124;
-            font-weight: 700;
+            font-weight: 500;
+            padding-top: 20px;
         }
 
         .row>* {
@@ -269,81 +281,79 @@
             margin-top: var(--bs-gutter-y);
         }
 
-        .wish {
-            align-self: self-end;
+        .yes:hover {
+            background-color: rgb(82 127 239);
+            color: white;
+        }
+
+        .no:hover {
+            background-color: rgb(82 127 239);
+            color: white;
         }
     </style>
 </head>
 
 <body>
-	<%
-		UserDTO info = (UserDTO)session.getAttribute("info");
-		
-		if(info == null){
-			response.sendRedirect("/Kkeonaeng/Login/");
-		}else{
-		List<ProductDTO> product_list =	new WishlistDAO().myWishlist(info.getUser_idx());
-		
-	%>
-	<div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
+	
+	 <%
+    	int user_idx = Integer.parseInt(request.getParameter("user_idx"));
+    	int user_nick = Integer.parseInt(request.getParameter("user_nick"));
+    	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
+    	int rp_idx = Integer.parseInt(request.getParameter("rp_idx"));
+    	int rp_nick = Integer.parseInt(request.getParameter("rp_nick"));
+    	
+    	ProductDAO dao = new ProductDAO();
+    	ProductDTO product = dao.ProductDetail(p_idx); 
+    %>
+    <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
-                    <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
-		<div class="container">
-			
-				<a href="/Kkeonaeng/MyPage/index.jsp"
-					style="text-decoration-line: none;"> <i
-					class="fa-solid fa-chevron-left"
-					style="padding: 0px 10px 10px; color: black;"></i>
-				</a> 
-				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">관심 목록</strong>
-		</div>
-	</nav>
-
-                        
-
-
-                    <div class="_4a1tzy0">
-                        <ul class="_4a1tzy1 korcsc5">
-                            <%for(int i= 0;i < product_list.size();i++){ 
-                            	String file = new FileDAO().fileSelect(new FileDTO(0, "product", product_list.get(i).getP_idx()));
-                				String filename = "unknown.png";
-                				if (file != null) {
-                					filename = file;
-                				}
-                            %>
-
-	                            <li class="_4a1tzy2">
-	                                <a class="smb-list-item _1o1a6ke0 korcsc4" href="/Kkeonaeng/Product/Detail/?p_idx=<%=product_list.get(i).getP_idx()%>">
-	                                    <div class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
-	                                        <div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
-	
-	                                            <img class="thumbnail-image qudd1g9"
-	                                                src="/Kkeonaeng/file/<%=filename %>"
-	                                                alt="">
-	                                        </div>
-	                                    </div>
-	
-	                                    <div class="smb-list-item-content _1o1a6ke3">
-	                                        <div class="smb-list-item-name-wrapper _1o1a6ke4">
-	                                            <span class="smb-list-item-name _1o1a6ke5"><%=product_list.get(i).getP_name() %></span>
-	
-	                                        </div>
-	                                        <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getContact_addr() %></span>
-	                                        <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span>
-	                                        <span class="wish">
-	                                            <img src="../../img/noheart.png" alt="">
-	                                            <span style="vertical-align: top; font-weight: 600;">132</span>
-	                                        </span>
-	                                    </div>
-	                                </a>
-	
-	                            </li>
-							<%} %>
-                        </ul>
+                    <div class="SearchFormModal__header">
+                        <button type="button" class="SearchFormModal__close">
+                            <img src="small-caret-left.svg" alt="" style="width: 32px;">
+                        </button>
+                        <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
+                            반납완료
+                        </span>
                     </div>
+                </div>
 
+                <div class="_4a1tzy0">
+                    <ul class="_4a1tzy1 korcsc5">
+                        <li class="_4a1tzy2">
+                            <a class="smb-list-item _1o1a6ke0 korcsc4" href="">
+                                <div class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
+                                    <div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
+
+                                        <img class="thumbnail-image qudd1g9"
+                                            src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Forigin%2Farticle%2F202201%2F2db4ee69075c401b523dc8612bfb1fcdac0634428e7e2d078cf66608386fb2b7.webp%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=a340"
+                                            alt="">
+                                    </div>
+                                </div>
+
+                                <div class="smb-list-item-content _1o1a6ke3">
+                                    <div class="smb-list-item-name-wrapper _1o1a6ke4">
+                                        <span class="smb-list-item-name _1o1a6ke5"><%=product.getP_name() %></span>
+                                    </div>
+                                    <span class="smb-list-item-infos _1o1a6ke8"><%=rp_nick %></span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <br>
+                    <br>
+                    <span style="position: absolute; left: 35px;"><%=user_nick %>님이 반납을 완료하셨나요?</span>
+                    <br>
+                    <br>
+                    <br>
+
+                    <span style="position: absolute; left: 60px;">
+                        <button onclick="moveUrl(/Review/)" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
+                        border-radius: 10px;">예</button>
+                        <button onclick="moveBack()" type="button" class="no"
+                            style="width: 100px; height: 50px; font-size: 15px; margin-left: 40px; border: none; border-radius: 10px;">아니요</button>
+                    </span>
                 </div>
             </div>
         </div>
@@ -353,9 +363,12 @@
     	const moveBack = () =>{
     		window.history.back();
     	}
-    
+    	const moveUrl = (url) => {
+			location.href = url;
+
+		}
     
     </script>
-    <%} %>
+     
 </body>
 </html>
