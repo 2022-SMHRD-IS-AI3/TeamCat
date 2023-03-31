@@ -53,11 +53,12 @@
 
         textarea {
             width: 100%;
-            height: 6.25em;
+            height: 7em;
             border: none;
             resize: none;
         }
 
+		
         #divWrap {
             width: 245px;
             overflow-y: scroll;
@@ -123,7 +124,25 @@
            border-bottom: 2px solid #cccccc;
         }
         
-        
+        #submit {
+	border: none;
+	background-color: #fff!important;
+	
+	 padding: 0 10px;
+  cursor: pointer;
+  outline: none;
+ 
+}
+
+	#submit:active {
+	color: #527fef;
+	border: 1px solid #527fef;
+	border-radius: 4px;
+	font-weight: bold;
+	
+	
+	
+}
     </style>
 </head>
 <body>
@@ -160,7 +179,7 @@
    %>
    
    <!-- Responsive navbar-->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="background-color: #fff;">
         <div class="container">
                 <span class="navbar-brand" style="font-weight: bold;">
                 <a href="../" style="text-decoration-line: none; color: black;">
@@ -217,7 +236,7 @@
 
                 </tr>
                 <tr>
-                    <td align="left">
+                    <td align="left" style="font-weight: bold;">
                             카테고리
                     </td>
                     <td align="right">
@@ -239,11 +258,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="left">
-                        <input type="text" class="price" placeholder="가격" name="price" id="price"maxlength="50" value="<%=price %>">
+                    <td align="left" style="width: 60%;">
+                        <input type="text" class="price" placeholder="가격" name="price" id="price" maxlength="50" value="<%=price %>">
 
                     </td>
-                    <td align="right">
+                    <td align="right" style="width: 40%">
                         무료 <input type="checkbox" name="free" id="free" value="무료">
                     </td>
                 </tr>
@@ -256,7 +275,7 @@
                 <tr>
                     <td align="left" colspan="2">
                     <details>
-                    <summary>거래가능장소</summary>
+                    <summary style="font-weight: bold;">거래가능장소</summary>
                     
                         <div id="myDIV" align="left">
                             <p style="font-weight: bold;">만나서 거래할 때에는 안전한 공공장소에서 거래하세요.</p>
