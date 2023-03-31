@@ -12,7 +12,7 @@
 <meta name="author" content="" />
 <title>꺼냉</title>
 <!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
 <script src="https://kit.fontawesome.com/c108db6a29.js"
@@ -174,6 +174,8 @@ color:  #343a40;
 	</style>
 
 </head>
+
+
 <body>
 
 	<%
@@ -183,6 +185,8 @@ color:  #343a40;
 		}else{
 	%>
 	 
+	 
+	 <!-- 마이페이지 -->
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
 				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">
