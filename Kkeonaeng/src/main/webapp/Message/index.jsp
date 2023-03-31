@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.MessageDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="com.smhrd.model.MessageDAO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
@@ -8,170 +11,165 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile {
-            background-color: rgba(33, 33, 33, 0.46);
-        }
+.KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile
+	{
+	background-color: rgba(33, 33, 33, 0.46);
+}
 
-        .KmongDialog {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            z-index: 10000;
-        }
+.KmongDialog {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	z-index: 10000;
+}
 
-        .KmongDialog--fullscreen .KmongDialog__container {
-            margin: 0;
-            width: 100%;
-            max-width: 100%;
-            height: 100%;
-            max-height: 100%;
-        }
+.KmongDialog--fullscreen .KmongDialog__container {
+	margin: 0;
+	width: 100%;
+	max-width: 100%;
+	height: 100%;
+	max-height: 100%;
+}
 
-        .KmongDialog__container {
-            text-align: left;
-            display: inline-block;
-            position: relative;
-            vertical-align: middle;
-        }
+.KmongDialog__container {
+	text-align: left;
+	display: inline-block;
+	position: relative;
+	vertical-align: middle;
+}
 
-        .KmongDialog--fullscreen.KmongDialog__content {
-            border-radius: 0;
-        }
+.KmongDialog--fullscreen.KmongDialog__content {
+	border-radius: 0;
+}
 
-        .KmongDialog__content {
-            height: 100%;
-            position: relative;
-            background-color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            padding: 0;
-        }
+.KmongDialog__content {
+	height: 100%;
+	position: relative;
+	background-color: #ffffff;
+	display: flex;
+	flex-direction: column;
+	overflow-y: auto;
+	padding: 0;
+}
 
-        .SearchFormModal {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
+.SearchFormModal {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
 
-        .SearchFormModal__header {
-            border-bottom: 1px solid #e4e5ed;
-            margin-top: 8px;
-            padding-bottom: 8px;
-        }
+.SearchFormModal__header {
+	border-bottom: 1px solid #e4e5ed;
+	margin-top: 8px;
+	padding-bottom: 8px;
+}
 
-        .SearchFormModal__close {
-            background-color: transparent;
-            border: none;
-            vertical-align: middle;
-            margin-top: 2px;
-        }
+.SearchFormModal__close {
+	background-color: transparent;
+	border: none;
+	vertical-align: middle;
+	margin-top: 2px;
+}
 
-        .SearchFormModal__close-button {
-            flex-shrink: 0;
-            flex-basis: 15%;
-            background-color: transparent;
-            border: none;
-            outline: none;
-            width: 46px;
-            height: 46px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 20px;
-            padding: 0;
-        }
+.SearchFormModal__close-button {
+	flex-shrink: 0;
+	flex-basis: 15%;
+	background-color: transparent;
+	border: none;
+	outline: none;
+	width: 46px;
+	height: 46px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 20px;
+	padding: 0;
+}
 
-        .input,
-        button,
-        select,
-        textarea {
-            font-family: inherit;
-            line-height: inherit;
-        }
+.input, button, select, textarea {
+	font-family: inherit;
+	line-height: inherit;
+}
 
-        .button,
-        html input[type="button"],
-        input[type="reset"],
-        input[type="submit"] {
+.button, html input[type="button"], input[type="reset"], input[type="submit"]
+	{
+	cursor: pointer;
+}
 
-            cursor: pointer;
-        }
+.button, select {
+	text-transform: none;
+}
 
-        .button,
-        select {
-            text-transform: none;
-        }
+.profile {
+	margin-left: 0.8rem;
+	padding-bottom: 15px;
+	border-bottom: solid 1px #9595952e;
+	margin-right: 0.8rem;
+	padding-top: 15px;
+}
 
-        .profile {
-            margin-left: 0.8rem;
-            padding-bottom: 15px;
-            border-bottom: solid 1px #9595952e;
-            margin-right: 0.8rem;
-            padding-top: 15px;
-        }
+.profile .nickname {
+	font-size: 1.2rem;
+	font-weight: bolder;
+	line-height: 1.5;
+	letter-spacing: -0.6px;
+	color: #212529;
+	margin-bottom: 5px;
+}
 
-        .profile .nickname {
-            font-size: 1.2rem;
-            font-weight: bolder;
-            line-height: 1.5;
-            letter-spacing: -0.6px;
-            color: #212529;
-            margin-bottom: 5px;
-        }
+.profile .region-name {
+	font-size: 1rem;
+	line-height: 1.46;
+	letter-spacing: -0.6px;
+	color: grey;
+}
 
-        .profile .region-name {
-            font-size: 1rem;
-            line-height: 1.46;
-            letter-spacing: -0.6px;
-            color: grey;
-        }
+.QuickMenuMobile {
+	position: fixed;
+	bottom: 0;
+	z-index: 111;
+	flex-direction: row;
+	display: flex !important;
+	width: 100%;
+	background: white;
+	box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
+	min-height: 50px;
+}
 
-        .QuickMenuMobile {
-            position: fixed;
-            bottom: 0;
-            z-index: 111;
-            flex-direction: row;
-            display: flex !important;
-            width: 100%;
-            background: white;
-            box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
-            min-height: 50px;
+.QuickMenuMobile .menu-items {
+	display: flex;
+	align-items: center;
+	flex: 1;
+}
 
-        }
+.QuickMenuMobile .menu {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 0;
+}
 
-        .QuickMenuMobile .menu-items {
-            display: flex;
-            align-items: center;
-            flex: 1;
-        }
+.fl-1 {
+	flex: 1;
+}
 
-        .QuickMenuMobile .menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 8px 0;
-        }
-
-        .fl-1 {
-            flex: 1;
-        }
-
-        .QuickMenuMobile .title {
-            font-size: 11px;
-            margin-top: 3px;
-        }
+.QuickMenuMobile .title {
+	font-size: 11px;
+	margin-top: 3px;
+}
     </style>
 </head>
 
 <body>
-
+	<%
+	List<MessageDTO> messageList = new MessageDAO().myMessageList(44);
+	%> 
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
@@ -184,51 +182,13 @@
                             메세지내역
                         </span>
                     </div>
+                    
+                    <% for(MessageDTO message : messageList){ %>
                     <div class="profile">
                         <div class="nickname">닉네임</div>
                         <div class="region-name">메세지내용</div>
                     </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-                    <div class="profile">
-                        <div class="nickname">꺼냉좋아</div>
-                        <div class="region-name">메세지내용</div>
-                    </div>
-
+                    <%} %>
                     
                     <div class="QuickMenuMobile">
                         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Main.jsp')">

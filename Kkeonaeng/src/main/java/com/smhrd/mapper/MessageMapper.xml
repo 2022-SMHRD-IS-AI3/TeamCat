@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.model.MessageDAO">
    <insert id="MessageSend" parameterType="MessageDTO">
-      insert into message values(num_message_con.nextval,#{ms_nick}, #{mr_nick}, #{message_con}, ms_reg_date)
+      insert into message_info values(message_info_seq.nextval,#{p_idx}, #{user_idx}, #{send_idx}, #{message_con}, sysdate)
    </insert>
    
    <select id="myMessage" resultType="MessageDTO" parameterType="String">

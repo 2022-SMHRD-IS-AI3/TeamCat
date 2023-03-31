@@ -11,8 +11,8 @@ public class MessageDAO {
 	private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 	   
 	   // 메시지 전송
-	   public int sendMessage(MessageDTO dto) {
-	 
+	   public int MessageSend(MessageDTO dto) {
+		  System.out.println("dto");
 	      SqlSession sqlsession = sqlSessionFactory.openSession(true);
 	      int cnt = sqlsession.insert("MessageSend", dto);
 	      sqlsession.close();
