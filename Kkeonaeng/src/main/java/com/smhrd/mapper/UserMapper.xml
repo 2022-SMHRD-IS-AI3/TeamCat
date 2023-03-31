@@ -37,16 +37,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	
 	<!-- 전체회원조회(Admin) -->
-	<select id="userAll" resultType="UserDTO">
-		select * from user_info
+	<select id="userAll" resultType="AdminUserDTO">
+		select (select count(*) from review_info where thumbs_flag = 'G' and user_idx =u.user_idx)good_cnt,(select count(*) from review_info where thumbs_flag = 'B' and user_idx =u.user_idx)bad_cnt,(select count(*)rp_flag_cnt from review_info where rp_flag = 1 and user_idx = u.user_idx) rp_flag_cnt , u.* from user_info u
 	</select>
 	
 	<!-- 회원 복구(Admin) -->
 	<update id="recovery" parameterType="int">
 		update user_info set user_flag = 'Y' where user_idx = #{user_idx}
 	</update>
-	
-	<!-- 회원 정보 취합(Admin) -->
-	
 	
 </mapper>

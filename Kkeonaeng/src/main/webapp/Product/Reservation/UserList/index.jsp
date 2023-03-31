@@ -200,6 +200,7 @@
                 <%for(ReservationDTO rv : rvList){
                 	String[] startData = rv.getRv_start_date().split(" ");
                 	String[] endData = rv.getRv_end_date().split(" ");
+                	
                 	%>
                 <div class="zzzz">
                     <div class="bad">

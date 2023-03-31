@@ -14,6 +14,8 @@
 		<typeAlias type="com.smhrd.model.ReviewDTO" alias="ReviewDTO" />
 		<typeAlias type="com.smhrd.model.RegionDTO" alias="RegionDTO" />
 		<typeAlias type="com.smhrd.model.RentDTO" alias="RentDTO" />
+		<typeAlias type="com.smhrd.model.AdminUserDTO" alias="AdminUserDTO" />
+
 		
 	</typeAliases>
 	

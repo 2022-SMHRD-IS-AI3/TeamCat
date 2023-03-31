@@ -1,7 +1,7 @@
+<%@page import="com.smhrd.model.AdminUserDTO"%>
 <%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@page import="com.smhrd.model.UserDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.smhrd.model.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,16 +28,19 @@
 				<th>성별</th>
 				<th>카카오계정</th>
 				<th>등록일</th>
+				<th>좋아요</th>
+				<th>싫어요</th>
+				<th>신고 유무</th>
 				<th>회원상태</th>
 				<th>회원상태변경</th>
 			</tr>
 			<%
 			/* UserDTO info = (UserDTO)session.getAttribute("info"); */
 
-			List<UserDTO> user_list = new UserDAO().userAll();
+			List<AdminUserDTO> user_list = new UserDAO().userAll();
 			
 			for (int i = 0; i < user_list.size(); i++) {
-				UserDTO user = user_list.get(i);
+				AdminUserDTO user = user_list.get(i);
 				String userflag = user.getUser_flag();
 				System.out.println(userflag);
 				String flag = "";
@@ -56,6 +59,9 @@
 				<td><%=user.getGender() %></td>
 				<td><%=user.getKakao_id() %></td>
 				<td><%=user.getReg_date() %></td>
+				<td><%=user.getGood_cnt() %></td>
+				<td><%=user.getBad_cnt() %></td>
+				<td><%=user.getRp_flag_cnt() %></td>
 				<td><%=user.getUser_flag() %></td>
 				<td>
 					<button
