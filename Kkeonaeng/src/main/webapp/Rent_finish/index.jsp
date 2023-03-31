@@ -303,7 +303,7 @@
     	int rp_nick = Integer.parseInt(request.getParameter("rp_nick"));
     	
     	ProductDAO dao = new ProductDAO();
-    	ProductDTO product = dao.ProductDetail(p_idx);
+    	ProductDTO product = dao.ProductDetail(p_idx); 
     %>
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
@@ -349,7 +349,7 @@
                     <br>
 
                     <span style="position: absolute; left: 60px;">
-                        <button onclick="/Kkeonaeng/Rent_finish/Review/"type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
+                        <button onclick="moveUrl(/Review/)" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
                         border-radius: 10px;">예</button>
                         <button onclick="moveBack()" type="button" class="no"
                             style="width: 100px; height: 50px; font-size: 15px; margin-left: 40px; border: none; border-radius: 10px;">아니요</button>
@@ -363,6 +363,10 @@
     	const moveBack = () =>{
     		window.history.back();
     	}
+    	const moveUrl = (url) => {
+			location.href = url;
+
+		}
     
     </script>
      
