@@ -4,8 +4,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.smhrd.Command.Command;
+import com.smhrd.model.RepleDAO;
 import com.smhrd.model.WishlistDAO;
-import com.smhrd.model.WishlistDTO;
+
 
 public class RepleUpdateCon implements Command {
 
@@ -15,8 +16,8 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 		System.out.println(p_idx);
 		
-		WishlistDAO dao = new WishlistDAO();
-		int cnt = dao.WishlistDelete(new WishlistDTO(0,user_idx, p_idx));
+		RepleDAO dao = new RepleDAO();
+		int cnt =  dao.RepleDAO().RepleUpdate(dto);
 		
 		if (cnt > 0) {
 			System.out.println("댓글 달기 성공"); // 지울예정

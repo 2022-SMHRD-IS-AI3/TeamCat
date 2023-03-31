@@ -11,4 +11,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into reple_info values(reple_info_seq.nextval, #{user_idx}, #{p_idx})
 	</insert>
 	
-</mapper>
+</mapper> 
