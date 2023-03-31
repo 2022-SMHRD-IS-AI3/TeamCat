@@ -243,7 +243,7 @@
 	                	<% }else if(rtdto.getReturn_chk().equals("Y")){
 	                	System.out.println(rtdto.toString());%>
 	                	<button class="bbttnn noneBtn" type="button">대여중</button>
-	                    <button onclick="returnFinish(<%=rv.getUser_idx()%>,<%=rv.getNick()%>,<%=p_idx%>,<%=user_idx%>,<%=nick%>)" class="bbttnn returnBtn" type="button">반납완료</button>
+	                    <button onclick="returnFinish(<%=rv.getUser_idx()%>,'<%=rv.getNick()%>',<%=p_idx%>,<%=user_idx%>,'<%=nick%>')" class="bbttnn returnBtn" type="button">반납완료</button>
 	                    <button class="bbttnn cancelBtn noneBtn" type="button">예약취소</button>
 	                	<!-- 전부 다 비활성화 대여시작=> 대여중 -->
 	                	<% }else{
@@ -277,7 +277,7 @@
 	// 대여시작
 	function rentStart(rv_idx){
 		if(confirm('대여를 시작하시겠습니까?')){
-			location.href = 'RentStartCon.do?rv_idx='+rv_idx;
+			location.href = 'RentStartCon.do?rv_idx='+rv_idx+'&p_idx='+<%=p_idx%>;
 		}
 		
 	}

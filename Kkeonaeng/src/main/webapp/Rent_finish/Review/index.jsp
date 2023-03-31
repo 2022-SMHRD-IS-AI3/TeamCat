@@ -45,6 +45,7 @@ textarea {
 
 	<%
 	int user_idx = Integer.parseInt(request.getParameter("user_idx"));
+	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 	int rp_idx = Integer.parseInt(request.getParameter("rp_idx"));
 	%>
 	<!-- Responsive navbar-->
@@ -81,13 +82,15 @@ textarea {
 			</ul>
 		</div>
 		<form action="ReviewUpdateCon.do" method="post">
+			<input type="hidden" name="p_idx" value="<%=p_idx%>">
 			<input type="hidden" name="rp_idx" value="<%=rp_idx%>"> <input
-				type="hidden" name="user_idx" value="<%=user_idx%>"> <input
-				type="hidden" name="thumbs_flag" id="thumbs_flag" value="">
+				type="hidden" name="user_idx" value="<%=user_idx%>">
+				 <input type="hidden" name="thumbs_flag" id="thumbs_flag" value="">
+				 <input type="hidden" name="rp_flag" id="rp_flag" value="0">
 			<br> <br>
 			<div id="checkReport">
-				<input onclick="report()" type="checkbox" name="rp_flag"
-					id="rp_flag" value="1"> <label for="rp_flag">신고하기
+				<input onclick="report()" type="checkbox" name="rp_check"
+					id="rp_check" value="1"> <label for="rp_check">신고하기
 					(선택사항)</label>
 				<p style="font-size: 0.85rem; color: #6c757d;">⚠신고할 내용이 없다면
 					신고하기를 클릭하지 않고 리뷰를 작성해주세요.</p>
@@ -129,8 +132,14 @@ textarea {
         
             // 신고하기 클릭시 리뷰창 변경
             function report() {
-                if (document.getElementById("rp_flag").value == 1){
+                if (document.getElementById("rp_check").checked == true){
                     document.getElementById('rv_contents').setAttribute('placeholder','신고내용을 작성해주세요(최대 50자)');
+                    document.getElementById('review').style.display = 'block';
+                    document.getElementById('checkReport').style.display = 'block';
+                    document.getElementById('rp_flag').value = 1;
+                }else{
+                    document.getElementById('rp_flag').value = 0;
+                    document.getElementById('rv_contents').setAttribute('placeholder','리뷰를 작성해주세요(최대 50자)');
                     document.getElementById('review').style.display = 'block';
                     document.getElementById('checkReport').style.display = 'block';
                 }

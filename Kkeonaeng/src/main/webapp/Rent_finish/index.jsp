@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -297,21 +299,22 @@
 	
 	 <%
     	int user_idx = Integer.parseInt(request.getParameter("user_idx"));
-    	int user_nick = Integer.parseInt(request.getParameter("user_nick"));
+    	String user_nick = request.getParameter("user_nick");
     	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
     	int rp_idx = Integer.parseInt(request.getParameter("rp_idx"));
-    	int rp_nick = Integer.parseInt(request.getParameter("rp_nick"));
+    	String rp_nick = request.getParameter("rp_nick");
     	
     	ProductDAO dao = new ProductDAO();
     	ProductDTO product = dao.ProductDetail(p_idx); 
+    	String file = new FileDAO().fileSelect(new FileDTO(0,"product",p_idx));
     %>
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
                     <div class="SearchFormModal__header">
-                        <button type="button" class="SearchFormModal__close">
-                            <img src="small-caret-left.svg" alt="" style="width: 32px;">
+                        <button onclick="moveBack()" type="button" class="SearchFormModal__close">
+                            <img src="../img/small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
                             반납완료
@@ -326,8 +329,7 @@
                                 <div class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
                                     <div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
 
-                                        <img class="thumbnail-image qudd1g9"
-                                            src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Forigin%2Farticle%2F202201%2F2db4ee69075c401b523dc8612bfb1fcdac0634428e7e2d078cf66608386fb2b7.webp%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=a340"
+                                        <img class="thumbnail-image qudd1g9" src="/Kkeonaeng/file/<%=file %>"
                                             alt="">
                                     </div>
                                 </div>
@@ -349,7 +351,7 @@
                     <br>
 
                     <span style="position: absolute; left: 60px;">
-                        <button onclick="moveUrl(/Review/)" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
+                        <button onclick="moveUrl('RentReturnFinishCon.do?user_idx=<%=user_idx %>&rp_idx=<%=rp_idx %>&p_idx=<%=p_idx %>')" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
                         border-radius: 10px;">예</button>
                         <button onclick="moveBack()" type="button" class="no"
                             style="width: 100px; height: 50px; font-size: 15px; margin-left: 40px; border: none; border-radius: 10px;">아니요</button>

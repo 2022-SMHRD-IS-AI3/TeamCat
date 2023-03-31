@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 대여상태보기(예약자) -->
 	<select id="rentStatuesInfo" parameterType="RentDTO" resultType="RentDTO">
-		select rt.*, rv.rv_idx from reservation_info rv left join rent_info rt on rv.p_idx = rt.p_idx and rv.user_idx = rt.user_idx where  rv.user_idx = #{user_idx} and rv.p_idx = #{p_idx}
+		select rt.*, rv.rv_idx from reservation_info rv left join rent_info rt on rv.p_idx = rt.p_idx and rv.user_idx = rt.user_idx and rt.return_date is null where rv.user_idx = #{user_idx} and rv.p_idx = #{p_idx} and rt.return_date is null
 	</select>
 	
 	<!-- 대여상태보기(대여자) -->
@@ -31,9 +31,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update rent_info set return_chk = 'Y' where p_idx = #{p_idx} and return_chk = 'N' and return_date is null
 	</update>
 	
-	<!-- 반납완료(예약자) -->
+	<!-- 반납완료(대여자) -->
 	<update id="rentReturnFinish" parameterType="int">
-		update rent_info set return_date = sysdate where p_idx = #{p_idx} and return_chk = 'Y' return_date is null
+		update rent_info set return_date = sysdate where p_idx = #{p_idx} and return_chk = 'Y' and return_date is null
 	</update>
+	
+	<delete id="rentReservationDelete" parameterType="RentDTO">
+		delete from reservation_info where p_idx = #{p_idx} and user_idx = #{user_idx}
+	</delete>
+	
+	
 	
 </mapper>
