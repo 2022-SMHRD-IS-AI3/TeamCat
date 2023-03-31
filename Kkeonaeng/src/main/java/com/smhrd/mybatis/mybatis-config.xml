@@ -15,7 +15,6 @@
 		<typeAlias type="com.smhrd.model.RegionDTO" alias="RegionDTO" />
 		<typeAlias type="com.smhrd.model.RentDTO" alias="RentDTO" />
 		<typeAlias type="com.smhrd.model.AdminUserDTO" alias="AdminUserDTO" />
-		<typeAlias type="com.smhrd.model.RepleDTO" alias="RepleDTO" />
 
 		
 	</typeAliases>
@@ -40,6 +39,5 @@
 		<mapper resource="com/smhrd/mapper/ReviewMapper.xml" />
 		<mapper resource="com/smhrd/mapper/RegionMapper.xml" />
 		<mapper resource="com/smhrd/mapper/RentMapper.xml" />
-		<mapper resource="com/smhrd/mapper/RepleMapper.xml" />
 	</mappers>
 </configuration>
