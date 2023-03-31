@@ -2,6 +2,7 @@ package com.smhrd.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Getter
@@ -20,6 +21,6 @@ public class ProductDTO {
 	private String p_reg_date;
 	private String p_flag;
 	private String nick;
+	private int rv_idx;
 	
-
 }

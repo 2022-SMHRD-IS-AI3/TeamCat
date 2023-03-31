@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.smhrd.model.WishlistDAO">
 
-	<!-- 위시리스트 생성 -->
+	<!-- 리플 생성 -->
 	<insert id="RepleUpdate" parameterType="RepleDTO">
-		insert into reple_info values(wishlist_info_seq.nextval, #{user_idx}, #{p_idx})
+		insert into reple_info values(reple_info_seq.nextval, #{user_idx}, #{p_idx})
 	</insert>
 	
 </mapper>

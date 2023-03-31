@@ -61,4 +61,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select a.*, b.nick from product_info a, user_info b where a.user_idx = b.user_idx
 	</select>
 	
+	<!-- 게시물 정보 상태변경(대여중,대여가능) -->
+	<update id="ProductFlagChange" parameterType="ProductDTO">
+		update product_info set p_flag = #{p_flag} where p_idx = #{p_idx}
+	</update>
+	
 </mapper>

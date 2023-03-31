@@ -16,7 +16,11 @@ import com.smhrd.controller.ProductSearchCon;
 import com.smhrd.controller.ProductUpdateCon;
 import com.smhrd.controller.ProductWriteCon;
 import com.smhrd.controller.RecoveryCon;
+import com.smhrd.controller.RentStartCon;
+import com.smhrd.controller.RentStartStatusCon;
+import com.smhrd.controller.RepleUpdateCon;
 import com.smhrd.controller.ReservationCon;
+import com.smhrd.controller.ReservationDeleteCon;
 import com.smhrd.controller.ReviewDeleteCon;
 import com.smhrd.controller.ReviewUpdateCon;
 import com.smhrd.controller.UpdateCon;
@@ -106,6 +110,19 @@ public class Frontcontroller extends HttpServlet {
 		}else if (result.equals("RecoveryCon.do")) {
 			
 			con = new RecoveryCon();
+		}else if (result.equals("ReservationDeleteCon.do")) {
+			
+			con = new ReservationDeleteCon();
+		}else if (result.equals("RentStartCon.do")) {
+			
+			con = new RentStartCon();
+		}else if (result.equals("RentStartStatusCon.do")) {
+			
+			con = new RentStartStatusCon();
+		
+		}else if (result.equals("RepleUpdateCon.do")) {
+			
+			con = new RepleUpdateCon();
 		
 		}
 		response.sendRedirect(con.execute(request,response));

@@ -93,4 +93,13 @@ public class ProductDAO {
 		
 		return product_list;
 	}
+	
+	// 게시글 상태변경
+	public int ProductFlagChange(FileDTO dto) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.update("ProductFlagChange", dto);
+		sqlsession.close();
+		
+		return cnt;
+	}
 }

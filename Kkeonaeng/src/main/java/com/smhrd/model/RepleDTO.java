@@ -4,17 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
+@Getter
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Getter
-public class ReservationDTO {
-	
-	private int rv_idx;
-	private int user_idx; // 예약자
+public class RepleDTO {
+
+	private int rp_idx;
 	private int p_idx;
-	private String rv_start_date;
-	private String rv_end_date;
-	private String nick;
-	
-	
+	private int user_idx;
+	private String reple_con;
+	private int rp_reg_date;
 }
