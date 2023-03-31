@@ -557,7 +557,7 @@
             <% }else{
            
             	RentDTO r = new RentDAO().rentStatuesInfo(new RentDTO(p_idx,user_idx));
-            	String button = "<button class='reservation' type='button'>예약하기</button>";
+            	String button = "<button onclick='reservation()' class='reservation' type='button'>예약하기</button>";
             			System.out.println(r);
             	if(r != null){
             		// 예약대기 r_idx == 0
@@ -607,13 +607,15 @@
 				moveUrl("ProductDeleteCon.do?p_idx="+<%=p_idx %>);
 			}
 		}
+		
+		const reservation = () =>{
+			moveUrl('../Reservation/?user_idx=<%=user_idx%>&p_idx=<%=p_idx%>');
+		}
+		
+		
 		const moveUrl = (url) => {
-			location.href=url;
-<<<<<<< HEAD
-		}	
-	</script>
-	<script type="text/javascript">
-=======
+			location.href = url;
+
 		}
 		
 		// 예약자 대여시작
@@ -629,8 +631,7 @@
 			}
 			<%-- moveUrl('RentReturnCon.do?p_idx=<%=p_idx%>'); --%>
 		}
->>>>>>> branch 'master' of https://github.com/2022-SMHRD-IS-AI3/TeamCat.git
-		
+
 	</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

@@ -18,24 +18,44 @@ public class RentDAO {
 
 		return cnt;
 	}
-	
+
 	// 대여시작(예약자)
 	public int rentStartStatus(int p_idx) {
-		
+
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		int cnt = sqlsession.insert("rentStartStatus", p_idx);
+		int cnt = sqlsession.update("rentStartStatus", p_idx);
 		sqlsession.close();
-		
+
 		return cnt;
 	}
-	
-	// 대여시작(예약자)
+
+	// 반납완료(예약자)
+	public int rentReturn(int p_idx) {
+
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.update("rentReturn", p_idx);
+		sqlsession.close();
+
+		return cnt;
+	}
+
+	// 반납완료(대여자)
+	public int rentReturnFinish(int p_idx) {
+
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.update("rentReturnFinish", p_idx);
+		sqlsession.close();
+
+		return cnt;
+	}
+
+	// 대여상태정보보기
 	public RentDTO rentStatuesInfo(RentDTO dto) {
-		
+
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		RentDTO rent_list = sqlsession.selectOne("rentStatuesInfo", dto);
 		sqlsession.close();
-		
+
 		return rent_list;
 	}
 }

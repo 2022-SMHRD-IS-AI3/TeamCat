@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="reservationUserList" parameterType="int" resultType="ReservationDTO">
 		select r.*, u.nick from reservation_info r, user_info u where r.user_idx = u.user_idx and r.p_idx = #{p_idx} 
 	</select>
-	
+
 	<!-- 예약삭제 -->
 	<delete id="reservationDelete" parameterType="int">
 		delete from reservation_info where rv_idx = #{rv_idx}
