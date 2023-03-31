@@ -1,5 +1,7 @@
 package com.smhrd.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -58,24 +60,25 @@ public class RentDAO {
 
 		return rent_list;
 	}
-	
+
 	// 대여상태정보보기
 	public RentDTO renterStatuesInfo(RentDTO dto) {
-		
+
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		RentDTO rent_list = sqlsession.selectOne("renterStatuesInfo", dto);
 		sqlsession.close();
-		
+
 		return rent_list;
 	}
-	
+
 	// 반납 완료 후 예약 내역 삭제
 	public int rentReservationDelete(RentDTO dto) {
-		
+
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		int cnt = sqlsession.delete("rentReservationDelete", dto);
 		sqlsession.close();
-		
+
 		return cnt;
 	}
+
 }
