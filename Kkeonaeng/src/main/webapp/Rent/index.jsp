@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.FileDTO"%>
+<%@page import="com.smhrd.model.FileDAO"%>
+<%@page import="com.smhrd.model.UserDTO"%>
 <%@page import="com.smhrd.model.ProductDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
 <%@page import="java.util.List"%>
@@ -298,24 +301,26 @@
 						</div>
 					</nav>
 
+					<div class="_4a1tzy0">
+						<ul class="_4a1tzy1 korcsc5">
 					<%
-					List<ProductDTO> Product_list = new ProductDAO().ProductList();
+					UserDTO info = (UserDTO) session.getAttribute("info");
+					
+					List<ProductDTO> Product_list = new ProductDAO().ProductRentList(info.getUser_idx());
 
 					for (int i = 0; i < Product_list.size(); i++) {
 
 						ProductDTO product = Product_list.get(i);
+						String file = new FileDAO().fileSelect(new FileDTO(0,"product",product.getP_idx()));
 					%>
-					<div class="_4a1tzy0">
-						<ul class="_4a1tzy1 korcsc5">
-							<li class="_4a1tzy2"><a
-								class="smb-list-item _1o1a6ke0 korcsc4" href="">
+							<li class="_4a1tzy2">
+							<a class="smb-list-item _1o1a6ke0 korcsc4" href="/Kkeonaeng/Product/Detail/?p_idx=<%=product.getP_idx()%>">
 									<div
 										class="smb-list-item-thumbnail-wrapper _1o1a6ke2 _1o1a6ke1">
 										<div class="thumbnail-base qudd1g0 qudd1g4 _1o1a6ke1">
 
 											<img class="thumbnail-image qudd1g9"
-												src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fdnvefa72aowie.cloudfront.net%2Forigin%2Farticle%2F202201%2F2db4ee69075c401b523dc8612bfb1fcdac0634428e7e2d078cf66608386fb2b7.webp%3Fq%3D95%26s%3D1440x1440%26t%3Dinside&type=a340"
-												alt="">
+												src="/Kkeonaeng/file/<%=file %>" alt="">
 										</div>
 									</div>
 									<div class="smb-list-item-content _1o1a6ke3">

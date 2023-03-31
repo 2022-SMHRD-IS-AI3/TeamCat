@@ -67,8 +67,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	
 	<!-- 대여 목록 -->
-	<select id="ProductList" resultType="ProductDTO">
-		select * from product_info where user_idx = 36 and p_flag != 9
+	<select id="ProductRentList" resultType="ProductDTO" parameterType="int">
+		select * from product_info where user_idx = #{user_idx} and p_flag != 9
 	</select>
 	
 </mapper>

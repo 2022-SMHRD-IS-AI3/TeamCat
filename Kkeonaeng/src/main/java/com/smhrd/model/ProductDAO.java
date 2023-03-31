@@ -104,9 +104,9 @@ public class ProductDAO {
 	}
 
 	// 대여 목록 보기
-	public List<ProductDTO> ProductList() {
+	public List<ProductDTO> ProductRentList(int user_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		List<ProductDTO> Product_list = sqlsession.selectList("ProductList");
+		List<ProductDTO> Product_list = sqlsession.selectList("ProductRentList",user_idx);
 		sqlsession.close();
 
 		return Product_list;

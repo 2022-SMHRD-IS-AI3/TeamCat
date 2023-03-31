@@ -114,7 +114,7 @@
 }
 
 .profile .nickname {
-	font-size: 1.2rem;
+	font-size: 1rem;
 	font-weight: bolder;
 	line-height: 1.5;
 	letter-spacing: -0.6px;
@@ -123,10 +123,15 @@
 }
 
 .profile .region-name {
-	font-size: 1rem;
-	line-height: 1.46;
-	letter-spacing: -0.6px;
-	color: grey;
+	font-size: 0.8rem;
+    line-height: 1.46;
+    letter-spacing: -0.6px;
+    color: grey;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 39px;
 }
 
 .QuickMenuMobile {
@@ -185,8 +190,8 @@
                     
                     <% for(MessageDTO message : messageList){ %>
                     <div class="profile">
-                        <div class="nickname">닉네임</div>
-                        <div class="region-name">메세지내용</div>
+                        <div class="nickname"><%=message.getMs_nick() %></div>
+                        <div class="region-name"><%=message.getMessage_con() %></div>
                     </div>
                     <%} %>
                     
@@ -216,7 +221,7 @@
                                 <div class="title active">빌려드림</div>
                             </div>
                         </div>
-                        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Reservation/')">
+                        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Message/')">
                             <div class="menu fl-1">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -250,7 +255,11 @@
             </div>
         </div>
 
-
+	 <script type="text/javascript">
+    const moveUrl = (url) => {
+		location.href = url;
+	}
+    </script>
 
 </body>
 

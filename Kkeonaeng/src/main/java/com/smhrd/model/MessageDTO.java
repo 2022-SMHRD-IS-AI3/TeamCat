@@ -29,6 +29,17 @@ public class MessageDTO {
 		this.message_con = message_con;
 		this.ms_reg_date = ms_reg_date;
 	}
+	
+	public MessageDTO(int ms_idx, int p_idx, int user_idx, int send_idx, String message_con, String ms_reg_date, String ms_nick) {
+		super();
+		this.ms_idx = ms_idx;
+		this.p_idx = p_idx;
+		this.user_idx = user_idx;
+		this.send_idx = send_idx;
+		this.message_con = message_con;
+		this.ms_reg_date = ms_reg_date;
+		this.ms_nick = ms_nick;
+	}
 	   
 	   
 }
