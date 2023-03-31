@@ -570,7 +570,7 @@
 	            	}else if(r.getReturn_chk().equals("N")){
 	            		button = "<button onclick='rentReturn()' class='reservation' type='button'>반납완료</button>";
 	            	// 반납중 return_date == null
-	            	}else if(r.getReturn_chk().equals("N") && r.getReturn_date() == null){
+	            	}else if(r.getReturn_chk().equals("Y") && r.getReturn_date() == null){
 	            		button = "<button class='reservation' type='button'>반납중</button>";
 	            	}
             	} 

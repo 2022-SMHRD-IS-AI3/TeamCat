@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update rent_info set return_chk = 'Y' where p_idx = #{p_idx} and return_chk = 'N' and return_date is null
 	</update>
 	
-	<!-- 반납완료(예약자) -->
+	<!-- 반납완료(대여자) -->
 	<update id="rentReturnFinish" parameterType="int">
 		update rent_info set return_date = sysdate where p_idx = #{p_idx} and return_chk = 'Y' return_date is null
 	</update>
