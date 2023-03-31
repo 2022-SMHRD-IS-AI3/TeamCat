@@ -58,4 +58,14 @@ public class RentDAO {
 
 		return rent_list;
 	}
+	
+	// 대여상태정보보기
+	public RentDTO renterStatuesInfo(RentDTO dto) {
+		
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		RentDTO rent_list = sqlsession.selectOne("renterStatuesInfo", dto);
+		sqlsession.close();
+		
+		return rent_list;
+	}
 }

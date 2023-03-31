@@ -42,7 +42,7 @@ public class UpdateCon implements Command {
 			String nick = multi.getParameter("nick");
 			int rg_idx = Integer.parseInt(multi.getParameter("rg_idx"));
 			cnick = nick;
-			System.out.println(rg_idx);
+			System.out.println(user_idx);
 			String filename = multi.getFilesystemName("filename");
 			UserDTO dto = null;
 			String file_img = "";
