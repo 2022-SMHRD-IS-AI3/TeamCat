@@ -1,3 +1,8 @@
+<%@page import="java.util.List"%>
+<%@page import="java.awt.List"%>
+<%@page import="com.smhrd.model.ProductDTO"%>
+<%@page import="com.smhrd.model.ProductDAO"%>
+<%@page import="com.smhrd.model.UserDTO"%>
 <%@page import="com.smhrd.model.MessageDAO"%>
 <%@page import="com.smhrd.model.MessageDTO"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -111,28 +116,36 @@ position: absolute;
 </head>
 
 <body>
-UserDTO info = (UserDTO) session.getAttribute("info");
-if(info == null){
-			response.sendRedirect("/Kkeonaeng/Login/");
-		}else{
-			List<MessageDTO> myMessageList = new MessageDAO().myReviewList(info.getUser_idx());
-    <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
+
+<%-- <%
+	MessageDTO info = (MessageDTO) session.getAttribute("info");	
+	MessageDAO dao = new MessageDAO();
+	List<MessageDTO> myMessageList = dao.;
+	%>
+	<%for(int i= 0;i < product_list.size();i++){ 
+                            	String file = new FileDAO().fileSelect(new FileDTO(0, "product", product_list.get(i).getP_idx()));
+                				String filename = "unknown.png";
+                				if (file != null) {
+                					filename = file;
+                				}
+                            %> --%>
+    <div class="KmongDialog KmongDialog--backdrop KmongDialog-s-fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
                     <div class="SearchFormModal__header">
-							<%=info.getNick() %>
+							
                         <button type="button" class="SearchFormModal__close">
                             <img src="../img/small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            
+                            메시지 작성
                         </span>
 
                     </div>
                     <div style="border-bottom: 1px solid #e4e5ed; text-align: center;">
-                        <p class="write" style="font-weight: bold;">게시글 제목</p>
-                        <p class="write">게시글 작성자</p>
+                        <p class="write" style="font-weight: bold;">product_list.get(i).getP_name()</p>
+                        <p class="write"></p>
                     </div>
                 </div>
             </div>
