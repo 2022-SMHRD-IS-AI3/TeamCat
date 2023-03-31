@@ -277,7 +277,7 @@
 	// 대여시작
 	function rentStart(rv_idx){
 		if(confirm('대여를 시작하시겠습니까?')){
-			location.href = 'RentStartCon.do?rv_idx='+rv_idx;
+			location.href = 'RentStartCon.do?rv_idx='+rv_idx+'&p_idx='+<%=p_idx%>;
 		}
 		
 	}

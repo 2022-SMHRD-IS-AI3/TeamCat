@@ -68,4 +68,14 @@ public class RentDAO {
 		
 		return rent_list;
 	}
+	
+	// 반납 완료 후 예약 내역 삭제
+	public int rentReservationDelete(RentDTO dto) {
+		
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.delete("rentReservationDelete", dto);
+		sqlsession.close();
+		
+		return cnt;
+	}
 }

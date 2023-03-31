@@ -62,8 +62,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 게시물 정보 상태변경(대여중,대여가능) -->
-	<update id="ProductFlagChange" parameterType="ProductDTO">
-		update product_info set p_flag = #{p_flag} where p_idx = #{p_idx}
+	<update id="ProductFlagChange" parameterType="FileDTO">
+		update product_info set p_flag = #{route_type} where p_idx = #{f_idx}
 	</update>
 	
 </mapper>

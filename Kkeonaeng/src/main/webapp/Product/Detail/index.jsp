@@ -594,7 +594,6 @@
 		
 		// 마커가 표시될 위치입니다 
 		var markerPosition  = new kakao.maps.LatLng(<%=gpsArr[0]%>, <%=gpsArr[1]%>); 
-		
 		// 마커를 생성합니다
 		var marker = new kakao.maps.Marker({
 		    position: markerPosition

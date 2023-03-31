@@ -351,7 +351,7 @@
                     <br>
 
                     <span style="position: absolute; left: 60px;">
-                        <button onclick="moveUrl('./Review/?user_idx=<%=user_idx %>&rp_idx=<%=rp_idx %>')" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
+                        <button onclick="moveUrl('RentReturnFinishCon.do?user_idx=<%=user_idx %>&rp_idx=<%=rp_idx %>&p_idx=<%=p_idx %>')" type="button" class="yes" style="width: 100px; height: 50px; font-size: 15px; border: none;
                         border-radius: 10px;">예</button>
                         <button onclick="moveBack()" type="button" class="no"
                             style="width: 100px; height: 50px; font-size: 15px; margin-left: 40px; border: none; border-radius: 10px;">아니요</button>

@@ -22,7 +22,7 @@ public class RentReturnCon implements Command {
 		String moveUrl = "./";
 		if(cnt > 0) {
 			System.out.println("반납신청완료");
-			moveUrl = "/Kkeonaeng/Rent_finish/Review/?user_idx="+user_idx+"&rp_idx="+rp_idx;
+			moveUrl = "/Kkeonaeng/Rent_finish/Review/?p_idx="+p_idx+"&user_idx="+user_idx+"&rp_idx="+rp_idx;
 		}else {
 			System.out.println("반납신청실패");
 		}
