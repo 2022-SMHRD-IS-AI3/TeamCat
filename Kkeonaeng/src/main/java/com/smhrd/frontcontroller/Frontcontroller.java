@@ -11,6 +11,8 @@ import com.smhrd.Command.Command;
 import com.smhrd.controller.JoinCon;
 import com.smhrd.controller.LoginCon;
 import com.smhrd.controller.LogoutCon;
+import com.smhrd.controller.MessageDeleteCon;
+import com.smhrd.controller.MessageSendCon;
 import com.smhrd.controller.ProductDeleteCon;
 import com.smhrd.controller.ProductSearchCon;
 import com.smhrd.controller.ProductUpdateCon;
@@ -119,6 +121,13 @@ public class Frontcontroller extends HttpServlet {
 			
 			con = new RentStartStatusCon();
 		
+		}else if (result.equals("MessageSendCon.do")) {
+			
+			con = new MessageSendCon();
+			
+		}else if (result.equals("MessageDeleteCon.do")) {
+			
+			con = new MessageDeleteCon();
 		}
 		response.sendRedirect(con.execute(request,response));
 
