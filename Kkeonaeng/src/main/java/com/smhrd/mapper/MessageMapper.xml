@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.smhrd.model.MessageDAO">
+   <insert id="MessageSend" parameterType="MessageDTO">
+      insert into message values(num_message_con.nextval,#{ms_nick}, #{mr_nick}, #{message_con}, ms_reg_date)
+   </insert>
+   
+   <select id="myMessage" resultType="MessageDTO" parameterType="String">
+      select * from message where mr_nick = #{mr_nick} order by ms_reg_date desc
+   </select>
+   
+   <delete id="messageDeleteAll" parameterType="String">
+      delete from message where mr_nick = #{mr_nick}
+   </delete>
+
+   <delete id="messageDelete" parameterType="int">
+      delete from message where num = #{num}
+   </delete>
+</mapper>

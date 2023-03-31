@@ -81,8 +81,8 @@ textarea {
 			</ul>
 		</div>
 		<form action="ReviewUpdateCon.do" method="post">
-			<input type="hidden" name="rp_idx" value="26"> <input
-				type="hidden" name="user_idx" value="27"> <input
+			<input type="hidden" name="rp_idx" value="<%=rp_idx%>"> <input
+				type="hidden" name="user_idx" value="<%=user_idx%>"> <input
 				type="hidden" name="thumbs_flag" id="thumbs_flag" value="">
 			<br> <br>
 			<div id="checkReport">
