@@ -1,3 +1,5 @@
+<%@page import="com.smhrd.model.WishlistDTO"%>
+<%@page import="com.smhrd.model.WishlistDAO"%>
 <%@page import="com.smhrd.model.RentDAO"%>
 <%@page import="com.smhrd.model.RentDTO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
@@ -540,12 +542,16 @@
 	<div class="QuickMenuMobile">
         <div class="menu-items">
             <div class="menu fl-1">
-            <% if(1<0){ %>
-                <img class="heartchk" alt="" src="/Kkeonaeng/img/noheart.png">
+            <% 
+            int cnt = new WishlistDAO().WishlistCheck(new WishlistDTO(0,user_idx,p_idx));
+            System.out.println(cnt);
+            if(cnt > 0){ %>
+                <div onclick="heartOnOff()"><img class="heartchk" alt="" src="/Kkeonaeng/img/heart.png"></div>
 			<%}else{ %>
-                <img class="heartchk" alt="" src="/Kkeonaeng/img/heart.png">
+                 <div onclick="heartOnOff()"><img class="heartchk" alt="" src="/Kkeonaeng/img/noheart.png"></div>
 			<%} %>			
                 <div class="title active"></div>
+            	<input type="hidden" name="cnt" class="cnt" value="<%=cnt %>">
             </div>
             <div class="price" style="margin-left: 20px;">
                 <%=productDetail.getPrice() %>원(일)
@@ -558,7 +564,6 @@
            
             	RentDTO r = new RentDAO().rentStatuesInfo(new RentDTO(p_idx,user_idx));
             	String button = "<button onclick='reservation()' class='reservation' type='button'>예약하기</button>";
-            			System.out.println(r);
             	if(r != null){
             		// 예약대기 r_idx == 0
 	            	if(r.getR_idx() == 0){
@@ -581,9 +586,44 @@
             </div>
         </div>
     </div>
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=448887f9bc1535931929ada97487c31a"></script>
 	<script>
+	
+		function heartOnOff(){
+			var cnt = $('.cnt').val();
+			console.log(cnt)
+			$.ajax({
+				url:"/Kkeonaeng/Ajax/heartOnOff/index.jsp",
+				type:"get",
+				dataType:"json",
+				data:{
+					user_idx:<%=user_idx%>,
+					p_idx:<%=p_idx%>,
+					cnt:cnt
+				},
+				success:function(result){
+					if(result.result == "200"){
+						console.log(result.url)
+						$('.heartchk').attr('src', '/Kkeonaeng/img/'+result.url);
+						if(cnt == "1"){
+							cnt = "0";
+						}else{
+							cnt = "1";
+						}
+						$('.cnt').val(cnt);
+							
+					}
+				},
+				error:function(error){
+					console.log(123)
+					
+				}
+			})
+		}
+		
+		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		    mapOption = { 
 		        center: new kakao.maps.LatLng(<%=gpsArr[0]%>, <%=gpsArr[1]%>), // 지도의 중심좌표
