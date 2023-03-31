@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 반납하기(예약자) -->
 	<update id="rentReturn" parameterType="int">
-		update rent_info set return_chk = 'Y' where p_idx = #{p_idx} and return_chk = 'N' return_date is null
+		update rent_info set return_chk = 'Y' where p_idx = #{p_idx} and return_chk = 'N' and return_date is null
 	</update>
 	
 	<!-- 반납완료(예약자) -->
