@@ -23,12 +23,12 @@ public String execute(HttpServletRequest request, HttpServletResponse response) 
 			int cnt = new ReviewDAO().ReviewUpdate(dto);
 			
 			if(cnt > 0) {
-				System.out.println("찜 성공");
+				System.out.println("리뷰 작성 성공");
 			}else {
-				System.out.println("찜 실패");
+				System.out.println("리뷰 작성 실패");
 			}
 		
-		return "../";
+		return "/Kkeonaeng/Product/Reservation/UserList/";
 	}
 }
 

@@ -624,10 +624,10 @@
 		}
 		
 		// 예약자 반납완료
-		const rentReturn = () => {
+		const rentReturn = (p_idx,user_idx,rp_idx) => {
 			
 			if(confirm("대여물건을 반납하시겠습니까?")){
-				alert("개발중")
+				moveUrl(`RentReturnCon.do?p_idx=<%=p_idx%>&user_idx=<%=productDetail.getUser_idx()%>&rp_idx=<%=user_idx%>`);
 			}
 			<%-- moveUrl('RentReturnCon.do?p_idx=<%=p_idx%>'); --%>
 		}
