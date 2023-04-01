@@ -9,7 +9,6 @@
         body{
             max-width: 768px;
             min-width: 320px;
-            margin: 0 auto;
             width: 100%;
             min-height: 100%;
             height: 100%;
@@ -37,6 +36,7 @@
         
 
     </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>

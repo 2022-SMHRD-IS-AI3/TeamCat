@@ -40,6 +40,18 @@ private SqlSessionFactory sqlSessionFactory = SqlSessionManager.getSqlSession();
 		return info;
 		
 	}
+	
+	// 회원정보
+	public UserDTO userInfo(int user_idx) {
+		
+		SqlSession sqlsession = sqlSessionFactory.openSession();
+		UserDTO info = sqlsession.selectOne("userInfo", user_idx);
+		sqlsession.close();
+		
+		return info;
+		
+	}
+	
 
 	// 회원정보수정
 	public int update(UserDTO dto) {
