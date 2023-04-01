@@ -179,7 +179,10 @@
 <body>
 	<%
 	UserDTO info = (UserDTO) session.getAttribute("info");
-	List<MessageDTO> messageList = new MessageDAO().myMessageList(info.getUser_idx());
+	if(info == null) {
+		response.sendRedirect("/Kkeonaeng/Login/");
+	}else{
+		List<MessageDTO> messageList = new MessageDAO().myMessageList(info.getUser_idx());
 	
 	%> 
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
@@ -243,7 +246,13 @@
                                 <div class="title active">나의 메세지</div>
                             </div>
                         </div>
-                        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/')">
+                        <%if(info!=null){%>
+        
+				        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=info.getUser_idx()%>')">
+				        <%}else{ %>
+				        
+				        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=0')">
+				        <%} %>
                             <div class="menu fl-1">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -264,7 +273,7 @@
 
             </div>
         </div>
-
+	<%} %>
 	 <script type="text/javascript">
     const moveUrl = (url) => {
 		location.href = url;
