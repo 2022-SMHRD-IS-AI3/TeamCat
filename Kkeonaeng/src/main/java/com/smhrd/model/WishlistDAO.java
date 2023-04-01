@@ -30,9 +30,9 @@ public class WishlistDAO {
 	}
 
 	// 마이 위시 목록 조회
-	public List<WishlistDTO> myWishlist(int user_idx) {
+	public List<ProductDTO> myWishlist(int user_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		List<WishlistDTO> Wishlist_list = sqlsession.selectList("myWishlist",user_idx);
+		List<ProductDTO> Wishlist_list = sqlsession.selectList("myWishlist",user_idx);
 		sqlsession.close();
 		
 		return Wishlist_list;
@@ -47,7 +47,7 @@ public class WishlistDAO {
 		return Wishlist_list;
 	}
 
-	// 개인 관심목록
+	// 개인 관심 하트 유무
 	public int WishlistCheck(WishlistDTO dto) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		int cnt = sqlsession.selectOne("WishlistCheck", dto);
@@ -56,6 +56,15 @@ public class WishlistDAO {
 		return cnt;
 	}
 
+	
+	public int WishlistCheckCount(int p_idx) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.selectOne("WishlistCheckCount", p_idx);
+		sqlsession.close();
+		
+		return cnt;
+	}
+	
 	
 	
 }

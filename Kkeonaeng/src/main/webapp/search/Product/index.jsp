@@ -115,6 +115,7 @@
 }
 
 .SearchFormModal__input {
+	border:0px;
 	flex: 1;
 	height: 46px;
 	line-height: 1.44;
