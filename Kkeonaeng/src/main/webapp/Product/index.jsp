@@ -329,12 +329,13 @@
                     <div class="smb-list-item-content _1o1a6ke3">
                         <div class="smb-list-item-name-wrapper _1o1a6ke4">
                             <span class="smb-list-item-name _1o1a6ke5"><%=product_list.get(i).getP_name()%></span>
-                            <span class="smb-list-item-region _1o1a6ke6"><%=contact_addr%></span>
+                        
                         </div>
                         <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getPrice()%>¿ø</span>
-                        <span class="smb-list-item-infos _1o1a6ke8">
+                        <span class="smb-list-item-infos _1o1a6ke8" style="justify-content: space-between; width: 100%">
                         <img src="/Kkeonaeng/img/like.png" style="width: 15px;height: 14px;"> 
                         <%=wishcheckcount %>
+                        <span class="smb-list-item-region _1o1a6ke6" style="float: right;"><%=contact_addr%></span>
                         </span>
                     </div>
                 </a>
