@@ -402,6 +402,9 @@ select {
    		window.history.back();
    	}
 
+		const moveBack = () =>{
+	   		window.history.back();
+	   	}
     </script>
 	<%
 	}
