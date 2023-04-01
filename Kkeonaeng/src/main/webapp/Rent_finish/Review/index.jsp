@@ -110,7 +110,7 @@ textarea {
 
 
 	<script>
-            // 조아요 싫어요 눌렀을 때 리뷰창 변경
+            // 좋아요 싫어요 눌렀을 때 리뷰창 변경
             let thumbsChk = (flag) => {
                 
                 if(flag == 'G'){
