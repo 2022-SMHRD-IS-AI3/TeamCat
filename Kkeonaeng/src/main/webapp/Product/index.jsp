@@ -285,6 +285,7 @@
 	<%
 	ProductDAO dao = new ProductDAO();
 	List<ProductDTO> product_list = dao.ProductAll();
+	UserDTO info = (UserDTO) session.getAttribute("info");
 	%>
 	
 	<header class="py-1 bg-light border-bottom mb-1">
@@ -295,32 +296,6 @@
 		</div>
 	</header>
 	
-	<div class="plan_filter">
-        <div class="selection">
-            <select id="category">
-                <option value="">카테고리</option>
-                <option value="">디지털기기</option>
-                <option value="">생활가전</option>
-                <option value="">가구/인테리어</option>
-                <option value="">생활/주방</option>
-                <option value="">유아동</option>
-                <option value="">여성의류/잡화</option>
-                <option value="">남성패션/잡화</option>
-                <option value="">스포츠/레저</option>
-                <option value="">취미/게임/음반</option>
-                <option value="">도서</option>
-                <option value="">반려동물용품</option>
-                <option value="">기타</option>
-            </select>
-            <select id="sort">
-                <option value="popular">인기순</option>
-                <option value="latest">최신순</option>
-                <option value="old">오래된순</option>
-                <option value="available">대여가능</option>
-            </select>
-        </div>
-    </div>
-    
     <div class="_4a1tzy0">
         <ul class="_4a1tzy1 korcsc5">
             
@@ -404,7 +379,7 @@
                 <div class="title active">나의 메세지</div>
             </div>
         </div>
-        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/')">
+        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=info.getUser_idx()%>')">
             <div class="menu fl-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"

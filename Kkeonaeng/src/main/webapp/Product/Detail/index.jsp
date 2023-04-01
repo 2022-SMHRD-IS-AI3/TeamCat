@@ -467,7 +467,7 @@
                     <a id="profile-link" href=""></a>
                     <div class="space-between">
                         <div style="display: flex;">
-                            <div id="article-profile-image" style="align-self: center;">
+                            <div id="article-profile-image" style="align-self: center;" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=productDetail.getUser_idx() %>')">
                             	<%
                             	String profile = new FileDAO().fileSelect(new FileDTO(0, "profile", productDetail.getUser_idx()));
                 				String filename = "unknown.png";
@@ -513,31 +513,13 @@
 
                 </section>
                 <hr style="color: #a7a7a7bd; margin-bottom: 0.9rem; margin-top: 0.5rem;">
-                <section class="description" style="margin-bottom:1rem;">
+                <section class="description" style="margin-bottom:5rem;">
                 	<p class="price">거래위치</p>
                 	<div id="region-name" style="padding: 0.5rem;overflow: hidden;font-size: 0.9rem;"><%=productDetail.getContact_addr() %></div>
                     <div id="map" style="width:100%;height:200px;border-radius: 0.5rem;"></div>
 				
                 </section>
-                <section id="reple" class="mb-5">
-                    <div class="bg-light">
-                        <div class="card-body">
-                            <span style="margin-left: 10px; font-weight: 600;">댓글 4개</span>
-                            <!-- Comment form-->
-                            <form class="mb-4" style="margin-top: 10px;">
-                            	<textarea class="form-control" rows="3" placeholder="댓글을 입력하세요!"></textarea>
-                            	<button onclick="">작성완료</button>
-                            </form>
-                                    
-                            <!-- Comment with nested comments-->
-                            <div class="d-flex mb-4">
-                                <!-- Parent comment-->
-                             <div class="fw-bold"></div>
-                                    이걸 어케 2주만에 하라는거임?    
-                             </div>  
-                        </div>
-                    </div>
-                </section>
+                
             </div>
         </div>
     </div>

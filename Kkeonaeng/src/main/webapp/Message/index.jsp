@@ -10,7 +10,11 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c108db6a29.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+   <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
+    
+    <title>꺼냉</title>
     <style>
 .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile
 	{
@@ -182,14 +186,17 @@
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal" style="margin-bottom: 3.6rem;">
-                    <div class="SearchFormModal__header">
-                        <button type="button" class="SearchFormModal__close">
-                            <img src="small-caret-left.svg" alt="" style="width: 32px;">
-                        </button>
-                        <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            메세지내역
-                        </span>
-                    </div>
+                    <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
+		<div class="container">
+			
+				<a href="/Kkeonaeng/MyPage/index.jsp"
+					style="text-decoration-line: none;"> <i
+					class="fa-solid fa-chevron-left"
+					style="padding: 0px 10px 10px; color: black;"></i>
+				</a> 
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 받은 메시지</strong>
+		</div>
+	</nav>
                     
                     <% for(MessageDTO message : messageList){ %>
                     <div class="profile">
@@ -236,7 +243,7 @@
                                 <div class="title active">나의 메세지</div>
                             </div>
                         </div>
-                        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/')">
+                        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=info.getUser_idx()%>')">
                             <div class="menu fl-1">
                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
