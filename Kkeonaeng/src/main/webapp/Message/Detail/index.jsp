@@ -101,15 +101,15 @@
                             <img src="small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            메시지  
+                            닉네임
                         </span>
 
-                    </div>
-                    
-                    <div>
 
                     </div>
                 </div>
+            <div style="padding-left: 10px; border-bottom: 1px solid #e4e5ed;">
+            <p style="padding-top: 15px;">대화내용</p>
+            
             </div>
         </div>
     </div>
