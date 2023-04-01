@@ -467,7 +467,7 @@
                     <a id="profile-link" href=""></a>
                     <div class="space-between">
                         <div style="display: flex;">
-                            <div id="article-profile-image" style="align-self: center;" onclick="moveUrl('/Kkeonaeng/Mypage?user_idx=<%=productDetail.getUser_idx() %>')">
+                            <div id="article-profile-image" style="align-self: center;" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=productDetail.getUser_idx() %>')">
                             	<%
                             	String profile = new FileDAO().fileSelect(new FileDTO(0, "profile", productDetail.getUser_idx()));
                 				String filename = "unknown.png";
