@@ -1,3 +1,6 @@
+<%@page import="com.smhrd.model.UserDTO"%>
+<%@page import="com.smhrd.model.RentDAO"%>
+<%@page import="com.smhrd.model.RentDTO"%>
 <%@page import="com.smhrd.model.ReservationDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ReservationDAO"%>
@@ -172,12 +175,24 @@
 	position: absolute;
     left: 135px;
 }
+
+.noneBtn {
+	color: white!important;
+    background: #b5b5b5!important;;
+}
 </style>
 </head>
 <body>
 	<%
 		int p_idx = Integer.parseInt(request.getParameter("p_idx"));
 		List<ReservationDTO> rvList = new ReservationDAO().reservationUserList(p_idx);
+		int user_idx = 0;
+		String nick = "";
+		UserDTO info = (UserDTO) session.getAttribute("info");
+		if(info != null){
+			user_idx = info.getUser_idx();
+			nick = info.getNick();
+		}
 		
 	
 	%>
@@ -197,11 +212,14 @@
                         </span>
                     </div>
                 </div>
-                <%for(ReservationDTO rv : rvList){
+                <%
+                for(ReservationDTO rv : rvList){
                 	String[] startData = rv.getRv_start_date().split(" ");
                 	String[] endData = rv.getRv_end_date().split(" ");
                 	
-                	%>
+                	RentDTO rtdto = new RentDAO().renterStatuesInfo(new RentDTO(p_idx,rv.getUser_idx()));%>
+                	<!--  대여시작,예약취소 활성화 r_idx == 0 -->
+                	
                 <div class="zzzz">
                     <div class="bad">
                         <p class="good">
@@ -214,9 +232,28 @@
                         </p>
                     </div>
                     <div class="notbad">
-                        <button onclick="rentStart(<%=rv.getRv_idx()%>)" class="bbttnn" type="button">대여시작</button>
-                        <button class="bbttnn returnBtn" type="button">반납완료</button>
-                        <button onclick="reservationCancel(<%=rv.getRv_idx()%>)" class="bbttnn cancelBtn" type="button">예약취소</button>
+                    	<% if(rtdto == null){
+                    	
+                    	%>
+                    	
+	                	<button onclick="rentStart(<%=rv.getRv_idx()%>)" class="bbttnn" type="button">대여시작</button>
+	                    <button class="bbttnn returnBtn noneBtn" type="button">반납완료</button>
+	                    <button onclick="reservationCancel(<%=rv.getRv_idx()%>)" class="bbttnn cancelBtn" type="button">예약취소</button>
+	                	<!-- 반납완료 활성화 return_chk == Y -->
+	                	<% }else if(rtdto.getReturn_chk().equals("Y")){
+	                	System.out.println(rtdto.toString());%>
+	                	<button class="bbttnn noneBtn" type="button">대여중</button>
+	                    <button onclick="returnFinish(<%=rv.getUser_idx()%>,'<%=rv.getNick()%>',<%=p_idx%>,<%=user_idx%>,'<%=nick%>')" class="bbttnn returnBtn" type="button">반납완료</button>
+	                    <button class="bbttnn cancelBtn noneBtn" type="button">예약취소</button>
+	                	<!-- 전부 다 비활성화 대여시작=> 대여중 -->
+	                	<% }else{
+	                	
+	                	System.out.println(rtdto.toString());
+	                	%>
+	                	<button class="bbttnn noneBtn noneBtn" type="button">대여중</button>
+	                    <button class="bbttnn returnBtn noneBtn" type="button">반납완료</button>
+	                    <button class="bbttnn cancelBtn noneBtn" type="button">예약취소</button>
+	                <% }%>
                     </div>
                 </div>
                 <%} %>
@@ -240,11 +277,15 @@
 	// 대여시작
 	function rentStart(rv_idx){
 		if(confirm('대여를 시작하시겠습니까?')){
-			location.href = 'RentStartCon.do?rv_idx='+rv_idx;
+			location.href = 'RentStartCon.do?rv_idx='+rv_idx+'&p_idx='+<%=p_idx%>;
 		}
 		
 	}
 	
+	// 대여시작
+	function returnFinish(user_idx,user_nick,p_idx,rp_idx,rp_nick){
+		location.href = `/Kkeonaeng/Rent_finish/?user_idx=${user_idx}&user_nick=${user_nick}&p_idx=${p_idx}&rp_idx=${rp_idx}&rp_nick=${rp_nick}`;
+	}
 	
 	</script>
 </body>
