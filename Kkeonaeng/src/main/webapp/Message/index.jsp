@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.UserDTO"%>
 <%@page import="com.smhrd.model.MessageDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.MessageDAO"%>
@@ -173,12 +174,14 @@
 
 <body>
 	<%
-	List<MessageDTO> messageList = new MessageDAO().myMessageList(44);
+	UserDTO info = (UserDTO) session.getAttribute("info");
+	List<MessageDTO> messageList = new MessageDAO().myMessageList(info.getUser_idx());
+	
 	%> 
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
-                <div class="SearchFormModal">
+                <div class="SearchFormModal" style="margin-bottom: 3.6rem;">
                     <div class="SearchFormModal__header">
                         <button type="button" class="SearchFormModal__close">
                             <img src="small-caret-left.svg" alt="" style="width: 32px;">
@@ -190,7 +193,7 @@
                     
                     <% for(MessageDTO message : messageList){ %>
                     <div class="profile">
-                        <div class="nickname"><%=message.getMs_nick() %></div>
+                        <div class="nickname"><%=message.getMr_nick() %></div>
                         <div class="region-name"><%=message.getMessage_con() %></div>
                     </div>
                     <%} %>
@@ -259,6 +262,8 @@
     const moveUrl = (url) => {
 		location.href = url;
 	}
+    
+    
     </script>
 
 </body>
