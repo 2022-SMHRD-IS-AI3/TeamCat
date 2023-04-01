@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.WishlistDAO"%>
 <%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
@@ -337,6 +338,8 @@
 				if (contact_addr == null) {
 					contact_addr = "";
 				}
+				
+				int wishcheckcount = new WishlistDAO().WishlistCheckCount(product_list.get(i).getP_idx());
 			%>
 			
 			<li class="_4a1tzy2">
@@ -354,7 +357,10 @@
                             <span class="smb-list-item-region _1o1a6ke6"><%=contact_addr%></span>
                         </div>
                         <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getPrice()%>원</span>
-                        <span class="smb-list-item-infos _1o1a6ke8">후기 100 기타 </span>
+                        <span class="smb-list-item-infos _1o1a6ke8">
+                        <img src="/Kkeonaeng/img/noheart.png" style="width: 18px;"> 
+                        <%=wishcheckcount %> 기타 
+                        </span>
                     </div>
                 </a>
 

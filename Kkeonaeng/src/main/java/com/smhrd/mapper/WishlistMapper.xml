@@ -30,7 +30,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="WishlistCheck" resultType= "int" parameterType="WishlistDTO">
 		select count(*) cnt from wishlist_info where p_idx = #{p_idx} and user_idx = #{user_idx} 
 	</select>
-	
+
+	<!-- 물건 하트 갯수-->
+	<select id="WishlistCheckCount" resultType= "int" parameterType="int">
+		select count(*) cnt from wishlist_info where p_idx = #{p_idx}
+	</select>	
 	
 	
 </mapper>

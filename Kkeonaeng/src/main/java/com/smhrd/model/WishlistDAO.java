@@ -57,5 +57,14 @@ public class WishlistDAO {
 	}
 
 	
+	public int WishlistCheckCount(int p_idx) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		int cnt = sqlsession.selectOne("WishlistCheckCount", p_idx);
+		sqlsession.close();
+		
+		return cnt;
+	}
+	
+	
 	
 }
