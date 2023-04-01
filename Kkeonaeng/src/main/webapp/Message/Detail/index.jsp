@@ -107,10 +107,22 @@
 
                     </div>
                 </div>
-            <div style="padding-left: 10px; border-bottom: 1px solid #e4e5ed;">
-            <p style="padding-top: 15px;">대화내용</p>
-            
+            <div style="margin-left: 25px; margin-right: 25px; border-bottom: 1px solid #e4e5ed;">
+            <p style="padding-top: 15px;">날짜 장소 알려주시면 시간 맞춰 가겠습니다
+            </p>
             </div>
+
+            <div style="margin-left: 25px; margin-right: 25px; border-bottom: 1px solid #e4e5ed;">
+                <p style="padding-top: 15px;">가능하면 2주일정도 대여하고싶네요</p>
+                </div>
+
+                <div style="margin-left: 25px; margin-right: 25px; border-bottom: 1px solid #e4e5ed;">
+                    <p style="padding-top: 15px;">물건이 맘에 들어서 오래 대여하고 싶어요</p>
+                    </div>
+
+                    <div style="margin-left: 25px; margin-right: 25px; border-bottom: 1px solid #e4e5ed;">
+                        <p style="padding-top: 15px;">안녕하세요 혹시 대여 가능할까요?</p>
+                        </div>
         </div>
     </div>
 
