@@ -15,10 +15,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    </select>
    
    <delete id="messageDeleteAll" parameterType="String">
-      delete from message where mr_nick = #{mr_nick}
+      delete from message_info where mr_nick = #{mr_nick}
    </delete>
 
    <delete id="messageDelete" parameterType="int">
-      delete from message where num = #{num}
+      delete from message_info where
    </delete>
 </mapper>
