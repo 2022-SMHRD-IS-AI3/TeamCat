@@ -44,15 +44,15 @@ div#period {
 
 input[type="date"] {
 	width: 123px;
-    margin-top: 10px;
-    margin-left: 10px;
-    margin-bottom: 5px;
-    border: none;
-    background: #c5c5c557;
-    padding: 7px;
-    border-radius: 25px;
-    font-size: 15px;
-    margin-right: 9px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-bottom: 5px;
+	border: none;
+	background: #c5c5c557;
+	padding: 7px;
+	border-radius: 25px;
+	font-size: 15px;
+	margin-right: 9px;
 }
 
 div#betweenDate {
@@ -114,19 +114,17 @@ div#submitButtonWrapper {
 	flex-direction: row-reverse;
 }
 
-
-
 #submitButtonWrapper button {
 	width: 106px;
-    height: 38px;
-    font-size: 1.1rem;
-    font-weight: 550;
-    margin-right: 53px;
-    margin-top: 6px;
-    color: white;
-    background-color: rgb(82, 127, 239);
-    border-radius: 0.5em;
-    border-width: 1px;
+	height: 38px;
+	font-size: 1.1rem;
+	font-weight: 550;
+	margin-right: 53px;
+	margin-top: 6px;
+	color: white;
+	background-color: rgb(82, 127, 239);
+	border-radius: 0.5em;
+	border-width: 1px;
 }
 
 td {
@@ -255,9 +253,9 @@ div#iconWrapper {
 			<!-- 상단 날짜 조회 메뉴 -->
 			<div id="upper_menu">
 
-				<input type="date" id="firstDate">
+				<input type="date" id="firstDate" value="">
 				<div id="betweenDate">~</div>
-				<input type="date" id="secondDate">
+				<input type="date" id="secondDate" value="">
 				<button id="searchButton">조회</button>
 			</div>
 
@@ -359,7 +357,8 @@ div#iconWrapper {
 			<!-- 적용 버튼 -->
 			<div id="submitButtonWrapper">
 				<button id="submit" onclick="reservation()">예약하기</button>
-				<a href="../Detail/?p_idx=<%=p_idx%>"><button id="returnBtn" onclick="()" style="background-color: rgb(139 139 139);">나가기</button></a>
+				<a href="../Detail/?p_idx=<%=p_idx%>"><button id="returnBtn"
+						onclick="()" style="background-color: rgb(139, 139, 139);">나가기</button></a>
 			</div>
 
 		</div>
@@ -367,10 +366,26 @@ div#iconWrapper {
 
 	<script src="./callender.js"></script>
 	<script type="text/javascript">
-			const reservation = () => {
-				let formData = document.formData;
-				formData.submit();
-			}
+	
+		const reservation = () => {
+			
+			var rv_start_date = document.getElementById("rv_start_date").value;	
+	        var rv_end_date = document.getElementById("rv_end_date").value;
+	          
+	        	if (rv_start_date == "") {
+	            	alert("시작 날짜를 입력해주세요.");
+	            	return;
+	   			}
+	          	if (rv_end_date == "") {
+	             	alert("끝나는 날짜를 입력해주세요.");
+	              	return;
+	           	}
+		
+			alert("예약이 완료되었습니다.");
+			
+			let formData = document.formData;
+			formData.submit();
+		}	
 		</script>
 </body>
 </html>
