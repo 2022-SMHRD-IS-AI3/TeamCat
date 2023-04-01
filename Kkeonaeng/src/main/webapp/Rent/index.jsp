@@ -277,15 +277,18 @@
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
-                    <div class="SearchFormModal__header">
+                    <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
+		<div class="container">
+			
+				<a onclick="moveBack()"
+					style="text-decoration-line: none;"> <i
+					class="fa-solid fa-chevron-left"
+					style="padding: 0px 10px 10px; color: black;"></i>
+				</a> 
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 쓴 대여글 목록</strong>
+		</div>
+	</nav>
 
-                        <button onclick="moveBack()" type="button" class="SearchFormModal__close">
-                            <img src="../img/small-caret-left.svg" alt="">
-                        </button>
-                        <span style="font-size: 17px;">
-                            대여 목록
-                        </span>
-                    </div>
 
 					<div class="_4a1tzy0">
 						<ul class="_4a1tzy1 korcsc5">

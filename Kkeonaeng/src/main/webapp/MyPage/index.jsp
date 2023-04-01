@@ -223,21 +223,21 @@ color:  #343a40;
     <ul>
     <li>
     <span><i class="fa-regular fa-heart fa-lg"></i>
-    <a href="./Wishlist/">관심목록</a>
+    <a href="./Wishlist/">나의 관심 목록</a>
     </span>
     <span></span>
     </li>
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/?user_idx=<%=info.getUser_idx()%>">대여목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=info.getUser_idx()%>">내가 쓴 대여글 목록</a>
    </span>
     <span> </span>
     </li>
             
     <li>
     <span><i class="fa-solid fa-clock-rotate-left fa-lg"></i>
-    <a href="/Kkeonaeng/Reservation/">예약내역</a>
+    <a href="/Kkeonaeng/Reservation/">나의 예약 목록</a>
     </span>
     <span></span>
     </li>

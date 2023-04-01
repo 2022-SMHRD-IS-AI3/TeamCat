@@ -291,7 +291,7 @@
 	<header class="py-1 bg-light border-bottom mb-1">
 		<div class="container">
 			<div class="text-center my-3">
-				<h1 class="title fw-bolder mb-3" style="color: #527fef;">²¨³Ã</h1>
+				<h1 onclick="moveUrl('/Kkeonaeng/Main.jsp')" class="title fw-bolder mb-3" style="color: #527fef;">²¨³Ã</h1>
 			</div>
 		</div>
 	</header>
