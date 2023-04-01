@@ -291,7 +291,7 @@
 	<header class="py-1 bg-light border-bottom mb-1">
 		<div class="container">
 			<div class="text-center my-3">
-				<h1 class="title fw-bolder mb-3" style="color: #527fef;">²¨³Ã</h1>
+				<h1 onclick="moveUrl('/Kkeonaeng/Main.jsp')" class="title fw-bolder mb-3" style="color: #527fef;">²¨³Ã</h1>
 			</div>
 		</div>
 	</header>
@@ -331,12 +331,13 @@
                     <div class="smb-list-item-content _1o1a6ke3">
                         <div class="smb-list-item-name-wrapper _1o1a6ke4">
                             <span class="smb-list-item-name _1o1a6ke5"><%=product_list.get(i).getP_name()%></span>
-                            <span class="smb-list-item-region _1o1a6ke6"><%=contact_addr%></span>
+                        
                         </div>
                         <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getPrice()%>¿ø</span>
-                        <span class="smb-list-item-infos _1o1a6ke8">
-                        <img src="/Kkeonaeng/img/noheart.png" style="width: 18px;"> 
+                        <span class="smb-list-item-infos _1o1a6ke8" style="justify-content: space-between; width: 100%">
+                        <img src="/Kkeonaeng/img/like.png" style="width: 15px;height: 14px;"> 
                         <%=wishcheckcount %>
+                        <span class="smb-list-item-region _1o1a6ke6" style="float: right;"><%=contact_addr%></span>
                         </span>
                     </div>
                 </a>
@@ -378,7 +379,7 @@
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.9977 13L4.24501 21.8775C3.43645 22.2818 2.54902 21.4909 2.85796 20.6414L5.87599 12.3418C5.95627 12.121 5.95627 11.879 5.87599 11.6583L2.85783 3.35833C2.54891 2.50879 3.43624 1.71791 4.24479 2.12214L22.2114 11.1043C22.9484 11.4727 22.9485 12.5246 22.2115 12.8931L22.0003 12.9987V13H21.9977ZM5.59498 5.03316L17.5303 11H7.76462C7.76165 10.9916 7.75863 10.9832 7.75558 10.9748L5.59498 5.03316ZM7.76462 13C7.76165 13.0084 7.75863 13.0169 7.75558 13.0253L5.59524 18.9662L17.526 13H7.76462Z" fill="black"/>
 </svg>
 
-                <div class="title active">³ªÀÇ ¸Þ¼¼Áö</div>
+                <div class="title active">³ªÀÇ ¸Þ½ÃÁö</div>
             </div>
         </div>
         <%if(info!=null){%>

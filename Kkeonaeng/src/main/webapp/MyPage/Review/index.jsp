@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.UserDAO"%>
 <%@page import="com.smhrd.model.ReviewDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.ReviewDAO"%>
@@ -209,7 +210,8 @@
 <body>
 
 	<%
-		UserDTO info = (UserDTO)session.getAttribute("info");
+		int user_idx = Integer.parseInt(request.getParameter("user_idx"));
+		UserDTO info = new UserDAO().userInfo(user_idx);
 		
 		if(info == null){
 			response.sendRedirect("/Kkeonaeng/Login/");
@@ -224,12 +226,12 @@
                 <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
 		<div class="container">
 			
-				<a href="/Kkeonaeng/MyPage/index.jsp"
+				<a onclick="moveBack()"
 					style="text-decoration-line: none;"> <i
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
 				</a> 
-				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">거래 후기</strong>
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 받은 리뷰</strong>
 		</div>
 	</nav>
                      

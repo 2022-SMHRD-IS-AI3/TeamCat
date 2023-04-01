@@ -12,7 +12,10 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<script src="https://kit.fontawesome.com/c108db6a29.js" crossorigin="anonymous"></script>
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+   <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
+<title>꺼냉</title>
 
 <style>
 .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile
@@ -201,15 +204,19 @@
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
-                    <div class="SearchFormModal__header">
+                    <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
+		<div class="container">
+			
+				<a onclick="moveBack()"
+					style="text-decoration-line: none;"> <i
+					class="fa-solid fa-chevron-left"
+					style="padding: 0px 10px 10px; color: black;"></i>
+				</a> 
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">예약자 목록</strong>
+		</div>
+	</nav>
 
-                        <button type="button" class="SearchFormModal__close" onclick="moveBack()">
-                            <img src="/Kkeonaeng/img/small-caret-left.svg" alt="" style="width: 32px;">
-                        </button>
-                        <span class="title"
-                            style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            예약자 내역
-                        </span>
+                    
                     </div>
                 </div>
                 <%

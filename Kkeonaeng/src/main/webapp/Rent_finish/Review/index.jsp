@@ -108,7 +108,7 @@ textarea {
 	</div>
 	</div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
             // 좋아요 싫어요 눌렀을 때 리뷰창 변경
             let thumbsChk = (flag) => {

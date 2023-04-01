@@ -223,21 +223,21 @@ color:  #343a40;
     <ul>
     <li>
     <span><i class="fa-regular fa-heart fa-lg"></i>
-    <a href="./Wishlist/">관심목록</a>
+    <a href="./Wishlist/">나의 관심 목록</a>
     </span>
     <span></span>
     </li>
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/">대여목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=info.getUser_idx()%>">내가 쓴 대여글 목록</a>
    </span>
     <span> </span>
     </li>
             
     <li>
     <span><i class="fa-solid fa-clock-rotate-left fa-lg"></i>
-    <a href="/Kkeonaeng/Reservation/">예약내역</a>
+    <a href="/Kkeonaeng/Reservation/">나의 예약 목록</a>
     </span>
     <span></span>
     </li>
@@ -251,7 +251,7 @@ color:  #343a40;
         <ul>
             <li>
             <span><i class="fa-regular fa-comment-dots fa-lg"></i>
-            <a href="./Review/">내가 받은 리뷰</a>
+            <a href="./Review/?user_idx=<%=info.getUser_idx()%>">내가 받은 리뷰</a>
             </span>
                 <span></span>
             </li>
@@ -288,7 +288,17 @@ color:  #343a40;
 	
     <div class="container">
         <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;  margin-bottom: 20px;justify-content: flex-start;">
-            
+            <span id="imgWrap" style="height: 100%; width: 35%;"><%
+	    		if(user.getFile_name() == null) {%>
+	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
+	    	<%	}else{ %>
+	    			<img id="profile_img" src="../file/<%=user.getFile_name() %>" alt="" width="100px" height="100px">
+	    	<%  }%>
+	    	</span>
+	    	
+	    	<strong id="nick"><%=user.getNick()%></strong>
+	    	</div>
+	    	</div>
 	    	<hr>
 	<div class="container">  	
     <p style="margin-top: 20px; margin-bottom: 10px; padding-left:10px; font-weight: bold;">나의 거래</p>
@@ -297,7 +307,7 @@ color:  #343a40;
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/">대여 목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=user_idx%>">대여 목록</a>
    </span>
     <span> </span>
     </li>
@@ -312,7 +322,7 @@ color:  #343a40;
         <ul>
             <li>
             <span><i class="fa-regular fa-comment-dots fa-lg"></i>
-            <a href="./Review/">받은 리뷰</a>
+            <a href="./Review/?user_idx=<%=user_idx%>">받은 리뷰</a>
             </span>
                 <span></span>
             </li>
@@ -352,7 +362,7 @@ color:  #343a40;
 <path fill-rule="evenodd" clip-rule="evenodd" d="M21.9977 13L4.24501 21.8775C3.43645 22.2818 2.54902 21.4909 2.85796 20.6414L5.87599 12.3418C5.95627 12.121 5.95627 11.879 5.87599 11.6583L2.85783 3.35833C2.54891 2.50879 3.43624 1.71791 4.24479 2.12214L22.2114 11.1043C22.9484 11.4727 22.9485 12.5246 22.2115 12.8931L22.0003 12.9987V13H21.9977ZM5.59498 5.03316L17.5303 11H7.76462C7.76165 10.9916 7.75863 10.9832 7.75558 10.9748L5.59498 5.03316ZM7.76462 13C7.76165 13.0084 7.75863 13.0169 7.75558 13.0253L5.59524 18.9662L17.526 13H7.76462Z" fill="black"/>
 </svg>
 
-                <div class="title active">나의 메세지</div>
+                <div class="title active">나의 메시지</div>
             </div>
         </div>
         <%if(info!=null){%>
@@ -382,6 +392,8 @@ color:  #343a40;
     const moveUrl = (url) => {
 		location.href = url;
 	}
+    
+    
     </script>
 </body>
 </html>
