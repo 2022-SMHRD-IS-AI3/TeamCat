@@ -387,6 +387,7 @@
 	<%
 	
 	int p_idx = Integer.parseInt(request.getParameter("p_idx"));
+	
 	ProductDAO dao = new ProductDAO();
 	ProductDTO productDetail = dao.ProductDetail(p_idx);
 	String gps = productDetail.getContact_gps();
@@ -404,6 +405,7 @@
 	if(info != null) {
 		user_idx = info.getUser_idx();
 	}
+	int wishcheckcount = new WishlistDAO().WishlistCheckCount(p_idx);
 	%>
 	
 	
@@ -506,7 +508,7 @@
 
                     </div>
                     <p id="count" dir="counts" style="padding-bottom: 10px;">
-                        관심 23
+                        관심 <%=wishcheckcount %>
                     </p>
 
                 </section>

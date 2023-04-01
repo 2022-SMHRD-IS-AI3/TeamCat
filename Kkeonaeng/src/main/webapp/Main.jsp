@@ -16,6 +16,7 @@
 <title>꺼냉</title>
 
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/Kkeonaeng/css/styles.css" rel="stylesheet" />
     <link href="./css/btncss.css" rel="stylesheet" />
@@ -210,11 +211,9 @@ h1.title {
 			</div>
 
 
-			<!-- <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="검색어를 입력하세요">
-                </form> -->
-			<a href="./search/"><img class="mb-3" src="/Kkeonaeng/img/search.png" width=350
-				alt=""></a>
+			<div  onclick="moveUrl('./search/')" style="text-align: center;padding-bottom: 0.6rem;padding-top: 0.3rem;">
+                <input type="text" placeholder="검색어를 입력하세요" style="width:90%;border-radius: 25px;padding: 0.5rem 1rem;border: 0px; box-shadow: 0 0 1px 1px #81818152; font-size: 0.9rem;" readonly >
+            </div>
 		</div>
 
 	</header>
@@ -224,8 +223,7 @@ h1.title {
     <div class="container">
         <div class="more1">
             <span class="pop">찜 인기 목록</span>
-            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black" href="icon.html"><i href="icon.html"
-                        class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
+            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black"><i class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
         </div>
         <div class="row">
             <!-- Blog entries-->
@@ -251,8 +249,7 @@ h1.title {
     <div class="container">
         <div class="more1">
             <span class="pop">최신 대여 목록</span>
-            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black"><i href="icon.html"
-                        class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
+            <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black"><i class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
         </div>
         <div class="row">
             <!-- Blog entries-->

@@ -271,6 +271,7 @@
 
         .wish {
             align-self: self-end;
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
@@ -289,20 +290,15 @@
         <div class="KmongDialog__container">
             <div class="KmongDialog__content">
                 <div class="SearchFormModal">
-                    <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
-		<div class="container">
-			
-				<a href="/Kkeonaeng/MyPage/index.jsp"
-					style="text-decoration-line: none;"> <i
-					class="fa-solid fa-chevron-left"
-					style="padding: 0px 10px 10px; color: black;"></i>
-				</a> 
-				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">관심 목록</strong>
-		</div>
-	</nav>
+                    <div class="SearchFormModal__header">
 
-                        
-
+                        <button onclick="moveBack()" type="button" class="SearchFormModal__close">
+                            <img src="../../img/small-caret-left.svg" alt="">
+                        </button>
+                        <span style="font-size: 17px;">
+                            관심 목록
+                        </span>
+                    </div>
 
                     <div class="_4a1tzy0">
                         <ul class="_4a1tzy1 korcsc5">
@@ -312,6 +308,7 @@
                 				if (file != null) {
                 					filename = file;
                 				}
+                				int wishcheckcount = new WishlistDAO().WishlistCheckCount(product_list.get(i).getP_idx());
                             %>
 
 	                            <li class="_4a1tzy2">
@@ -333,8 +330,8 @@
 	                                        <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getContact_addr() %></span>
 	                                        <span class="smb-list-item-infos _1o1a6ke8"><%=product_list.get(i).getPrice() %>원(일) </span>
 	                                        <span class="wish">
-	                                            <img src="../../img/noheart.png" alt="">
-	                                            <span style="vertical-align: top; font-weight: 600;">132</span>
+	                                            <img src="../../img/noheart.png" alt="" style="width: 18px;">
+	                                            <span style="font-weight: 600;font-size: 0.9rem;color: #6a6a6a;"><%=wishcheckcount %></span>
 	                                        </span>
 	                                    </div>
 	                                </a>

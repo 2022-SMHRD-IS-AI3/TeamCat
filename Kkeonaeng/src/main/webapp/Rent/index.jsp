@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.WishlistDAO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
 <%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.UserDTO"%>
@@ -67,38 +68,41 @@
 }
 
 .SearchFormModal {
-	flex: 1;
-	display: flex;
-	flex-direction: column;
-}
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-.SearchFormModal__header {
-	border-bottom: 1px solid #e4e5ed;
-	margin-top: 8px;
-	padding-bottom: 8px;
-}
+        .SearchFormModal__header {
+            /* flex-shrink: 0;
+            height: 47px; */
+            border-bottom: 1px solid #e4e5ed;
+            /* display: flex; */
+            margin-top: 20px;
+            padding-bottom: 15px;
+        }
 
-.SearchFormModal__close {
-	background-color: transparent;
-	border: none;
-	vertical-align: middle;
-	margin-top: 2px;
-}
+        .SearchFormModal__close {
+            background-color: transparent;
+            border: none;
+            vertical-align: middle;
+        }
 
-.SearchFormModal__close-button {
-	flex-shrink: 0;
-	flex-basis: 15%;
-	background-color: transparent;
-	border: none;
-	outline: none;
-	width: 46px;
-	height: 46px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 20px;
-	padding: 0;
-}
+        .SearchFormModal__close-button {
+            flex-shrink: 0;
+            flex-basis: 15%;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            width: 46px;
+            height: 46px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            padding: 0;
+
+        }
 
 .input, button, select, textarea {
 	font-family: inherit;
@@ -118,23 +122,7 @@
 	overflow: visible;
 }
 
-.SearchFormModal__input {
-	flex: 1;
-	height: 46px;
-	line-height: 1.44;
-	font-size: 17px;
-	outline: none;
-	color: #303441;
-	width: 325px;
-}
 
-.SearchFormModal__clear-button {
-	position: absolute;
-	right: 2%;
-	background-color: transparent;
-	border: none;
-	height: 52px;
-}
 
 ._4a1tzy0 {
 	/* margin: 0 -1rem; */
@@ -277,29 +265,26 @@
 
 .wish {
 	align-self: self-end;
+	margin-bottom: 0.5rem;
 }
 </style>
 </head>
 
 <body>
 
-	<div
-		class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
-		<div class="KmongDialog__container">
-			<div class="KmongDialog__content">
-				<div class="SearchFormModal">
-					<nav class="navbar navbar-expand-lg" style="backgroud-color: #fff;">
-						<div class="container">
+	<div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
+        <div class="KmongDialog__container">
+            <div class="KmongDialog__content">
+                <div class="SearchFormModal">
+                    <div class="SearchFormModal__header">
 
-							<a href="/Kkeonaeng/MyPage/index.jsp"
-								style="text-decoration-line: none;"> <i
-								class="fa-solid fa-chevron-left"
-								style="padding: 0px 10px 10px; color: black;"></i>
-							</a> <strong class="navbar-brand"
-								style="font-size: 17px; color: black; font-weight: bold">대여
-								목록</strong>
-						</div>
-					</nav>
+                        <button onclick="moveBack()" type="button" class="SearchFormModal__close">
+                            <img src="../img/small-caret-left.svg" alt="">
+                        </button>
+                        <span style="font-size: 17px;">
+                            대여 목록
+                        </span>
+                    </div>
 
 					<div class="_4a1tzy0">
 						<ul class="_4a1tzy1 korcsc5">
@@ -312,6 +297,7 @@
 
 						ProductDTO product = Product_list.get(i);
 						String file = new FileDAO().fileSelect(new FileDTO(0,"product",product.getP_idx()));
+						int wishcheckcount = new WishlistDAO().WishlistCheckCount(product.getP_idx());
 					%>
 							<li class="_4a1tzy2">
 							<a class="smb-list-item _1o1a6ke0 korcsc4" href="/Kkeonaeng/Product/Detail/?p_idx=<%=product.getP_idx()%>">
@@ -329,9 +315,10 @@
 										</div>
 										<span class="smb-list-item-description _1o1a6ke7"><%=product.getContact_addr()%></span>
 										<span class="smb-list-item-infos _1o1a6ke8"><%=product.getPrice()%>원(일)</span>
-										<span class="wish"> <img src="heart.svg" alt="">
-											<span style="vertical-align: top; font-weight: 600;">132</span>
-										</span>
+										<span class="wish">
+	                                            <img src="../img/noheart.png" alt="" style="width: 18px;">
+	                                            <span style="font-weight: 600;font-size: 0.9rem;color: #6a6a6a;"><%=wishcheckcount %></span>
+	                                        </span>
 									</div>
 							</a></li>
 
@@ -347,7 +334,11 @@
 			</div>
 		</div>
 	</div>
-	</div>
+<script type="text/javascript">
+	const moveBack = () =>{
+		window.history.back();
+	}
+</script>	
 
 </body>
 

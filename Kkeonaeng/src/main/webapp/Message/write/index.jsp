@@ -91,20 +91,24 @@
 }
 
 .write {
-	margin-bottom: 2px;
+	margin-top: 15px;
+    padding-bottom: 15px;
+	border-bottom: 1px solid #e4e5ed;
+    padding-left: 15px;
 }
 
 .special {
-	width: 60px;
+	width: 70px;
 	height: 30px;
 	background-color: white;
 }
 
 .actions {
 	position: absolute;
-	bottom: 105px;
-	right: 5px;
+	bottom: 10px;
+	right: 10px;
 }
+
 
 .special:focus {
 	background-color: rgb(82, 127, 239);
@@ -137,9 +141,9 @@
                         </span>
 
                     </div>
-                    <div style="border-bottom: 1px solid #e4e5ed; text-align: center;">
-                        <p class="write" style="font-weight: bold;"><%=product.getP_name() %></p>
-                        <p class="write"><%=user_nick %></p>
+                    <div>
+                        <p class="write" style="font-weight: bold;">게시글 제목 : <%=product.getP_name() %></p>
+                        <p class="write">받는사람 : <%=user_nick %></p>
                     </div>
                 </div>
             </div>
@@ -157,7 +161,7 @@
 							<input type="hidden" name="send_idx" id="send_idx" value="<%=product.getUser_idx()%>">
 							<div class="field">
 								<textarea name="message_con" id="message_con" rows="6"
-									style="width: 100%; position: absolute; bottom: 0px;"></textarea>
+									style="width: 100%; position: absolute; bottom: 0px; height:75%;"></textarea>
 							</div>
 							<div class="actions">
 								<input type="submit" value="전송" class="special" /> 
