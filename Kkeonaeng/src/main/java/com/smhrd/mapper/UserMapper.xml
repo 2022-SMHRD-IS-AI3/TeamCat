@@ -23,7 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 회원정보 -->
 	<select id="userInfo" resultType="UserDTO" parameterType="int">
-		select a.*, b.file_name from user_info a left outer join file_info b on a.user_idx = b.post_idx and b.route_type = 'profile' where a.user_info = #{user_idx} and a.user_flag = 'Y'
+		select a.*, b.file_name from user_info a left outer join file_info b on a.user_idx = b.post_idx and b.route_type = 'profile' where a.user_idx = #{user_idx} and a.user_flag = 'Y'
 	</select>
 	
 	<!-- 닉네임 중복 체크용도 -->

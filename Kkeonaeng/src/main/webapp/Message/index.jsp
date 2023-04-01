@@ -192,7 +192,7 @@
                     <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
 		<div class="container">
 			
-				<a href="/Kkeonaeng/MyPage/index.jsp"
+				<a onclick="moveBack()"
 					style="text-decoration-line: none;"> <i
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
@@ -279,6 +279,10 @@
 		location.href = url;
 	}
     
+    const moveBack = () =>{
+		window.history.back();
+	}
+	
     
     </script>
 

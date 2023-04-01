@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.WishlistDAO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
 <%@page import="com.smhrd.model.FileDAO"%>
 <%@page import="com.smhrd.model.ProductDTO"%>
@@ -346,6 +347,7 @@
 									if (file != null) {
 										filename = file;
 									}
+									int wishcheckcount = new WishlistDAO().WishlistCheckCount(dto.getP_idx());
 							%>
 							<li class="_4a1tzy2">
 								<a class="smb-list-item _1o1a6ke0 korcsc4" href="../../Product/Detail/?p_idx=<%=dto.getP_idx()%>">
@@ -361,7 +363,11 @@
 											<!-- <span class="smb-list-item-region _1o1a6ke6">금남로5가</span> -->
 										</div>
 										<span class="smb-list-item-description _1o1a6ke7"><%=dto.getPrice() %></span>
-										<span class="smb-list-item-infos _1o1a6ke8">후기 1,720 ∙ 생활/주방</span>
+										<span class="smb-list-item-infos _1o1a6ke8">
+										<img src="/Kkeonaeng/img/like.png" style="width: 15px;height: 14px;'"> 
+				                        <%=wishcheckcount %>
+				                        </span>
+										</span>
 									</div>
 							</a></li>
 							<hr>

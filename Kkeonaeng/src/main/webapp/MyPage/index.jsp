@@ -230,7 +230,7 @@ color:  #343a40;
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/">대여목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=info.getUser_idx()%>">대여목록</a>
    </span>
     <span> </span>
     </li>
@@ -251,7 +251,7 @@ color:  #343a40;
         <ul>
             <li>
             <span><i class="fa-regular fa-comment-dots fa-lg"></i>
-            <a href="./Review/">내가 받은 리뷰</a>
+            <a href="./Review/?user_idx=<%=info.getUser_idx()%>">내가 받은 리뷰</a>
             </span>
                 <span></span>
             </li>
@@ -288,7 +288,17 @@ color:  #343a40;
 	
     <div class="container">
         <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;  margin-bottom: 20px;justify-content: flex-start;">
-            
+            <span id="imgWrap" style="height: 100%; width: 35%;"><%
+	    		if(user.getFile_name() == null) {%>
+	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
+	    	<%	}else{ %>
+	    			<img id="profile_img" src="../file/<%=user.getFile_name() %>" alt="" width="100px" height="100px">
+	    	<%  }%>
+	    	</span>
+	    	
+	    	<strong id="nick"><%=user.getNick()%></strong>
+	    	</div>
+	    	</div>
 	    	<hr>
 	<div class="container">  	
     <p style="margin-top: 20px; margin-bottom: 10px; padding-left:10px; font-weight: bold;">나의 거래</p>
@@ -297,7 +307,7 @@ color:  #343a40;
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/">대여 목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=user_idx%>">대여 목록</a>
    </span>
     <span> </span>
     </li>
@@ -312,7 +322,7 @@ color:  #343a40;
         <ul>
             <li>
             <span><i class="fa-regular fa-comment-dots fa-lg"></i>
-            <a href="./Review/">받은 리뷰</a>
+            <a href="./Review/?user_idx=<%=user_idx%>">받은 리뷰</a>
             </span>
                 <span></span>
             </li>
@@ -382,6 +392,8 @@ color:  #343a40;
     const moveUrl = (url) => {
 		location.href = url;
 	}
+    
+    
     </script>
 </body>
 </html>
