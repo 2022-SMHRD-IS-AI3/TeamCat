@@ -22,6 +22,7 @@
     <link rel="icon" type="image/x-icon" href="../../assets/favicon.ico">
     <link href="../../css/styles.css" rel="stylesheet">
     <style>
+    
         .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile {
             background-color: rgba(33, 33, 33, 0.46);
         }

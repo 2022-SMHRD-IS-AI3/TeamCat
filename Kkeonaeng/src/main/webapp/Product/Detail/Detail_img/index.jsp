@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
 <title>꺼냉</title>
+<link rel="icon" type="image/x-icon" href="Kkeonaeng/src/java/assets/favicon.ico" />
 <style>
         body{
             max-width: 768px;
