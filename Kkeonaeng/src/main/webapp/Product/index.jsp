@@ -333,7 +333,7 @@
                         </div>
                         <span class="smb-list-item-description _1o1a6ke7"><%=product_list.get(i).getPrice()%>¿ø</span>
                         <span class="smb-list-item-infos _1o1a6ke8">
-                        <img src="/Kkeonaeng/img/noheart.png" style="width: 18px;"> 
+                        <img src="/Kkeonaeng/img/like.png" style="width: 15px;height: 14px;"> 
                         <%=wishcheckcount %>
                         </span>
                     </div>

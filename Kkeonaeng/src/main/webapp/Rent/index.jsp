@@ -1,3 +1,4 @@
+<%@page import="com.smhrd.model.UserDAO"%>
 <%@page import="com.smhrd.model.WishlistDAO"%>
 <%@page import="com.smhrd.model.FileDTO"%>
 <%@page import="com.smhrd.model.FileDAO"%>
@@ -289,7 +290,8 @@
 					<div class="_4a1tzy0">
 						<ul class="_4a1tzy1 korcsc5">
 					<%
-					UserDTO info = (UserDTO) session.getAttribute("info");
+					int user_idx = Integer.parseInt(request.getParameter("user_idx"));
+					UserDTO info = new UserDAO().userInfo(user_idx);
 					
 					List<ProductDTO> Product_list = new ProductDAO().ProductRentList(info.getUser_idx());
 
