@@ -12,7 +12,7 @@
             width: 100%;
             min-height: 100%;
             height: 100%;
-            position: relative;
+            /* position: relative; */
             color: #212529;
             background-color: #fff;
         }
