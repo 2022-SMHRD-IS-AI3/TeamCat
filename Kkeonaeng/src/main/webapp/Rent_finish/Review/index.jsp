@@ -114,7 +114,7 @@ textarea {
             let thumbsChk = (flag) => {
                 
                 if(flag == 'G'){
-                    $('.fa-solid').removeClass('')
+                    
                     document.getElementById('rv_contents').setAttribute('placeholder','리뷰를 작성해주세요(최대 50자)');
                     document.getElementById('review').style.display = 'block';
                     document.getElementById('checkReport').style.display = 'none';
