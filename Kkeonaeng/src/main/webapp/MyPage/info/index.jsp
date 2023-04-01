@@ -397,6 +397,10 @@ select {
     	   });
     	 }); 
       
+       
+       const moveBack = () =>{
+   		window.history.back();
+   	}
 
 		const moveBack = () =>{
 	   		window.history.back();

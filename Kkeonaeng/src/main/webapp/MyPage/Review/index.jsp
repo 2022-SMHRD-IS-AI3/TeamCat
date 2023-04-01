@@ -231,7 +231,7 @@
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
 				</a> 
-				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">거래 후기</strong>
+				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 받은 리뷰</strong>
 		</div>
 	</nav>
                      
