@@ -303,7 +303,7 @@ h1.title {
                 <div class="title active">나의 메세지</div>
             </div>
         </div>
-        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/')">
+        <div class="menu-items" onclick="moveUrl('/Kkeonaeng/MyPage/?user_idx=<%=info.getUser_idx()%>')">
             <div class="menu fl-1">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd"
