@@ -180,9 +180,13 @@ color:  #343a40;
 
 	<%
 		UserDTO info = (UserDTO)session.getAttribute("info");
+		
 		if(info == null) {
 			response.sendRedirect("/Kkeonaeng/Login/");
 		}else{
+			//int user_idx = Integer.parseInt(request.getParameter("user_idx"));
+			
+			
 	%>
 	 
 	 
