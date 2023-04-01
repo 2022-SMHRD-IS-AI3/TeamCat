@@ -254,9 +254,14 @@ color:  #343a40;
             </span>
                 <span></span>
             </li>
+            <li>
+            <span><i class="fa fa-book fa-lg" style="margin-left: 2px;"></i>
+            <a href="/Kkeonaeng/Manual/">꺼냉 사용법</a>
+            </span>
+                <span></span>
+            </li>
         </ul>
         </div>
-    
     
     </div>
     <%} %>
