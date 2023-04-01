@@ -9,7 +9,6 @@
         body{
             max-width: 768px;
             min-width: 320px;
-            margin: 0 auto;
             width: 100%;
             min-height: 100%;
             height: 100%;
