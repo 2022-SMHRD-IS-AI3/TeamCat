@@ -497,9 +497,7 @@
                 <hr style="color: #a7a7a7bd; margin-bottom: 0.9rem; margin-top: 0.5rem;">
                 <section class="description">
                     <h5 property="schema:name" id="itle" style=""><%=productDetail.getP_name() %></h5>
-                    <p id="category">
-                        생활/주방 ∙
-                        <time>21시간전</time>
+                        <time><%=productDetail.getP_reg_date() %></time>
                     </p>
                     <p class="price" property="schema:price"><%=productDetail.getPrice() %>원</p>
                     <div property="schema:description" id="detail">
