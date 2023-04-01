@@ -394,6 +394,8 @@
 	String gps = productDetail.getContact_gps();
 	String[] gpsArr = gps.split(",");
 	String p_flag = "대여가능";
+	String p_date = productDetail.getP_reg_date();
+	String[] p_dateArr = p_date.split(" ");
 	if(productDetail.getP_flag().equals("2")){
 		p_flag = "대여중";
 	}
@@ -408,7 +410,7 @@
 	}
 	int wishcheckcount = new WishlistDAO().WishlistCheckCount(p_idx);
 	%>
-	
+
 	
 	<div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
         <div class="KmongDialog__container">
@@ -497,7 +499,7 @@
                 <hr style="color: #a7a7a7bd; margin-bottom: 0.9rem; margin-top: 0.5rem;">
                 <section class="description">
                     <h5 property="schema:name" id="itle" style=""><%=productDetail.getP_name() %></h5>
-                        <time><%=productDetail.getP_reg_date() %></time>
+                        <div class="time"><%=p_dateArr[0] %></div>
                     </p>
                     <p class="price" property="schema:price"><%=productDetail.getPrice() %>원</p>
                     <div property="schema:description" id="detail">
