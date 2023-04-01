@@ -108,13 +108,13 @@ textarea {
 	</div>
 	</div>
 
-
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script>
             // 좋아요 싫어요 눌렀을 때 리뷰창 변경
             let thumbsChk = (flag) => {
                 
                 if(flag == 'G'){
-                    
+                    $('.fa-solid').removeClass('')
                     document.getElementById('rv_contents').setAttribute('placeholder','리뷰를 작성해주세요(최대 50자)');
                     document.getElementById('review').style.display = 'block';
                     document.getElementById('checkReport').style.display = 'none';

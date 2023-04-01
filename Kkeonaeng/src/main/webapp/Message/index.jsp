@@ -243,7 +243,7 @@
                                         fill="black" />
                                 </svg>
 
-                                <div class="title active">나의 메세지</div>
+                                <div class="title active">나의 메시지</div>
                             </div>
                         </div>
                         <%if(info!=null){%>
