@@ -101,7 +101,7 @@
                             <img src="small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            메시지 내역 
+                            메시지  
                         </span>
 
                     </div>
