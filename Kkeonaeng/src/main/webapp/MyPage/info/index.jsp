@@ -195,7 +195,7 @@ select {
 	<nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
 		<div class="container">
 			
-				<a onclick="moveBack()"
+				<a href="../?user_idx=<%=info.getUser_idx() %>"
 					style="text-decoration-line: none;"> <i
 					class="fa-solid fa-chevron-left"
 					style="padding: 0px 10px 10px; color: black;"></i>
@@ -286,6 +286,11 @@ select {
 	
 	<script type="text/javascript">
 	   
+		const moveBack = () =>{
+	   		window.history.back();
+	   	}
+
+	
 	   let urlSearch = new URLSearchParams(location.search);
        let result = urlSearch.get('result');
 	   if(result != null && result.length > 0){
@@ -397,11 +402,6 @@ select {
     	   });
     	 }); 
       
-       
-       const moveBack = () =>{
-   		window.history.back();
-   	}
-
     </script>
 	<%
 	}
