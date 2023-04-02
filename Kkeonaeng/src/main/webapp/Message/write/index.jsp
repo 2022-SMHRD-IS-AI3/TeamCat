@@ -109,42 +109,12 @@
             background-color: transparent;
             border: none;
             width: 50px;
-            height: 50px;
+            height: 40px;
             position: absolute;
             right: 5px;
         }
 
-        .send:hover::before {
-            content: attr(title);
-            background-color: #555;
-            color: #fff;
-            padding: 4px 8px;
-            border-radius: 4px;
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .send:hover::after {
-            content: "";
-            position: absolute;
-            border-style: solid;
-            border-width: 5px 5px 0 5px;
-            border-color: #555 transparent transparent transparent;
-            bottom: 90%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .send:hover::before,
-        .send:hover::after {
-            opacity: 1;
-        }
+       
         
         
 .write {
@@ -152,6 +122,7 @@
     padding-bottom: 15px;
 	border-bottom: 1px solid #e4e5ed;
     padding-left: 15px;
+    padding-right: 10px;
 }
 
 .special {
@@ -164,6 +135,8 @@
 	position: absolute;
 	bottom: 10px;
 	right: 10px;
+	margin-bottom: 10px;
+	
 }
 
 
@@ -171,6 +144,7 @@
 	background-color: rgb(82, 127, 239);
 	color: white;
 	border: 2px solid;
+	
 }
 
 </style>
@@ -226,7 +200,7 @@
 							<input type="hidden" name="send_idx" id="send_idx" value="<%=product.getUser_idx()%>">
 							<div class="field">
 								<textarea name="message_con" id="message_con" rows="6"
-									style="width: 100%; position: absolute; bottom: 0px; height:75%; outline:none; border: 0; font-size: 16px; padding-left:10px; padding-right:10px;"></textarea>
+									style="width: 100%; position: absolute; bottom: 0px; height:70%; outline:none; border: 0; font-size: 16px; padding-left:10px; padding-right:10px;"></textarea>
 							</div>
 						</form>
 							 <div class="actions">
