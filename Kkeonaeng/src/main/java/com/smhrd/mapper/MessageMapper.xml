@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    <!-- 대화별 최근 메시지 (목록용) -->
    <select id="myMessageListNew" resultType="MessageDTO" parameterType="MessageDTO">
-   		select * from message_info where p_idx = #{p_idx} and ((send_idx = #{send_idx} and user_idx = #{user_idx}) or (send_idx = #{user_idx} and user_idx = #{send_idx})) order by ms_reg_date desc
+  		select m.*,u.nick ms_nick from message_info m,user_info u where m.send_idx = u.user_idx and m.p_idx = #{p_idx} and ((m.send_idx = #{send_idx} and m.user_idx = #{user_idx}) or (m.send_idx = #{user_idx} and m.user_idx = #{send_idx})) order by m.ms_reg_date desc
    </select>
    
    <!-- 메시지 방 나가기 -->

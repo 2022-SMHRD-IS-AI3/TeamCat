@@ -2,8 +2,8 @@
 <%@page import="com.smhrd.model.MessageDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="com.smhrd.model.MessageDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +14,7 @@
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
    <link href="/Kkeonaeng/css/joinStyles.css" rel="stylesheet" />
     
-    <title>≤®≥√</title>
+    <title>Í∫ºÎÉâ</title>
     <style>
 .KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile
 	{
@@ -212,13 +212,13 @@
                 <div class="SearchFormModal" style="margin-bottom: 3.6rem;">
                     <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
 						<div class="container">
-			
 							<a onclick="moveBack()"
 								style="text-decoration-line: none;"> <i
 								class="fa-solid fa-chevron-left"
 								style="padding: 0px 10px 10px; color: black;"></i>
 							</a> 
-							<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">≥ª∞° πﬁ¿∫ ∏ﬁΩ√¡ˆ</strong>
+							<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">ÎÇ¥Í∞Ä Î∞õÏùÄ Î©îÏãúÏßÄ</strong>
+							
 						</div>
 					</nav>
                     
@@ -226,7 +226,7 @@
 						List<MessageDTO> message_con = new MessageDAO().myMessageListNew(new MessageDTO(message.getP_idx(), info.getUser_idx(), message.getSend_idx()));
                     	String date = message.getMs_reg_date().substring(0,16);
                     %>
-                    <div class="profile" onclick="moveUrl('./Detail/?p_idx=<%=message.getP_idx()%>')">
+                    <div class="profile" onclick="moveUrl('./Detail/?send_idx=<%=message.getSend_idx() %>&p_idx=<%=message.getP_idx()%>&user_idx=<%=info.getUser_idx()%>&user_nick=<%=message.getMs_nick()%>')">
                     	<div class="p_name">
                     		<%=message.getMr_nick() %>
                     	</div>
@@ -250,7 +250,7 @@
                                 </svg>
                                 </svg>
 
-                                <div class="title active">»®</div>
+                                <div class="title active">Ìôà</div>
                             </div>
                         </div>
                         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Product/')">
@@ -262,7 +262,7 @@
                                         fill="black" />
                                 </svg>
 
-                                <div class="title active">∫Ù∑¡µÂ∏≤</div>
+                                <div class="title active">ÎπåÎ†§ÎìúÎ¶º</div>
                             </div>
                         </div>
                         <div class="menu-items" onclick="moveUrl('/Kkeonaeng/Message/')">
@@ -274,7 +274,7 @@
                                         fill="black" />
                                 </svg>
 
-                                <div class="title active">≥™¿« ∏ﬁΩ√¡ˆ</div>
+                                <div class="title active">ÎÇòÏùò Î©îÏãúÏßÄ</div>
                             </div>
                         </div>
                         <%if(info!=null){%>
@@ -295,7 +295,7 @@
                                         fill="black" />
                                 </svg>
 
-                                <div class="title active">∏∂¿Ã∆‰¿Ã¡ˆ</div>
+                                <div class="title active">ÎßàÏù¥ÌéòÏù¥ÏßÄ</div>
                             </div>
                         </div>
 

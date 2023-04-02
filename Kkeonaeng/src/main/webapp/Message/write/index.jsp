@@ -129,6 +129,10 @@
 	width: 95px;
 	height: 30px;
 	background-color: white;
+	border: 0px;
+    background: #c3c3c35c;
+    border-radius: 7px;
+    box-shadow: 0 0 3px 0px #2828288a;
 }
 
 .actions {
@@ -227,6 +231,11 @@
 			
 			function submitform(){
 				let forms = document.formdata;
+				let message_con = document.getElementById('message_con');
+				if(message_con.value == ''){
+					alert("메시지를 입력해주세요");
+					return;
+				}
 				alert("메시지 전송이 완료되었습니다.");
 				
 				forms.submit();
