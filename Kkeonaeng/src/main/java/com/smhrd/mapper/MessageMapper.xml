@@ -27,6 +27,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	  where rank = 1 order by ms_reg_date desc
    </select>
    
+   <!-- 메시지 대화내역 -->
+   <select id="Message"></select>
+   
    <!-- 메시지 방 나가기 -->
    <delete id="messageDeleteAll" parameterType="String">
       delete from message_info where mr_nick = #{mr_nick}
