@@ -251,7 +251,7 @@ select {
 			<li style="height: 20px; margin-top: 20px">
 			<span class="uplist">내 동네</span>
 			<select name="gu_code_select" id="gu_code_select" onchange="setObjDong()">
-                <option value="">-- 행정구 --</option>
+                <option value="">-행정구-</option>
                 <option value="1">동구</option>
                 <option value="2">서구</option>
                 <option value="3">남구</option>
@@ -260,7 +260,7 @@ select {
                 
             </select>
             <select name="rg_idx" id="rg_idx">
-                <option value="" >-- 행정동 --</option>
+                <option value="" >-행정동-</option>
             </select>
 						<input type="hidden" name="gu_code" id="gu_code" value="<%=gu_code%>">
 			</li>
@@ -366,7 +366,7 @@ select {
        
        function dongPrint() {
     	   
-    	   var dongHtml = '<option value="">-- 행정동 --</option>';
+    	   var dongHtml = '<option value="">-행정동-</option>';
     	   for(var i = 0; i < dongListData.length;i++){
     		   var dongData = dongListData[i];
     		   let gu_code = document.getElementById('gu_code').value;
@@ -402,9 +402,6 @@ select {
    		window.history.back();
    	}
 
-		const moveBack = () =>{
-	   		window.history.back();
-	   	}
     </script>
 	<%
 	}

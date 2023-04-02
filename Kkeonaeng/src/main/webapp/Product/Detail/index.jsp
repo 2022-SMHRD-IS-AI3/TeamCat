@@ -268,7 +268,7 @@
             width: 100%;
             background: white;
             box-shadow: 0 -1.5px 0 0 rgba(0, 0, 0, 0.1);
-            min-height: 50px;
+            min-height: 56px;
         }
 
         .QuickMenuMobile .menu-items {
@@ -281,7 +281,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 8px 0;
+            padding: 9px ;
             border-right: 2px solid #e9ecef;
         }
 
@@ -305,6 +305,7 @@
             border: none;
             border-radius: 9px;
             font-weight: bold;
+            margin-top: 3px;
         }
 
         .w-100 {
@@ -377,9 +378,9 @@
        }
        
        .heartchk{
-       	    width: 25px;
-		    margin-left: 10px;
-		    margin-right: 10px;
+       	    width: 30px;
+		    margin-left: 6px;
+		    margin-right: 6px;
        	}
        	.message{
             border: none;
@@ -530,7 +531,7 @@
 
                 </section>
                 <hr style="color: #a7a7a7bd; margin-bottom: 0.9rem; margin-top: 0.5rem;">
-                <section class="description" style="margin-bottom:5rem;">
+                <section class="description" style="margin-bottom:7rem;">
                 	<p class="price">거래위치</p>
                 	<div id="region-name" style="padding: 0.5rem;overflow: hidden;font-size: 0.9rem;"><%=productDetail.getContact_addr() %></div>
                     <div id="map" style="width:100%;height:200px;border-radius: 0.5rem;"></div>
