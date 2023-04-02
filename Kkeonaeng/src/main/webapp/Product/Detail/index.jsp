@@ -91,7 +91,46 @@
             height: 35px;
         }
 
-       
+        .delete {
+            background-color: transparent;
+            border: none;
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 45px;
+        }
+        .delete:hover::before {
+            content: attr(title);
+            background-color: #555;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .delete:hover::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-width: 5px 5px 0 5px;
+            border-color: #555 transparent transparent transparent;
+            bottom: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .delete:hover::before,
+        .delete:hover::after {
+            opacity: 1;
+        }
 
 
         .edit {
@@ -103,7 +142,37 @@
             right: 5px;
         }
 
-       
+        .edit:hover::before {
+            content: attr(title);
+            background-color: #555;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .edit:hover::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-width: 5px 5px 0 5px;
+            border-color: #555 transparent transparent transparent;
+            bottom: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .edit:hover::before,
+        .edit:hover::after {
+            opacity: 1;
+        }
 
         #profile {
             margin: 0 1.6rem;
