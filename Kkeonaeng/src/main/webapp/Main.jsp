@@ -246,7 +246,7 @@ h1.title {
     </div>
 
 
-    <div class="container">
+    <div class="container" style="margin-top: 1.5rem;">
         <div class="more1">
             <span class="pop">최신 대여 목록</span>
             <span class="more" onclick="moveUrl('./Product/?order=wish')">더보기 <a style="color : black"><i class="fa-sharp fa-solid fa-chevron-right"></i></a></span>
