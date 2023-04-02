@@ -11,7 +11,7 @@
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="css/joinStyles.css" rel="stylesheet" />
+<link href="../../css/joinStyles.css" rel="stylesheet" />
 <script src="https://kit.fontawesome.com/c108db6a29.js"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -38,6 +38,14 @@ textarea {
 	border: solid 1px #000;
 	resize: none;
 }
+
+.gbWrap{
+	display:flex;
+}
+
+.gbChoice{
+	width:50%
+}
 </style>
 
 </head>
@@ -61,25 +69,29 @@ textarea {
 	<!-- Page content-->
 	<div class="container">
 		<div class="text-center mt-5">
-			<ul class="gbWrap" id="gb">
-				<li class="gbChoice"><span>
+			<div class="gbWrap" id="gb">
+				<div class="gbChoice">
+					<span>
 						<button onclick="thumbsChk('G')" class="good">
 							<i class="fa-regular fa-thumbs-up fa-5x"></i>
 						</button>
-				</span>
+					</span>
 					<div>
 						<span>좋아요</span>
-					</div></li>
-				<li class="gbChoice"><span>
+					</div>
+				</div>
+				<div class="gbChoice">
+					<span>
 						<button onclick="thumbsChk('B')" class="bad">
 							<i class="fa-regular fa-thumbs-down fa-5x"></i>
 						</button>
-				</span>
-
+					</span>
+	
 					<div>
 						<span>별로에요</span>
-					</div></li>
-			</ul>
+					</div>
+				</div>
+			</div>
 		</div>
 		<form action="ReviewUpdateCon.do" method="post">
 			<input type="hidden" name="p_idx" value="<%=p_idx%>">
