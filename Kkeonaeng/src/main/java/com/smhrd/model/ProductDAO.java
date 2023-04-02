@@ -27,6 +27,15 @@ public class ProductDAO {
 	}
 
 	// 게시글 목록 조회
+	public List<ProductDTO> ProductRegionAll(int rg_idx) {
+		SqlSession sqlsession = sqlSessionfactory.openSession(true);
+		List<ProductDTO> Product_list = sqlsession.selectList("ProductRegionAll", rg_idx);
+		sqlsession.close();
+
+		return Product_list;
+	}
+
+	// 게시글 목록 조회
 	public List<ProductDTO> ProductAll() {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
 		List<ProductDTO> Product_list = sqlsession.selectList("ProductAll");
@@ -106,7 +115,7 @@ public class ProductDAO {
 	// 대여 목록 보기
 	public List<ProductDTO> ProductRentList(int user_idx) {
 		SqlSession sqlsession = sqlSessionfactory.openSession(true);
-		List<ProductDTO> Product_list = sqlsession.selectList("ProductRentList",user_idx);
+		List<ProductDTO> Product_list = sqlsession.selectList("ProductRentList", user_idx);
 		sqlsession.close();
 
 		return Product_list;

@@ -284,8 +284,15 @@
 <body>
 	<%
 	ProductDAO dao = new ProductDAO();
-	List<ProductDTO> product_list = dao.ProductAll();
 	UserDTO info = (UserDTO) session.getAttribute("info");
+	List<ProductDTO> product_list = null;
+	if(info != null){
+		product_list = dao.ProductRegionAll(info.getRg_idx());
+	}else{
+		product_list = dao.ProductAll();
+	}
+	
+	
 	%>
 	
 	<header class="py-1 bg-light border-bottom mb-1">

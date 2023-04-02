@@ -34,6 +34,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from product_info where p_flag != 9 order by p_idx desc
 	</select>	
 	
+	<!-- 게시물 같은 구 전체보기 -->
+	<select id="ProductRegionAll" resultType= "ProductDTO" parameterType="int">
+		select * from product_info 
+		where p_flag != 9 
+		and user_idx in (select u.user_idx
+		from user_info u
+		inner join region_info r on u.rg_idx = r.rg_idx 
+		where r.gu_code in (select gu_code from region_info where rg_idx = #{rg_idx})
+		)
+		order by p_idx desc
+	</select>
+	
 	<!-- 게시물 삭제 -->
 	<update id="ProductDelete" parameterType="int">
 		update product_info
