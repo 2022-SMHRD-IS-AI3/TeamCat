@@ -196,8 +196,8 @@
 						<!-- 다른 사람의 DB에 메시지 저장해보기! -->
 						<form name="formdata" action="MessageSendCon.do?p_idx=<%=p_idx%>" method="post">
 							<input type="hidden" name="p_idx" id="p_idx" value="<%=p_idx%>">
-							<input type="hidden" name="user_idx" id="user_idx" value="<%=send_idx%>">
-							<input type="hidden" name="send_idx" id="send_idx" value="<%=product.getUser_idx()%>">
+							<input type="hidden" name="user_idx" id="user_idx" value="<%=product.getUser_idx()%>">
+							<input type="hidden" name="send_idx" id="send_idx" value="<%=send_idx%>">
 							<div class="field">
 								<textarea name="message_con" id="message_con" rows="6"
 									style="width: 100%; position: absolute; bottom: 0px; height:70%; outline:none; border: 0; font-size: 16px; padding-left:10px; padding-right:10px;"></textarea>
