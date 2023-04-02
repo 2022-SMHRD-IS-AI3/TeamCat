@@ -20,6 +20,8 @@ public class MessageDTO {
 	   private String ms_nick; //보낸사람
 	   private String mr_nick; // 받은사람
 	   
+	
+	   
 	public MessageDTO(int ms_idx, int p_idx, int user_idx, int send_idx, String message_con, String ms_reg_date) {
 		super();
 		this.ms_idx = ms_idx;
@@ -39,6 +41,12 @@ public class MessageDTO {
 		this.message_con = message_con;
 		this.ms_reg_date = ms_reg_date;
 		this.ms_nick = ms_nick;
+	}
+
+	public MessageDTO(int p_idx, int user_idx, int send_idx) {
+		this.p_idx = p_idx;
+		this.user_idx = user_idx;
+		this.send_idx = send_idx;
 	}
 	   
 	   

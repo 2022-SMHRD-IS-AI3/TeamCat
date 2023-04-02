@@ -119,7 +119,7 @@
 }
 
 .profile .nickname {
-	font-size: 1rem;
+	font-size: 0.8rem;
 	font-weight: bolder;
 	line-height: 1.5;
 	letter-spacing: -0.6px;
@@ -188,6 +188,10 @@
 	
 }
 
+.p_name{
+	font-weight:600
+}
+
 
     </style>
 </head>
@@ -199,6 +203,7 @@
 		response.sendRedirect("/Kkeonaeng/Login/");
 	}else{
 		List<MessageDTO> messageList = new MessageDAO().myMessageList(info.getUser_idx());
+		
 	
 	%> 
     <div class="KmongDialog KmongDialog--backdrop KmongDialog--fullscreen KmongDialog--mobile">
@@ -218,14 +223,18 @@
 					</nav>
                     
                     <% for(MessageDTO message : messageList){ 
+						List<MessageDTO> message_con = new MessageDAO().myMessageListNew(new MessageDTO(message.getP_idx(), info.getUser_idx(), message.getSend_idx()));
                     	String date = message.getMs_reg_date().substring(0,16);
                     %>
                     <div class="profile" onclick="moveUrl('./Detail/?p_idx=<%=message.getP_idx()%>')">
+                    	<div class="p_name">
+                    		<%=message.getMr_nick() %>
+                    	</div>
                     	<div class="profileWrap">
                     		<div class="nickname"><%=message.getMs_nick() %></div>
                     		<div class="msdate" ><%=date %></div>
                     	</div>
-                        <div class="region-name"><%=message.getMessage_con() %></div>
+                        <div class="region-name"><%=message_con.get(0).getMessage_con() %></div>
                         
                     </div>
                     <%} %>
