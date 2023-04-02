@@ -6,18 +6,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 
 <mapper namespace="com.smhrd.model.MessageDAO">
+
+	<!-- 메시지 전송 -->
    <insert id="MessageSend" parameterType="MessageDTO">
       insert into message_info values(message_info_seq.nextval,#{p_idx}, #{user_idx}, #{send_idx}, #{message_con}, sysdate)
    </insert>
    
+   <!-- 내 메시지 목록 -->
    <select id="myMessageList" resultType="MessageDTO" parameterType="int">
-      select m.*, u.nick mr_nick from message_info m inner join user_info u on m.send_idx = u.user_idx where m.user_idx = #{user_idx} order by m.ms_reg_date desc
+      select *
+	  from (
+		select msg.*,ms.message_con, ms.ms_reg_date , RANK() OVER (PARTITION BY msg.p_idx ORDER BY ms.ms_reg_date DESC) RANK
+		from (select m.p_idx,p.p_name, p.p_flag, m.send_idx, u.nick ms_nick ,u.user_flag
+		from message_info m 
+		inner join product_info p on m.p_idx = p.p_idx
+		inner join user_info u on m.send_idx = u.user_idx
+		where m.user_idx = #{user_idx} and p.p_flag != 9
+		group by m.p_idx , m.send_idx, p.p_name, u.nick, p.p_flag,u.user_flag) msg
+		inner join message_info ms on ms.p_idx = msg.p_idx and (ms.user_idx = #{user_idx}  or ms.send_idx = #{user_idx}))
+	  where rank = 1 order by ms_reg_date desc
    </select>
    
+   <!-- 메시지 방 나가기 -->
    <delete id="messageDeleteAll" parameterType="String">
       delete from message_info where mr_nick = #{mr_nick}
    </delete>
 
+	<!-- 메시지 삭제  -->
    <delete id="messageDelete" parameterType="int">
       delete from message_info where
    </delete>

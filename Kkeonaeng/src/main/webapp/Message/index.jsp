@@ -125,6 +125,7 @@
 	letter-spacing: -0.6px;
 	color: #212529;
 	margin-bottom: 5px;
+	width:65%;
 }
 
 .profile .region-name {
@@ -173,6 +174,21 @@
 	font-size: 11px;
 	margin-top: 3px;
 }
+
+.profileWrap{
+	width: 100%;
+	display: flex;
+}
+
+.msdate{
+	width:35%;
+	text-align : right;
+	font-size: 0.76rem;
+    color: grey;
+	
+}
+
+
     </style>
 </head>
 
@@ -190,21 +206,27 @@
             <div class="KmongDialog__content">
                 <div class="SearchFormModal" style="margin-bottom: 3.6rem;">
                     <nav class="navbar navbar-expand-lg" style="backgroud-color:#fff;">
-		<div class="container">
+						<div class="container">
 			
-				<a onclick="moveBack()"
-					style="text-decoration-line: none;"> <i
-					class="fa-solid fa-chevron-left"
-					style="padding: 0px 10px 10px; color: black;"></i>
-				</a> 
-				<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 받은 메시지</strong>
-		</div>
-	</nav>
+							<a onclick="moveBack()"
+								style="text-decoration-line: none;"> <i
+								class="fa-solid fa-chevron-left"
+								style="padding: 0px 10px 10px; color: black;"></i>
+							</a> 
+							<strong class="navbar-brand" style="font-size: 17px; color: black; font-weight: bold">내가 받은 메시지</strong>
+						</div>
+					</nav>
                     
-                    <% for(MessageDTO message : messageList){ %>
-                    <div class="profile">
-                        <div class="nickname"><%=message.getMr_nick() %></div>
+                    <% for(MessageDTO message : messageList){ 
+                    	String date = message.getMs_reg_date().substring(0,16);
+                    %>
+                    <div class="profile" onclick="moveUrl('./Detail/?p_idx=<%=message.getP_idx()%>')">
+                    	<div class="profileWrap">
+                    		<div class="nickname"><%=message.getMs_nick() %></div>
+                    		<div class="msdate" ><%=date %></div>
+                    	</div>
                         <div class="region-name"><%=message.getMessage_con() %></div>
+                        
                     </div>
                     <%} %>
                     
