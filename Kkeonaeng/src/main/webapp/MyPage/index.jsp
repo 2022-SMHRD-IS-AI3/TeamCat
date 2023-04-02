@@ -280,8 +280,13 @@ color:  #343a40;
    		  <!-- 마이페이지 -->
 	<nav class="navbar navbar-expand-lg">
 		<div class="container">
-				<p class="navbar-brand" style="font-weight: bold; font-size:18px; padding-left:10px;">
-				프로필</p>
+		<a onclick="moveBack()"
+					style="text-decoration-line: none;"> <i
+					class="fa-solid fa-chevron-left"
+					style="padding: 0px 10px 10px; color: black;"></i>
+				</a> 
+				<strong class="navbar-brand" style="font-size:17px;">
+				프로필</strong>
 		</div>
 	</nav>
 	
@@ -307,7 +312,7 @@ color:  #343a40;
             
     <li>
     <span><i class="fa-solid fa-box-archive fa-lg"></i>
-    <a href="/Kkeonaeng/Rent/?user_idx=<%=user_idx%>">대여 목록</a>
+    <a href="/Kkeonaeng/Rent/?user_idx=<%=user_idx%>">대여글 목록</a>
    </span>
     <span> </span>
     </li>
@@ -393,7 +398,9 @@ color:  #343a40;
 		location.href = url;
 	}
     
-    
+    const moveBack = () =>{
+		window.history.back();
+	}
     </script>
 </body>
 </html>
