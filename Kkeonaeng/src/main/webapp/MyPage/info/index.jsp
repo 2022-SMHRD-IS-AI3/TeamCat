@@ -214,7 +214,7 @@ select {
 				<%
 				if (info.getFile_name() == null) {
 				%>
-				<img id="profile_img" src="../../file/unknown.png" alt=""
+				<img id="profile_img" src="../../img/unknown.png" alt=""
 					width="100px" height="100px" style="object-fit: cover;"> <input type="hidden"
 					name="post_idx" value="">
 				<%

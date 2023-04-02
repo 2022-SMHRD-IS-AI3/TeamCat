@@ -206,7 +206,7 @@ color:  #343a40;
         <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;  margin-bottom: 20px;">
             <span id="imgWrap" style="height: 100%; width: 35%;"><%
 	    		if(info.getFile_name() == null) {%>
-	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
+	    	        <img id="profile_img" src="../img/unknown.png" alt="" width="100px" height="100px">
 	    	<%	}else{ %>
 	    			<img id="profile_img" src="../file/<%=info.getFile_name() %>" alt="" width="100px" height="100px">
 	    	<%  }%>
@@ -290,7 +290,7 @@ color:  #343a40;
         <div class="wrap" style="height: 120px; width:100%; padding:5px; margin-top: 20px;  margin-bottom: 20px;justify-content: flex-start;">
             <span id="imgWrap" style="height: 100%; width: 35%;"><%
 	    		if(user.getFile_name() == null) {%>
-	    	        <img id="profile_img" src="../file/unknown.png" alt="" width="100px" height="100px">
+	    	        <img id="profile_img" src="../img/unknown.png" alt="" width="100px" height="100px">
 	    	<%	}else{ %>
 	    			<img id="profile_img" src="../file/<%=user.getFile_name() %>" alt="" width="100px" height="100px">
 	    	<%  }%>
