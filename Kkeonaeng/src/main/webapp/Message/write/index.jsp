@@ -12,8 +12,14 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-<link rel="stylesheet" href="css/styles.css">
+<title>꺼냉</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="../css/styles.css" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/c108db6a29.js"
+	crossorigin="anonymous"></script>
 <style>
 .KmongDialog {
 	position: fixed;
@@ -67,7 +73,6 @@
 	margin-top: 8px;
 	padding-bottom: 8px;
 }
-
 .SearchFormModal__close {
 	background-color: transparent;
 	border: none;
@@ -90,6 +95,58 @@
 	padding: 0;
 }
 
+
+
+
+        .SearchFormModal__close img {
+            height: 35px;
+        }
+
+      
+
+
+        .send {
+            background-color: transparent;
+            border: none;
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            right: 5px;
+        }
+
+        .send:hover::before {
+            content: attr(title);
+            background-color: #555;
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .send:hover::after {
+            content: "";
+            position: absolute;
+            border-style: solid;
+            border-width: 5px 5px 0 5px;
+            border-color: #555 transparent transparent transparent;
+            bottom: 90%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .send:hover::before,
+        .send:hover::after {
+            opacity: 1;
+        }
+        
+        
 .write {
 	margin-top: 15px;
     padding-bottom: 15px;
@@ -98,7 +155,7 @@
 }
 
 .special {
-	width: 70px;
+	width: 95px;
 	height: 30px;
 	background-color: white;
 }
@@ -138,13 +195,20 @@
                             <img src="../../img/small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
-                            메시지보내기
+                            메시지 보내기
                         </span>
+                        <button onclick="submitform()" type="button" class="send" title="보내기">
+                            <img src="../../img/send.svg" alt="">
+                        </button>
+
+                      
+                       
+                        
 
                     </div>
                     <div>
                         <p class="write" style="font-weight: bold;">게시글 제목 : <%=product.getP_name() %></p>
-                        <p class="write">받는사람 : <%=user_nick %></p>
+                        <p class="write">받는 사람 : <%=user_nick %></p>
                     </div>
                 </div>
             </div>
@@ -162,16 +226,17 @@
 							<input type="hidden" name="send_idx" id="send_idx" value="<%=product.getUser_idx()%>">
 							<div class="field">
 								<textarea name="message_con" id="message_con" rows="6"
-									style="width: 100%; position: absolute; bottom: 0px; height:75%;"></textarea>
+									style="width: 100%; position: absolute; bottom: 0px; height:75%; outline:none; border: 0; font-size: 16px; padding-left:10px; padding-right:10px;"></textarea>
 							</div>
 						</form>
-							<div class="actions">
-								<input type="button" value="전송" onclick="submitform()" class="special" > 
-								<input type="reset" value="삭제" class="special" >
+							 <div class="actions">
+								<input type="reset" value="내용 지우기" class="special" >
 							</div>
 						
 					</section>
-
+					</div>
+					</section>
+					
 				</div>
 		</div>
 
