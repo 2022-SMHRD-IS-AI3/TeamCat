@@ -165,7 +165,7 @@
                 <div class="SearchFormModal">
                     <div class="SearchFormModal__header">
 
-                        <button type="button" class="SearchFormModal__close" onclick="moveUrl('/Kkeonaeng/Product/Detail/?p_idx=<%=p_idx%>')">
+                        <button type="button" class="SearchFormModal__close" onclick="moveBack()">
                             <img src="../../img/small-caret-left.svg" alt="" style="width: 32px;">
                         </button>
                         <span style="font-size: 17px; font-weight: bold; position: absolute; top: 14px; left: 40px;">
@@ -194,7 +194,7 @@
 					<section>
 						<!-- Q11. 메시지 보내기 기능(메시지는 계속 확인하기 위해서 DB에 저장!) -->
 						<!-- 다른 사람의 DB에 메시지 저장해보기! -->
-						<form name="formdata" action="/Kkeonaeng/Product/Detail/?p_idx=<%=p_idx%>" method="post">
+						<form name="formdata" action="MessageSendCon.do?p_idx=<%=p_idx%>" method="post">
 							<input type="hidden" name="p_idx" id="p_idx" value="<%=p_idx%>">
 							<input type="hidden" name="user_idx" id="user_idx" value="<%=send_idx%>">
 							<input type="hidden" name="send_idx" id="send_idx" value="<%=product.getUser_idx()%>">

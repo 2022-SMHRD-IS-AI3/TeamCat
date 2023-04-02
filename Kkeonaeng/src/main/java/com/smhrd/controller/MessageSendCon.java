@@ -29,7 +29,7 @@ public class MessageSendCon implements Command {
 	      }else {
 	         System.out.println("전송실패");
 	      }
-		return "../?result=200";
+		return "/Kkeonaeng/Product/Detail/?p_idx="+p_idx;
 	}
 
 }

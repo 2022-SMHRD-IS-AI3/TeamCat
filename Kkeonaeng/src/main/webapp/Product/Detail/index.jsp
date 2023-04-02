@@ -511,10 +511,9 @@
                                        </button>    
                                        <%} %>                                  
                                  </div>        
-                                </div>
-
-                            </div>
-                </section>
+                             </div>
+                        </div>
+               	    </section>
                 <hr style="color: #a7a7a7bd; margin-bottom: 0.9rem; margin-top: 0.5rem;">
                 <section class="description">
                     <h5 property="schema:name" id="itle" style=""><%=productDetail.getP_name() %></h5>
@@ -548,7 +547,6 @@
             <div class="menu fl-1">
             <% 
             int cnt = new WishlistDAO().WishlistCheck(new WishlistDTO(0,user_idx,p_idx));
-            System.out.println(cnt);
             if(cnt > 0){ %>
                 <div onclick="heartOnOff()"><img class="heartchk" alt="" src="/Kkeonaeng/img/heart.png"></div>
 			<%}else{ %>
