@@ -1,3 +1,6 @@
+![header](https://capsule-render.vercel.app/api?type=Wave&color=0:527fef,100:00d4ff&height=250&section=header&text=&fontSize=70&fontColor=101647)
+
+
 # 1. 프로젝트 개요
 **주제 : 지도 api를 활용한 내 주변 이웃 간 C2C 물건 대여 서비스 플랫폼**
 
@@ -27,6 +30,7 @@
 ![image](https://user-images.githubusercontent.com/108473234/229777704-6c7c555b-f450-4592-a462-1592432541be.png)
 
 # 4. 유스케이스
+![image](https://user-images.githubusercontent.com/108218039/230023598-c871d8d7-6189-44e5-ad61-214c9ccd54d6.png)
 
 # 5. 주요 기능
 ### **1. 예약하기**
