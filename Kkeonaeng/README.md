@@ -30,7 +30,7 @@
 ![image](https://user-images.githubusercontent.com/108473234/229777704-6c7c555b-f450-4592-a462-1592432541be.png)
 
 # 4. 유스케이스
-![image](https://user-images.githubusercontent.com/108218039/230023598-c871d8d7-6189-44e5-ad61-214c9ccd54d6.png)
+![image](https://user-images.githubusercontent.com/108218039/230032604-89210049-fc51-48a1-9c28-c27f6d708ba4.png)
 
 # 5. 주요 기능
 ### **1. 예약하기**
