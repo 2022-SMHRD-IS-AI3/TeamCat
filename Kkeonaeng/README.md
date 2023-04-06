@@ -1,5 +1,6 @@
 ![header](https://capsule-render.vercel.app/api?type=Wave&color=0:527fef,100:00d4ff&height=250&section=header&text=&fontSize=70&fontColor=101647)
 
+<strong>핵심프로젝트 팀 NOTION</strong> https://www.notion.so/Notic-b4a45acc02f946fd8b62f1615212d2d8
 
 # 1. 프로젝트 개요
 **주제 : 지도 api를 활용한 내 주변 이웃 간 C2C 물건 대여 서비스 플랫폼**
