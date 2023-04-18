@@ -81,6 +81,10 @@
 ![image](https://user-images.githubusercontent.com/108473234/229784867-432613f4-7a47-4236-80bd-b1033ab09251.png)
 
 
+* 대여자 반납완료 / 좋아요 리뷰 / 별로에요 리뷰 페이지
+![image](https://user-images.githubusercontent.com/108473234/232700821-9a64272e-a47f-482b-9219-8c2e289ecbb5.png)
+
+
 * 검색 및 최근 검색어 / 검색 결과 페이지
 ![image](https://user-images.githubusercontent.com/108473234/229785355-7e27b3c1-b767-421c-8e88-f67fa9673417.png)
 
