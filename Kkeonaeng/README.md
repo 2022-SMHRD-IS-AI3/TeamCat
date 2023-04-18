@@ -90,7 +90,8 @@
 
 
 * 메시지 목록 / 메시지 대화 내역 / 메시지 작성 페이지
-![image](https://user-images.githubusercontent.com/108473234/232684132-0168360b-d637-41ea-b6a1-667b647a021d.png)
+![image](https://user-images.githubusercontent.com/108473234/232686967-7e343774-3c71-4369-99ba-279ecab224ab.png)
+
 
 
 # 8. 모델개발 트러블 슈팅
